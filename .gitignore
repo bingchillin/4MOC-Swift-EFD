@@ -131,4 +131,9 @@ iOSInjectionProject/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,macos
