@@ -1,21 +1,21 @@
-## Installation
+# Installation
 
 ```bash
 $ npm install
 ```
 
-# MongoDB - Compass
+## MongoDB - Compass
 https://www.mongodb.com/try/download/shell
 
-# Pour mac
+### Pour mac
 ```bash
 $ brew install mongodb-community
 $ brew services start mongodb-community
 ```
 
-## Running the app
+# Running the app
 
-# Import + Export de bdd
+## Import + Export de bdd
 
 ```bash
 # Dump - export de la bdd
@@ -27,7 +27,7 @@ $ mongodump
 $ mongorestore
 ```
 
-# Lancement du serveur
+## Lancement du serveur
 ```bash
 # localhost:3000
 $ nest start --watch
