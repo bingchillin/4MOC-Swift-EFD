@@ -12,7 +12,7 @@ class EFDWebServices{
     
     class func addUser(username : String, email: String, password : String, completion: @escaping (Error?, Bool?) -> Void){
     
-        let url = "http://localhost:27017/user"
+        let url = "http://localhost:3000/user"
         
         guard let getAddURL = URL(string: url) else{
             return
