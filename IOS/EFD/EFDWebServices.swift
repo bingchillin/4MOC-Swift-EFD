@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CryptoKit
 
 class EFDWebServices{
     
@@ -21,11 +22,21 @@ class EFDWebServices{
         print(" - ", username, " - ", email, " - ", password)
         var request = URLRequest(url: getAddURL)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let inputData = password.data(using: .utf8)
+        
+        // Calculer le hachage SHA-256
+        let hashedData = SHA256.hash(data: inputData!)
+            
+        // Convertir le hachage en une chaîne hexadécimale
+        let passwordDataHash = hashedData.map { String(format: "%02hhx", $0) }.joined()
+        
+        
 
         let json: [String: Any] = ["name": username,
                                    "email": email,
-                                   "password": password,
-                                   "role": "admin"]
+                                   "password": passwordDataHash,
+                                   "role": "client"]
 
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
@@ -46,7 +57,6 @@ class EFDWebServices{
             
             do {
                 try JSONSerialization.jsonObject(with: d, options: .allowFragments)
-                
                 completion(nil, true)
             } catch let err {
                 completion(err, false)
@@ -57,4 +67,6 @@ class EFDWebServices{
         
         task.resume()
     }
+    
+
 }
