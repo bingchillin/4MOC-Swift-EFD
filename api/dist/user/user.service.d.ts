@@ -72,5 +72,11 @@ export declare class UserService {
         _id: import("mongoose").Types.ObjectId;
     }>>;
     remove(id: string): Promise<string>;
-    login(email: string, password: string): Promise<"User not found" | "Password is incorrect" | "Login success">;
+    login(email: string, password: string): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, User> & User & {
+        _id: import("mongoose").Types.ObjectId;
+    }> & import("mongoose").Document<unknown, {}, User> & User & {
+        _id: import("mongoose").Types.ObjectId;
+    } & Required<{
+        _id: import("mongoose").Types.ObjectId;
+    }>) | "User not found" | "Password is incorrect">;
 }

@@ -79,6 +79,6 @@ export class UserService {
       return 'Password is incorrect';
     }
 
-    return 'Login success';
+    return user;
   }
 }

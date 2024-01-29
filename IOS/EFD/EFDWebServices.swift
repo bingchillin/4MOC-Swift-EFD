@@ -19,7 +19,6 @@ class EFDWebServices{
             return
         }
         
-        print(" - ", username, " - ", email, " - ", password)
         var request = URLRequest(url: getAddURL)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -68,22 +67,27 @@ class EFDWebServices{
         task.resume()
     }
     
-    class func connectUser(email : String, password : String,completion: @escaping (Error?, Bool?) -> Void){
+    class func connectUser(email : String, password : String, completion: @escaping (Error?, Bool?) -> Void){
         
         let url = "http://localhost:3000/user/login"
         
-        guard let getConnectURL = URL(string: url) else{
+        guard let getConnectUrl = URL(string: url) else{
             return
         }
         
-        var request = URLRequest(url: getConnectURL)
+        var request = URLRequest(url: getConnectUrl)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
         
         let json: [String: Any] = ["email": email,
                                    "password": password]
 
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        
         request.httpBody = jsonData
         request.httpMethod = "POST"
+        
         
         let task = URLSession.shared.dataTask(with: request) { data, res, err in
             guard err == nil else {
@@ -100,8 +104,11 @@ class EFDWebServices{
             do {
                 try JSONSerialization.jsonObject(with: d, options: .allowFragments)
                 completion(nil, true)
+                print("OK2")
             } catch let err {
+                print("Error during JSON serialization: \(err)")
                 completion(err, false)
+                print("OK3")
                 return
             }
 

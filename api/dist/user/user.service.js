@@ -72,7 +72,7 @@ let UserService = class UserService {
         if (!isPasswordCorrect) {
             return 'Password is incorrect';
         }
-        return 'Login success';
+        return user;
     }
 };
 exports.UserService = UserService;
