@@ -49,8 +49,13 @@ class InscriptionViewController: UIViewController, UITextFieldDelegate {
                         return
                     }
                     DispatchQueue.main.async {
-                        let homeViewController = HomeViewController()
-                        self.navigationController?.pushViewController(homeViewController, animated: true)
+                        if success == true {
+                            let homeViewController = HomeViewController()
+                            self.navigationController?.pushViewController(homeViewController, animated: true)
+                        }else{
+                            self.textFieldReturnMessageError.text = "Cette utilisateur existe déjà"
+                            self.textFieldReturnMessageError.textColor = UIColor.red
+                        }
                     }
                     }
         } else {

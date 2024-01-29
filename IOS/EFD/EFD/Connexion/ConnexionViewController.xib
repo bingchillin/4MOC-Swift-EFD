@@ -11,6 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConnexionViewController" customModule="EFD" customModuleProvider="target">
             <connections>
                 <outlet property="buttonConnexion" destination="Wut-Vg-tSf" id="sta-Qv-KHc"/>
+                <outlet property="labelError" destination="Exa-9a-1tX" id="MZM-ol-EcO"/>
+                <outlet property="textFieldEmail" destination="odo-6N-1fK" id="Kit-wO-jj5"/>
+                <outlet property="textFieldPassword" destination="UKq-2e-DV0" id="B3O-vo-cvS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,7 +28,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="odo-6N-1fK">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="odo-6N-1fK">
                     <rect key="frame" x="30" y="310" width="368" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -40,7 +43,7 @@
                     <textInputTraits key="textInputTraits" textContentType="password"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wut-Vg-tSf">
-                    <rect key="frame" x="146.66666666666666" y="463" width="134.99999999999997" height="43"/>
+                    <rect key="frame" x="146.66666666666666" y="484" width="134.99999999999997" height="43"/>
                     <color key="backgroundColor" red="0.56470588239999997" green="0.79215686269999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
@@ -52,7 +55,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fe-Fp-6S7">
-                    <rect key="frame" x="166" y="526" width="96" height="32"/>
+                    <rect key="frame" x="166" y="547" width="96" height="32"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Inscription">
                         <fontDescription key="titleFontDescription" type="italicSystem" pointSize="15"/>
@@ -67,26 +70,35 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Veuillez remplir tout les champs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Exa-9a-1tX">
+                    <rect key="frame" x="0.0" y="433" width="428" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="YDC-Y5-2Hj" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="5CH-Ti-FQP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UKq-2e-DV0" secondAttribute="trailing" constant="30" id="6vP-6W-ZxP"/>
+                <constraint firstItem="Exa-9a-1tX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9c7-k9-FvI"/>
                 <constraint firstItem="UKq-2e-DV0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="CZ5-8M-Vtb"/>
                 <constraint firstItem="0fe-Fp-6S7" firstAttribute="top" secondItem="Wut-Vg-tSf" secondAttribute="bottom" constant="20" id="F7t-9F-Eyv"/>
                 <constraint firstItem="FYc-r5-G7w" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IzH-qK-Ovf"/>
                 <constraint firstItem="YDC-Y5-2Hj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="J4o-ch-MeP"/>
+                <constraint firstItem="Wut-Vg-tSf" firstAttribute="top" secondItem="Exa-9a-1tX" secondAttribute="bottom" constant="30" id="KYV-rK-A2i"/>
                 <constraint firstItem="FYc-r5-G7w" firstAttribute="top" secondItem="YDC-Y5-2Hj" secondAttribute="bottom" constant="40" id="PB0-QL-Sky"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="FYc-r5-G7w" secondAttribute="trailing" id="SJs-uZ-9wJ"/>
+                <constraint firstItem="Exa-9a-1tX" firstAttribute="top" secondItem="UKq-2e-DV0" secondAttribute="bottom" constant="20" id="ZxO-Ou-eVL"/>
                 <constraint firstItem="YDC-Y5-2Hj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="aMl-J5-bfx"/>
                 <constraint firstItem="UKq-2e-DV0" firstAttribute="top" secondItem="odo-6N-1fK" secondAttribute="bottom" constant="35" id="dRf-OQ-rb7"/>
                 <constraint firstItem="0fe-Fp-6S7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="f6o-4S-D3X"/>
-                <constraint firstItem="Wut-Vg-tSf" firstAttribute="top" secondItem="UKq-2e-DV0" secondAttribute="bottom" constant="50" id="hWq-dq-caI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="odo-6N-1fK" secondAttribute="trailing" constant="30" id="jta-sb-eab"/>
                 <constraint firstItem="odo-6N-1fK" firstAttribute="top" secondItem="FYc-r5-G7w" secondAttribute="bottom" constant="45" id="lyC-fd-r5W"/>
                 <constraint firstItem="Wut-Vg-tSf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qQf-Dn-Dfk"/>
                 <constraint firstItem="odo-6N-1fK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="vCO-vO-bUh"/>
+                <constraint firstItem="Exa-9a-1tX" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="yOB-vU-9fu"/>
             </constraints>
             <point key="canvasLocation" x="138.78504672897196" y="99.784017278617711"/>
         </view>

@@ -9,6 +9,10 @@ import UIKit
 
 class ConnexionViewController: UIViewController {
 
+    @IBOutlet weak var textFieldEmail: UITextField!
+    @IBOutlet weak var textFieldPassword: UITextField!
+    @IBOutlet weak var labelError: UILabel!
+    
     @IBOutlet weak var buttonConnexion: UIButton!
     
     override func viewDidLoad() {
@@ -27,6 +31,28 @@ class ConnexionViewController: UIViewController {
 
 
     @IBAction func goToConnexion(_ sender: Any) {
+        
+        if textFieldEmail.text != "" && textFieldPassword.text != "" {
+            
+            EFDWebServices.connectUser(email: textFieldEmail.text!, password: textFieldPassword.text!){ err, success in
+                    guard (success != nil) else {
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        if success == true {
+                            let homeViewController = HomeViewController()
+                            self.navigationController?.pushViewController(homeViewController, animated: true)
+                        }else{
+                            self.labelError.text = "L'email et le password ne correspondent pas"
+                            self.labelError.textColor = UIColor.red
+                        }
+                        
+                    }
+            }
+        }else{
+            self.labelError.textColor = UIColor.red
+        }
+        
     }
     
     @IBAction func goToInscription(_ sender: Any) {
