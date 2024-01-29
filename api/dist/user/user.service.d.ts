@@ -29,13 +29,13 @@ import { User, UserDocument } from './schemas/user.schema';
 export declare class UserService {
     private userDocumentModel;
     constructor(userDocumentModel: Model<UserDocument>);
-    create(createUserDto: CreateUserDto): Promise<import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, User> & User & {
+    create(createUserDto: CreateUserDto): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, User> & User & {
         _id: import("mongoose").Types.ObjectId;
     }> & import("mongoose").Document<unknown, {}, User> & User & {
         _id: import("mongoose").Types.ObjectId;
     } & Required<{
         _id: import("mongoose").Types.ObjectId;
-    }>>;
+    }>) | "User already exists">;
     findAll(): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, User> & User & {
         _id: import("mongoose").Types.ObjectId;
     }> & import("mongoose").Document<unknown, {}, User> & User & {
@@ -72,4 +72,5 @@ export declare class UserService {
         _id: import("mongoose").Types.ObjectId;
     }>>;
     remove(id: string): Promise<string>;
+    login(email: string, password: string): Promise<"User not found" | "Password is incorrect" | "Login success">;
 }

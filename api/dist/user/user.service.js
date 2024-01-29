@@ -17,12 +17,22 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const user_schema_1 = require("./schemas/user.schema");
+const bcrypt = require("bcrypt");
 let UserService = class UserService {
     constructor(userDocumentModel) {
         this.userDocumentModel = userDocumentModel;
     }
-    create(createUserDto) {
-        return new this.userDocumentModel(createUserDto).save();
+    async create(createUserDto) {
+        const existingUser = await this.userDocumentModel.findOne({ email: createUserDto.email }).exec();
+        if (existingUser) {
+            return 'User already exists';
+        }
+        const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+        const newUser = new this.userDocumentModel({
+            ...createUserDto,
+            password: hashedPassword
+        });
+        return newUser.save();
     }
     async findAll() {
         return await this.userDocumentModel.find().exec();
@@ -52,6 +62,17 @@ let UserService = class UserService {
             throw new Error('User not found');
         }
         return `User with id ${id} has been deleted`;
+    }
+    async login(email, password) {
+        const user = await this.userDocumentModel.findOne({ email }).exec();
+        if (!user) {
+            return 'User not found';
+        }
+        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        if (!isPasswordCorrect) {
+            return 'Password is incorrect';
+        }
+        return 'Login success';
     }
 };
 exports.UserService = UserService;

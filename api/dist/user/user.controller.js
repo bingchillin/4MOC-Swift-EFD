@@ -27,6 +27,9 @@ let UserController = class UserController {
     findAll() {
         return this.userService.findAll();
     }
+    login(body) {
+        return this.userService.login(body.email, body.password);
+    }
     findAllLivreur() {
         return this.userService.findAllLivreur();
     }
@@ -57,6 +60,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Post)('login'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], UserController.prototype, "login", null);
 __decorate([
     (0, common_1.Get)('livreur'),
     __metadata("design:type", Function),

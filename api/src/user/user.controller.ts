@@ -17,6 +17,11 @@ export class UserController {
     return this.userService.findAll();
   }
 
+  @Post('login')
+  login(@Body() body: any) {
+    return this.userService.login(body.email, body.password);
+  }
+
   @Get('livreur')
   findAllLivreur() {
     return this.userService.findAllLivreur();

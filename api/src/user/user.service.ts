@@ -4,12 +4,25 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User, UserDocument } from './schemas/user.schema';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel(User.name) private userDocumentModel: Model<UserDocument>) {}
-  create(createUserDto: CreateUserDto) {
-    return new this.userDocumentModel(createUserDto).save();
+  constructor(@InjectModel(User.name) private userDocumentModel: Model<UserDocument>) { }
+  async create(createUserDto: CreateUserDto) {
+    const existingUser = await this.userDocumentModel.findOne({ email: createUserDto.email }).exec();
+
+    if(existingUser) {
+      return 'User already exists';
+    }
+
+    const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+    const newUser = new this.userDocumentModel({
+      ...createUserDto,
+      password: hashedPassword
+    });
+
+    return newUser.save();
   }
 
   async findAll() {
@@ -17,7 +30,7 @@ export class UserService {
   }
 
   async findAllLivreur() {
-    return await this.userDocumentModel.find({role: 'livreur'}).exec();
+    return await this.userDocumentModel.find({ role: 'livreur' }).exec();
   }
 
   async findOne(id: string) {
@@ -26,19 +39,19 @@ export class UserService {
 
   // find one livreur by id
   async findOneLivreur(id: string) {
-    const livreur = await this.userDocumentModel.findOne({_id: id, role: 'livreur'}).exec();
-    
+    const livreur = await this.userDocumentModel.findOne({ _id: id, role: 'livreur' }).exec();
+
     if (!livreur) {
       return 'Livreur not found';
     }
-    
+
     return livreur;
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
     const existingUser = await this.userDocumentModel
-    .findOneAndUpdate({ _id: id }, updateUserDto, { new: true })
-    .exec();
+      .findOneAndUpdate({ _id: id }, updateUserDto, { new: true })
+      .exec();
 
     return existingUser;
   }
@@ -51,5 +64,21 @@ export class UserService {
     }
 
     return `User with id ${id} has been deleted`;
+  }
+
+  async login(email: string, password: string) {
+    const user = await this.userDocumentModel.findOne({ email }).exec();
+
+    if (!user) {
+      return 'User not found';
+    }
+
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordCorrect) {
+      return 'Password is incorrect';
+    }
+
+    return 'Login success';
   }
 }
