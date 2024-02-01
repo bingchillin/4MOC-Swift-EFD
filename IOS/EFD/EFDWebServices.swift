@@ -10,8 +10,11 @@ import UIKit
 import CryptoKit
 
 class EFDWebServices{
+    static var userRole: String?
+    static var username: String?
     
-    class func addUser(username : String, email: String, password : String, completion: @escaping (Error?, Bool?) -> Void){
+    class func addUser(username : String, email: String, password : String, completion: @escaping (Error?, Bool?, User?) -> Void){
+        
     
         let url = "http://localhost:3000/user"
         
@@ -44,21 +47,22 @@ class EFDWebServices{
         
         let task = URLSession.shared.dataTask(with: request) { data, res, err in
             guard err == nil else {
-                completion(err, false)
+                completion(err, false, nil)
                 return
             }
             guard let d = data else {
                 completion(NSError(domain: "com.EFD", code: 2, userInfo: [
                     NSLocalizedFailureReasonErrorKey: "No data found"
-                ]), nil)
+                ]), nil, nil)
                 return
             }
             
             do {
                 try JSONSerialization.jsonObject(with: d, options: .allowFragments)
-                completion(nil, true)
+                let user = User(name: username, email: email, password: password, role: "client")
+                completion(nil, true, user)
             } catch let err {
-                completion(err, false)
+                completion(err, false, nil)
                 return
             }
 
@@ -67,7 +71,8 @@ class EFDWebServices{
         task.resume()
     }
     
-    class func connectUser(email : String, password : String, completion: @escaping (Error?, Bool?) -> Void){
+    class func connectUser(email : String, password : String, completion: @escaping (Error?, Bool?, User?) -> Void){
+        
         
         let url = "http://localhost:3000/user/login"
         
@@ -91,24 +96,29 @@ class EFDWebServices{
         
         let task = URLSession.shared.dataTask(with: request) { data, res, err in
             guard err == nil else {
-                completion(err, false)
+                completion(err, false, nil)
                 return
             }
             guard let d = data else {
                 completion(NSError(domain: "com.EFD", code: 3, userInfo: [
                     NSLocalizedFailureReasonErrorKey: "No data found"
-                ]), nil)
+                ]), nil, nil)
                 return
             }
             
             do {
-                try JSONSerialization.jsonObject(with: d, options: .allowFragments)
-                completion(nil, true)
-                print("OK2")
+                
+                if let jsonObject = try JSONSerialization.jsonObject(with: d, options: .allowFragments) as? [String: Any] {
+                    if let role = jsonObject["role"] as? String,  let username = jsonObject["name"] as? String{
+                                        self.userRole = role
+                                        self.username = username
+                                    }
+                                }
+                let user = User(name: username!, email: email, password: password, role: userRole!)
+                completion(nil, true, user)
             } catch let err {
                 print("Error during JSON serialization: \(err)")
-                completion(err, false)
-                print("OK3")
+                completion(err, false,nil)
                 return
             }
 

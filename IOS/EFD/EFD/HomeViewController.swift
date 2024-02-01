@@ -11,19 +11,23 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // hide back button
+        self.navigationItem.hidesBackButton = true
+        
+        print(user.email,user.name, user.role)
 
-        // Do any additional setup after loading the view.
+    }
+    
+    
+    var user : User!
+    
+    
+    public class func newInstance(user: User) -> HomeViewController{
+            let homeV = HomeViewController()
+            homeV.user = user
+            return homeV
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

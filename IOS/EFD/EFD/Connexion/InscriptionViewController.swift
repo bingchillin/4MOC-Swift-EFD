@@ -44,13 +44,13 @@ class InscriptionViewController: UIViewController, UITextFieldDelegate {
     @IBAction func goToInscription(_ sender: Any) {
         if textFieldUsername.text != "" && textFieldEmail.text != "" && textFieldPassword.text != "" && textFieldConfirmPassword.text != "" && textFieldPassword.text == textFieldConfirmPassword.text{
             
-            EFDWebServices.addUser(username: textFieldUsername.text!, email: textFieldEmail.text!, password: textFieldPassword.text!){ err, success in
+            EFDWebServices.addUser(username: textFieldUsername.text!, email: textFieldEmail.text!, password: textFieldPassword.text!){ err, success, user in
                     guard (success != nil) else {
                         return
                     }
                     DispatchQueue.main.async {
                         if success == true {
-                            let homeViewController = HomeViewController()
+                            let homeViewController = HomeViewController.newInstance(user: user!)
                             self.navigationController?.pushViewController(homeViewController, animated: true)
                         }else{
                             self.textFieldReturnMessageError.text = "Cette utilisateur existe déjà"
