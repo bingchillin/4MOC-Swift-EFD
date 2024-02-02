@@ -30,7 +30,7 @@
                     <color key="backgroundColor" red="0.56470588239999997" green="0.79215686269999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Create">
+                    <buttonConfiguration key="configuration" style="plain" title="Create Delivery Man">
                         <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
                     </buttonConfiguration>
                     <connections>

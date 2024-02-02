@@ -10,6 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateDeliveryManViewController" customModule="EFD" customModuleProvider="target">
             <connections>
+                <outlet property="buttonToCreateD" destination="t7P-IT-v0M" id="5dI-7Y-2QC"/>
+                <outlet property="labelStatus" destination="e0A-Lz-g5W" id="zKm-D1-MkE"/>
+                <outlet property="textFieldConfirmPassword" destination="cSD-O0-5Fg" id="WXG-64-kvU"/>
+                <outlet property="textFieldEmail" destination="cXX-65-PEa" id="wHa-7H-7Dv"/>
+                <outlet property="textFieldPassword" destination="Xek-nu-hUn" id="a5P-Hy-JlF"/>
+                <outlet property="textFieldUsername" destination="sRX-MD-mMX" id="lc5-Wb-5ph"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -45,7 +51,7 @@
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSD-O0-5Fg">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSD-O0-5Fg">
                     <rect key="frame" x="30" y="417" width="354" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -53,22 +59,19 @@
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7P-IT-v0M">
-                    <rect key="frame" x="160.5" y="523" width="93" height="43"/>
+                    <rect key="frame" x="160.5" y="512" width="93" height="43"/>
                     <color key="backgroundColor" red="0.56470588239999997" green="0.79215686269999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Create">
                         <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
                     </buttonConfiguration>
+                    <connections>
+                        <action selector="goToCreateD:" destination="-1" eventType="touchUpInside" id="EGP-zd-Z09"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ce livreur existe déjà" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0A-Lz-g5W">
                     <rect key="frame" x="0.0" y="471" width="414" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Création Validée" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvb-Rx-r6V">
-                    <rect key="frame" x="0.0" y="492" width="414" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -77,13 +80,10 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="nvb-Rx-r6V" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="0oT-Rt-jDm"/>
-                <constraint firstItem="nvb-Rx-r6V" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="41e-29-j6z"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sRX-MD-mMX" secondAttribute="trailing" constant="30" id="9XH-jY-q5c"/>
                 <constraint firstItem="cSD-O0-5Fg" firstAttribute="top" secondItem="Xek-nu-hUn" secondAttribute="bottom" constant="35" id="AkJ-bv-C0j"/>
                 <constraint firstItem="PqE-i4-4AQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Fmj-IE-Jyd"/>
                 <constraint firstAttribute="trailing" secondItem="e0A-Lz-g5W" secondAttribute="trailing" id="M2r-1b-cxL"/>
-                <constraint firstItem="nvb-Rx-r6V" firstAttribute="top" secondItem="e0A-Lz-g5W" secondAttribute="bottom" id="QR4-PV-SNg"/>
                 <constraint firstItem="sRX-MD-mMX" firstAttribute="top" secondItem="PqE-i4-4AQ" secondAttribute="bottom" constant="80" id="RWT-4f-rZV"/>
                 <constraint firstItem="cXX-65-PEa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="RfX-Gu-MxU"/>
                 <constraint firstItem="cSD-O0-5Fg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="Wsi-y7-M2e"/>
@@ -98,8 +98,8 @@
                 <constraint firstItem="cXX-65-PEa" firstAttribute="top" secondItem="sRX-MD-mMX" secondAttribute="bottom" constant="35" id="pwH-a6-hfr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cSD-O0-5Fg" secondAttribute="trailing" constant="30" id="qA0-ag-akB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cXX-65-PEa" secondAttribute="trailing" constant="30" id="uFg-hN-U6r"/>
+                <constraint firstItem="t7P-IT-v0M" firstAttribute="top" secondItem="e0A-Lz-g5W" secondAttribute="bottom" constant="20" id="uXf-z9-pER"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Xek-nu-hUn" secondAttribute="trailing" constant="30" id="uht-SQ-N8e"/>
-                <constraint firstItem="t7P-IT-v0M" firstAttribute="top" secondItem="nvb-Rx-r6V" secondAttribute="bottom" constant="10" id="wUs-tD-uJt"/>
             </constraints>
             <point key="canvasLocation" x="139" y="70"/>
         </view>
