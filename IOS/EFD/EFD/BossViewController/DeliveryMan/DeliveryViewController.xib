@@ -37,18 +37,26 @@
                         <action selector="goToCreateDeliveryMan:" destination="-1" eventType="touchUpInside" id="6Jd-xT-XvF"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="i5g-kH-NbK">
+                    <rect key="frame" x="0.0" y="272" width="414" height="624"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="i5g-kH-NbK" secondAttribute="bottom" id="64E-RH-BJ7"/>
                 <constraint firstAttribute="trailing" secondItem="HY5-qB-Qqp" secondAttribute="trailing" id="8Vf-tl-sMH"/>
                 <constraint firstItem="HY5-qB-Qqp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="A5Z-NA-ohs"/>
                 <constraint firstItem="dIF-BA-28d" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="EAl-av-tQv"/>
                 <constraint firstItem="dIF-BA-28d" firstAttribute="top" secondItem="HY5-qB-Qqp" secondAttribute="bottom" constant="50" id="MzU-QT-3jP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dIF-BA-28d" secondAttribute="trailing" constant="50" id="V2c-Me-hMx"/>
                 <constraint firstItem="HY5-qB-Qqp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="e1D-lU-y8s"/>
+                <constraint firstItem="i5g-kH-NbK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fBS-WR-7MF"/>
+                <constraint firstItem="i5g-kH-NbK" firstAttribute="top" secondItem="dIF-BA-28d" secondAttribute="bottom" constant="20" id="lTh-xt-Oxp"/>
+                <constraint firstItem="i5g-kH-NbK" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="rJ7-ph-oGg"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="70"/>
+            <point key="canvasLocation" x="137.68115942028987" y="69.642857142857139"/>
         </view>
     </objects>
     <resources>
