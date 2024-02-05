@@ -9,16 +9,18 @@ import Foundation
 
 
 class User: CustomStringConvertible{
-    let name: String
-    let email: String
-    let password: String
-    let role: String
+    let id: String?
+    var name: String
+    var email: String
+    var password: String
+    var role: String
     
     var description: String{
         return "name: \(name),email: \(email),role: \(role)"
     }
     
-    init(name: String, email: String, password: String, role: String) {
+    init(id: String?, name: String, email: String, password: String, role: String) {
+        self.id = id
         self.name = name
         self.email = email
         self.password = password

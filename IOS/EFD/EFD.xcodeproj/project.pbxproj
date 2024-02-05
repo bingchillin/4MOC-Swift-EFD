@@ -11,10 +11,18 @@
 		B9ED8A052B6A3C3100ECFB74 /* CreateRoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9ED8A032B6A3C3100ECFB74 /* CreateRoundViewController.xib */; };
 		B9ED8A082B6A71E700ECFB74 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ED8A072B6A71E700ECFB74 /* Package.swift */; };
 		B9ED8A0A2B6A738800ECFB74 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ED8A092B6A738800ECFB74 /* Round.swift */; };
+		C019E4982B718CA100AD41F8 /* ItemDeliveryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019E4962B718CA100AD41F8 /* ItemDeliveryListViewController.swift */; };
+		C019E4992B718CA100AD41F8 /* ItemDeliveryListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C019E4972B718CA100AD41F8 /* ItemDeliveryListViewController.xib */; };
+		C019E49C2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019E49A2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.swift */; };
+		C019E49D2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C019E49B2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.xib */; };
 		C035842D2B66EBB9007F453B /* EFDWebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C035842C2B66EBB9007F453B /* EFDWebServices.swift */; };
 		C03584302B66F2AA007F453B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C035842E2B66F2AA007F453B /* HomeViewController.swift */; };
 		C03584312B66F2AA007F453B /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C035842F2B66F2AA007F453B /* HomeViewController.xib */; };
 		C03584332B6C4FD4007F453B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03584322B6C4FD4007F453B /* User.swift */; };
+		C03584372B6C612D007F453B /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03584352B6C612D007F453B /* DeliveryViewController.swift */; };
+		C03584382B6C612D007F453B /* DeliveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03584362B6C612D007F453B /* DeliveryViewController.xib */; };
+		C035843B2B6C640F007F453B /* CreateDeliveryManViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03584392B6C640F007F453B /* CreateDeliveryManViewController.swift */; };
+		C035843C2B6C640F007F453B /* CreateDeliveryManViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C035843A2B6C640F007F453B /* CreateDeliveryManViewController.xib */; };
 		C0B5E77E2B66B00F00A2D3B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5E77D2B66B00F00A2D3B9 /* AppDelegate.swift */; };
 		C0B5E7872B66B01100A2D3B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0B5E7862B66B01100A2D3B9 /* Assets.xcassets */; };
 		C0B5E78A2B66B01100A2D3B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0B5E7882B66B01100A2D3B9 /* LaunchScreen.storyboard */; };
@@ -33,10 +41,18 @@
 		B9ED8A032B6A3C3100ECFB74 /* CreateRoundViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateRoundViewController.xib; sourceTree = "<group>"; };
 		B9ED8A072B6A71E700ECFB74 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		B9ED8A092B6A738800ECFB74 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		C019E4962B718CA100AD41F8 /* ItemDeliveryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDeliveryListViewController.swift; sourceTree = "<group>"; };
+		C019E4972B718CA100AD41F8 /* ItemDeliveryListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDeliveryListViewController.xib; sourceTree = "<group>"; };
+		C019E49A2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyItemDeliveryListViewController.swift; sourceTree = "<group>"; };
+		C019E49B2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModifyItemDeliveryListViewController.xib; sourceTree = "<group>"; };
 		C035842C2B66EBB9007F453B /* EFDWebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFDWebServices.swift; sourceTree = "<group>"; };
 		C035842E2B66F2AA007F453B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C035842F2B66F2AA007F453B /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		C03584322B6C4FD4007F453B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C03584352B6C612D007F453B /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
+		C03584362B6C612D007F453B /* DeliveryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeliveryViewController.xib; sourceTree = "<group>"; };
+		C03584392B6C640F007F453B /* CreateDeliveryManViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeliveryManViewController.swift; sourceTree = "<group>"; };
+		C035843A2B6C640F007F453B /* CreateDeliveryManViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateDeliveryManViewController.xib; sourceTree = "<group>"; };
 		C0B5E77A2B66B00F00A2D3B9 /* EFD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EFD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B5E77D2B66B00F00A2D3B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0B5E7862B66B01100A2D3B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +99,21 @@
 				C03584322B6C4FD4007F453B /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C03584342B6C6105007F453B /* DeliveryMan */ = {
+			isa = PBXGroup;
+			children = (
+				C03584352B6C612D007F453B /* DeliveryViewController.swift */,
+				C03584362B6C612D007F453B /* DeliveryViewController.xib */,
+				C03584392B6C640F007F453B /* CreateDeliveryManViewController.swift */,
+				C035843A2B6C640F007F453B /* CreateDeliveryManViewController.xib */,
+				C019E4962B718CA100AD41F8 /* ItemDeliveryListViewController.swift */,
+				C019E4972B718CA100AD41F8 /* ItemDeliveryListViewController.xib */,
+				C019E49A2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.swift */,
+				C019E49B2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.xib */,
+			);
+			path = DeliveryMan;
 			sourceTree = "<group>";
 		};
 		C0B5E7712B66B00F00A2D3B9 = {
@@ -199,11 +230,15 @@
 				C0B5E7942B66D42B00A2D3B9 /* ConnexionViewController.xib in Resources */,
 				C0B5E78A2B66B01100A2D3B9 /* LaunchScreen.storyboard in Resources */,
 				C03584312B66F2AA007F453B /* HomeViewController.xib in Resources */,
+				C019E49D2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.xib in Resources */,
 				C0B5E7872B66B01100A2D3B9 /* Assets.xcassets in Resources */,
 				D7F6C6022B6FC9BC005A75E9 /* MapViewController.xib in Resources */,
 				D7F6C6062B6FD614005A75E9 /* BossViewController.xib in Resources */,
 				C0B5E7992B66DB7A00A2D3B9 /* InscriptionViewController.xib in Resources */,
 				B9ED8A052B6A3C3100ECFB74 /* CreateRoundViewController.xib in Resources */,
+				C03584382B6C612D007F453B /* DeliveryViewController.xib in Resources */,
+				C035843C2B6C640F007F453B /* CreateDeliveryManViewController.xib in Resources */,
+				C019E4992B718CA100AD41F8 /* ItemDeliveryListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +251,7 @@
 			files = (
 				C03584302B66F2AA007F453B /* HomeViewController.swift in Sources */,
 				C035842D2B66EBB9007F453B /* EFDWebServices.swift in Sources */,
+				C03584372B6C612D007F453B /* DeliveryViewController.swift in Sources */,
 				C0B5E7932B66D42B00A2D3B9 /* ConnexionViewController.swift in Sources */,
 				D7F6C6012B6FC9BC005A75E9 /* MapViewController.swift in Sources */,
 				B9ED8A082B6A71E700ECFB74 /* Package.swift in Sources */,
@@ -224,6 +260,7 @@
 				C0B5E7982B66DB7A00A2D3B9 /* InscriptionViewController.swift in Sources */,
 				D7F6C6052B6FD614005A75E9 /* BossViewController.swift in Sources */,
 				B9ED8A0A2B6A738800ECFB74 /* Round.swift in Sources */,
+				C019E49C2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.swift in Sources */,
 				B9ED8A042B6A3C3100ECFB74 /* CreateRoundViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
