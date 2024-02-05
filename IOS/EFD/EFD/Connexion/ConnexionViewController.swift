@@ -42,7 +42,7 @@ class ConnexionViewController: UIViewController {
                     }
                     DispatchQueue.main.async {
                         if success == true {
-                            let homeViewController = BossViewController()
+                            let homeViewController = HomeViewController.newInstance(user: user!)
                             self.navigationController?.pushViewController(homeViewController, animated: true)
                         }else{
                             self.labelError.text = "L'email et le password ne correspondent pas"

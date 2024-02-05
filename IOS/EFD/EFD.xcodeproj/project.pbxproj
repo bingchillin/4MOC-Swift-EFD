@@ -30,10 +30,6 @@
 		C0B5E7942B66D42B00A2D3B9 /* ConnexionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B5E7922B66D42B00A2D3B9 /* ConnexionViewController.xib */; };
 		C0B5E7982B66DB7A00A2D3B9 /* InscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5E7962B66DB7A00A2D3B9 /* InscriptionViewController.swift */; };
 		C0B5E7992B66DB7A00A2D3B9 /* InscriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B5E7972B66DB7A00A2D3B9 /* InscriptionViewController.xib */; };
-		D7F6C6012B6FC9BC005A75E9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F6C5FF2B6FC9BC005A75E9 /* MapViewController.swift */; };
-		D7F6C6022B6FC9BC005A75E9 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F6C6002B6FC9BC005A75E9 /* MapViewController.xib */; };
-		D7F6C6052B6FD614005A75E9 /* BossViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F6C6032B6FD614005A75E9 /* BossViewController.swift */; };
-		D7F6C6062B6FD614005A75E9 /* BossViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7F6C6042B6FD614005A75E9 /* BossViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,10 +58,6 @@
 		C0B5E7922B66D42B00A2D3B9 /* ConnexionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnexionViewController.xib; sourceTree = "<group>"; };
 		C0B5E7962B66DB7A00A2D3B9 /* InscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
 		C0B5E7972B66DB7A00A2D3B9 /* InscriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InscriptionViewController.xib; sourceTree = "<group>"; };
-		D7F6C5FF2B6FC9BC005A75E9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		D7F6C6002B6FC9BC005A75E9 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
-		D7F6C6032B6FD614005A75E9 /* BossViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BossViewController.swift; sourceTree = "<group>"; };
-		D7F6C6042B6FD614005A75E9 /* BossViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BossViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,11 +74,9 @@
 		B9ED8A012B6A3B7500ECFB74 /* BossViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D7F6C5FE2B6FC9A1005A75E9 /* Map */,
+				C03584342B6C6105007F453B /* DeliveryMan */,
 				B9ED8A022B6A3C3100ECFB74 /* CreateRoundViewController.swift */,
 				B9ED8A032B6A3C3100ECFB74 /* CreateRoundViewController.xib */,
-				D7F6C6032B6FD614005A75E9 /* BossViewController.swift */,
-				D7F6C6042B6FD614005A75E9 /* BossViewController.xib */,
 			);
 			path = BossViewController;
 			sourceTree = "<group>";
@@ -160,15 +150,6 @@
 			path = Connexion;
 			sourceTree = "<group>";
 		};
-		D7F6C5FE2B6FC9A1005A75E9 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				D7F6C5FF2B6FC9BC005A75E9 /* MapViewController.swift */,
-				D7F6C6002B6FC9BC005A75E9 /* MapViewController.xib */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -232,8 +213,6 @@
 				C03584312B66F2AA007F453B /* HomeViewController.xib in Resources */,
 				C019E49D2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.xib in Resources */,
 				C0B5E7872B66B01100A2D3B9 /* Assets.xcassets in Resources */,
-				D7F6C6022B6FC9BC005A75E9 /* MapViewController.xib in Resources */,
-				D7F6C6062B6FD614005A75E9 /* BossViewController.xib in Resources */,
 				C0B5E7992B66DB7A00A2D3B9 /* InscriptionViewController.xib in Resources */,
 				B9ED8A052B6A3C3100ECFB74 /* CreateRoundViewController.xib in Resources */,
 				C03584382B6C612D007F453B /* DeliveryViewController.xib in Resources */,
@@ -253,12 +232,12 @@
 				C035842D2B66EBB9007F453B /* EFDWebServices.swift in Sources */,
 				C03584372B6C612D007F453B /* DeliveryViewController.swift in Sources */,
 				C0B5E7932B66D42B00A2D3B9 /* ConnexionViewController.swift in Sources */,
-				D7F6C6012B6FC9BC005A75E9 /* MapViewController.swift in Sources */,
+				C035843B2B6C640F007F453B /* CreateDeliveryManViewController.swift in Sources */,
+				C019E4982B718CA100AD41F8 /* ItemDeliveryListViewController.swift in Sources */,
 				B9ED8A082B6A71E700ECFB74 /* Package.swift in Sources */,
 				C0B5E77E2B66B00F00A2D3B9 /* AppDelegate.swift in Sources */,
 				C03584332B6C4FD4007F453B /* User.swift in Sources */,
 				C0B5E7982B66DB7A00A2D3B9 /* InscriptionViewController.swift in Sources */,
-				D7F6C6052B6FD614005A75E9 /* BossViewController.swift in Sources */,
 				B9ED8A0A2B6A738800ECFB74 /* Round.swift in Sources */,
 				C019E49C2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.swift in Sources */,
 				B9ED8A042B6A3C3100ECFB74 /* CreateRoundViewController.swift in Sources */,
