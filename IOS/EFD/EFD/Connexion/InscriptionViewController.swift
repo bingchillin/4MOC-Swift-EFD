@@ -20,7 +20,6 @@ class InscriptionViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         setupButton()
         setupTextField()
@@ -28,9 +27,6 @@ class InscriptionViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupTextField(){
-        textFieldPassword.isSecureTextEntry = true
-        textFieldConfirmPassword.isSecureTextEntry = true
-        
         textFieldUsername.delegate = self
         textFieldEmail.delegate = self
         textFieldPassword.delegate = self
