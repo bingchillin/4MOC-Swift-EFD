@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DeliveryViewController" customModule="EFD" customModuleProvider="target">
             <connections>
                 <outlet property="buttonCDM" destination="dIF-BA-28d" id="Cl7-0E-1xT"/>
+                <outlet property="tableViewDelivery" destination="i5g-kH-NbK" id="vE3-oe-8At"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
