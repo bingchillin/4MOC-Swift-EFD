@@ -24,8 +24,6 @@ class ConnexionViewController: UIViewController {
         // Configurer le texte du bouton
         buttonConnexion.setTitle("Connexion", for: .normal)
         
-        textFieldPassword.isSecureTextEntry = true
-        
         
 
                 
