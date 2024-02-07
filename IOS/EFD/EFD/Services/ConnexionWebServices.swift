@@ -60,7 +60,7 @@ class ConnexionWebServices{
             
             do {
                 try JSONSerialization.jsonObject(with: d, options: .allowFragments)
-                let user = User(id: nil, name: username, email: email, password: password, role: "client")
+                let user = User(id: nil, name: username, email: email, password: password, role: "client", latitude: nil, longitude: nil)
                 completion(nil, true, user)
             } catch let err {
                 completion(err, false, nil)
@@ -116,7 +116,7 @@ class ConnexionWebServices{
                                     }
                                 }
                 if let userId = userId, let username = username, let userRole = userRole {
-                    let user = User(id: userId, name: username, email: email, password: password, role: userRole)
+                    let user = User(id: userId, name: username, email: email, password: password, role: userRole, latitude: nil, longitude: nil)
                         completion(nil, true, user)
                     } else {
                         completion(NSError(domain: "com.EFD", code: 4, userInfo: [

@@ -98,7 +98,9 @@ class DeliveryWebServices {
                                                     name: dict["name"] as? String ?? "",
                                                     email: dict["email"] as? String ?? "",
                                                     password: dict["password"] as? String ?? "",
-                                                    role: dict["role"] as? String ?? "")
+                                                    role: dict["role"] as? String ?? "",
+                                                    latitude: dict["latitude"] as? Double,
+                                                    longitude: dict["longitude"] as? Double )
                                     }
                                     completion(nil, users)
                 }
@@ -138,10 +140,12 @@ class DeliveryWebServices {
             do {
                 if let item = try JSONSerialization.jsonObject(with: d, options: .allowFragments) as? [String: Any] {
                     let user = User(id: item["_id"] as? String ?? "",
-                                     name: item["name"] as? String ?? "",
-                                     email: item["email"] as? String ?? "",
-                                     password: item["password"] as? String ?? "",
-                                     role: item["role"] as? String ?? "")
+                                    name: item["name"] as? String ?? "",
+                                    email: item["email"] as? String ?? "",
+                                    password: item["password"] as? String ?? "",
+                                    role: item["role"] as? String ?? "",
+                                    latitude: item["latitude"] as? Double,
+                                    longitude: item["longitude"] as? Double)
                     completion(nil, true, user)
                 }
                 
