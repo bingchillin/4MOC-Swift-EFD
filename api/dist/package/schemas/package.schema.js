@@ -26,6 +26,14 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Package.prototype, "proof", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Number)
+], Package.prototype, "latitude", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Number)
+], Package.prototype, "longitude", void 0);
 exports.Package = Package = __decorate([
     (0, mongoose_1.Schema)()
 ], Package);
