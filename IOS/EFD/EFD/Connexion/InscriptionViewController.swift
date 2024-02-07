@@ -48,7 +48,7 @@ class InscriptionViewController: UIViewController, UITextFieldDelegate {
     @IBAction func goToInscription(_ sender: Any) {
         if textFieldUsername.text != "" && textFieldEmail.text != "" && textFieldPassword.text != "" && textFieldConfirmPassword.text != "" && textFieldPassword.text == textFieldConfirmPassword.text{
             
-            EFDWebServices.addUser(username: textFieldUsername.text!, email: textFieldEmail.text!, password: textFieldPassword.text!){ err, success, user in
+            ConnexionWebServices.addUser(username: textFieldUsername.text!, email: textFieldEmail.text!, password: textFieldPassword.text!){ err, success, user in
                     guard (success != nil) else {
                         return
                     }

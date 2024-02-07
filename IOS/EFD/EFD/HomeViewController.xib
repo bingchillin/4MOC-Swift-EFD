@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="EFD" customModuleProvider="target">
             <connections>
                 <outlet property="buttonDeliveryMan" destination="rcD-vY-HKv" id="cyw-G4-eRj"/>
+                <outlet property="labelRound" destination="3CW-c4-Iwy" id="yUr-6d-5VB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,13 +21,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EFD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBn-ON-NCs">
-                    <rect key="frame" x="0.0" y="124" width="428" height="65"/>
+                    <rect key="frame" x="0.0" y="74" width="428" height="65"/>
                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="54"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcD-vY-HKv">
-                    <rect key="frame" x="50" y="309" width="314" height="57"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcD-vY-HKv">
+                    <rect key="frame" x="50" y="184" width="314" height="57"/>
                     <color key="backgroundColor" red="0.56470588239999997" green="0.79215686269999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
@@ -37,6 +38,12 @@
                         <action selector="goToDeliveryMan:" destination="-1" eventType="touchUpInside" id="b2g-n2-CVz"/>
                     </connections>
                 </button>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Colis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3CW-c4-Iwy">
+                    <rect key="frame" x="173.5" y="266" width="67" height="37"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -45,11 +52,13 @@
                 <constraint firstAttribute="trailing" secondItem="jBn-ON-NCs" secondAttribute="trailing" constant="-14" id="AmK-5R-Yym"/>
                 <constraint firstItem="rcD-vY-HKv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Cda-zH-PP7"/>
                 <constraint firstItem="jBn-ON-NCs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ENP-et-dJ6"/>
-                <constraint firstItem="jBn-ON-NCs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="OMb-ae-z50"/>
-                <constraint firstItem="rcD-vY-HKv" firstAttribute="top" secondItem="jBn-ON-NCs" secondAttribute="bottom" constant="120" id="lSn-39-B7w"/>
+                <constraint firstItem="jBn-ON-NCs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="OMb-ae-z50"/>
+                <constraint firstItem="3CW-c4-Iwy" firstAttribute="top" secondItem="rcD-vY-HKv" secondAttribute="bottom" constant="25" id="knf-0m-psp"/>
+                <constraint firstItem="3CW-c4-Iwy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ko6-sy-1hw"/>
+                <constraint firstItem="rcD-vY-HKv" firstAttribute="top" secondItem="jBn-ON-NCs" secondAttribute="bottom" constant="45" id="lSn-39-B7w"/>
                 <constraint firstItem="rcD-vY-HKv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="rAh-xR-yOv"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="94"/>
+            <point key="canvasLocation" x="137.68115942028987" y="93.75"/>
         </view>
     </objects>
     <resources>

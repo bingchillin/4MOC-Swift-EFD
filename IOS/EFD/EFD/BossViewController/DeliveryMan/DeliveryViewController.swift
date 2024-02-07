@@ -18,6 +18,9 @@ class DeliveryViewController: UIViewController, UITableViewDataSource , UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // hide back button
+        self.navigationItem.hidesBackButton = true
+        
         
         buttonCDM.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         
@@ -27,7 +30,7 @@ class DeliveryViewController: UIViewController, UITableViewDataSource , UITableV
             
         
         
-        EFDWebServices.getListDelivery() { err, users in
+        DeliveryWebServices.getListDelivery() { err, users in
                 
                 DispatchQueue.main.async {
                     if let users = users {
@@ -70,7 +73,7 @@ class DeliveryViewController: UIViewController, UITableViewDataSource , UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let userId = self.userList[indexPath.row].id
-        EFDWebServices.getDeliveryUnique(id: userId!){err, success, user in
+        DeliveryWebServices.getDeliveryUnique(id: userId!){err, success, user in
             guard err == nil else {
                 return
             }
@@ -91,5 +94,9 @@ class DeliveryViewController: UIViewController, UITableViewDataSource , UITableV
         self.navigationController?.pushViewController(cdmViewController, animated: true)
     }
     
+    @IBAction func goToBack(_ sender: Any) {
+        let nextController = HomeViewController()
+        self.navigationController?.pushViewController(nextController, animated: true)
+    }
 
 }

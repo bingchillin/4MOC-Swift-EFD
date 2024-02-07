@@ -36,13 +36,13 @@ class ConnexionViewController: UIViewController {
         
         if textFieldEmail.text != "" && textFieldPassword.text != "" {
             
-            EFDWebServices.connectUser(email: textFieldEmail.text!, password: textFieldPassword.text!){ err, success, user in
+            ConnexionWebServices.connectUser(email: textFieldEmail.text!, password: textFieldPassword.text!){ err, success, user in
                     guard (success != nil) else {
                         return
                     }
                     DispatchQueue.main.async {
                         if success == true {
-                            let homeViewController = BossViewController()
+                            let homeViewController = HomeViewController.newInstance(user: user!)
                             self.navigationController?.pushViewController(homeViewController, animated: true)
                         }else{
                             self.labelError.text = "L'email et le password ne correspondent pas"

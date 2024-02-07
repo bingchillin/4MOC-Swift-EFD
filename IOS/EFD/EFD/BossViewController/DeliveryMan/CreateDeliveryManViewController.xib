@@ -25,41 +25,41 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creation Delivery Man" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqE-i4-4AQ">
-                    <rect key="frame" x="0.0" y="94" width="414" height="36"/>
+                    <rect key="frame" x="0.0" y="124" width="414" height="36"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sRX-MD-mMX">
-                    <rect key="frame" x="30" y="210" width="354" height="34"/>
+                    <rect key="frame" x="30" y="240" width="354" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXX-65-PEa">
-                    <rect key="frame" x="30" y="279" width="354" height="34"/>
+                    <rect key="frame" x="30" y="309" width="354" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xek-nu-hUn">
-                    <rect key="frame" x="30" y="348" width="354" height="34"/>
+                    <rect key="frame" x="30" y="378" width="354" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSD-O0-5Fg">
-                    <rect key="frame" x="30" y="417" width="354" height="34"/>
+                    <rect key="frame" x="30" y="447" width="354" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7P-IT-v0M">
-                    <rect key="frame" x="160.5" y="512" width="93" height="43"/>
+                    <rect key="frame" x="160.5" y="542" width="93" height="43"/>
                     <color key="backgroundColor" red="0.56470588239999997" green="0.79215686269999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
@@ -71,23 +71,35 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ce livreur existe déjà" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0A-Lz-g5W">
-                    <rect key="frame" x="0.0" y="471" width="414" height="21"/>
+                    <rect key="frame" x="0.0" y="501" width="414" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygp-ll-Gwl">
+                    <rect key="frame" x="0.0" y="44" width="80.5" height="35.5"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="&lt; Back">
+                        <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="goToBack:" destination="-1" eventType="touchUpInside" id="zin-2u-7hf"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="ygp-ll-Gwl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2Pp-m5-IGi"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sRX-MD-mMX" secondAttribute="trailing" constant="30" id="9XH-jY-q5c"/>
                 <constraint firstItem="cSD-O0-5Fg" firstAttribute="top" secondItem="Xek-nu-hUn" secondAttribute="bottom" constant="35" id="AkJ-bv-C0j"/>
                 <constraint firstItem="PqE-i4-4AQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Fmj-IE-Jyd"/>
                 <constraint firstAttribute="trailing" secondItem="e0A-Lz-g5W" secondAttribute="trailing" id="M2r-1b-cxL"/>
                 <constraint firstItem="sRX-MD-mMX" firstAttribute="top" secondItem="PqE-i4-4AQ" secondAttribute="bottom" constant="80" id="RWT-4f-rZV"/>
                 <constraint firstItem="cXX-65-PEa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="RfX-Gu-MxU"/>
+                <constraint firstItem="ygp-ll-Gwl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Vlh-xK-kKJ"/>
                 <constraint firstItem="cSD-O0-5Fg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="Wsi-y7-M2e"/>
-                <constraint firstItem="PqE-i4-4AQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="X6I-NO-dKi"/>
+                <constraint firstItem="PqE-i4-4AQ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="X6I-NO-dKi"/>
                 <constraint firstItem="t7P-IT-v0M" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="at1-tg-Eyi"/>
                 <constraint firstItem="Xek-nu-hUn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="clJ-U0-aRe"/>
                 <constraint firstItem="e0A-Lz-g5W" firstAttribute="top" secondItem="cSD-O0-5Fg" secondAttribute="bottom" constant="20" id="dyb-OQ-Bhk"/>

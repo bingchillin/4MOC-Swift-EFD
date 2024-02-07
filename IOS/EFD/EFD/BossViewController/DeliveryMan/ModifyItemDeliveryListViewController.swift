@@ -20,6 +20,8 @@ class ModifyItemDeliveryListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // hide back button
+        self.navigationItem.hidesBackButton = true
         
         buttonModify.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         
@@ -51,14 +53,16 @@ class ModifyItemDeliveryListViewController: UIViewController {
             user.role = textFieldStatus.text ?? user.role
         }
             
-        EFDWebServices.modifyDelivery(user: user){ err, success in
+        DeliveryWebServices.modifyDelivery(user: user){ err, success in
                         guard (success != nil) else {
                             return
                         }
                         DispatchQueue.main.async {
                             if success == true {
-                                self.labelValidateError.text = "Le livreur à bien été modifié."
-                                self.labelValidateError.textColor = UIColor.green
+                                let alert = UIAlertController(title: "Modification Validée", message: "Vos modifications ont bien été effectuées", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "Fermer", style: .cancel))
+                                self.present(alert, animated: true)
+                                
                             }else{
                                 self.labelValidateError.text = "Une erreur C'est produite"
                                 self.labelValidateError.textColor = UIColor.red
@@ -67,6 +71,22 @@ class ModifyItemDeliveryListViewController: UIViewController {
                     }
         
     }
+    
+    @IBAction func goToBack(_ sender: Any) {
+        DeliveryWebServices.getDeliveryUnique(id: self.user.id!){err, success, user in
+                guard err == nil else {
+                    return
+                }
+                guard (success != nil) else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    let nextController = ItemDeliveryListViewController.newInstance(user: user!)
+                    self.navigationController?.pushViewController(nextController, animated: true)
+                }
+        }
+    }
+    
     
     func WritetextField(){
         textFieldUsername.text = user.name
