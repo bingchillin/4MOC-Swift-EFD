@@ -13,6 +13,12 @@ export class Package {
 
     @Prop()
     proof: string;
+
+    @Prop()
+    latitude: number;
+
+    @Prop()
+    longitude: number;
 }
 
 export const PackageSchema = SchemaFactory.createForClass(Package);
