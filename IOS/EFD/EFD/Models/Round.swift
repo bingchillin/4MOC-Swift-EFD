@@ -8,16 +8,19 @@
 import Foundation
 
 class Round:CustomStringConvertible{
-    
-    let status: String
-    let package: [String]
+    var title: String
+    var status: String
+    var deliveryId: String?
+    var packageId: String?
     
     var description: String{
-        return ""
+        return "title: \(title), status: \(status), deliveryId: \(deliveryId ?? ""), packageId: \(packageId ?? "")"
     }
     
-    init(status: String, package: [String]) {
+    init(title:String, status: String, deliveryId: String?, packageId: String?) {
+        self.title = title
         self.status = status
-        self.package = package
+        self.deliveryId = deliveryId
+        self.packageId = packageId
     }
 }
