@@ -1,4 +1,6 @@
 export declare class CreateRoundDto {
+    title: string;
     status: string;
-    packages: string[];
+    deliveryId: string;
+    packageId: string;
 }

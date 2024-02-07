@@ -25,8 +25,10 @@
 import { HydratedDocument } from 'mongoose';
 export type RoundDocument = HydratedDocument<Round>;
 export declare class Round {
+    title: string;
     status: string;
-    packages: string[];
+    packageId: string;
+    userId: string;
 }
 export declare const RoundSchema: import("mongoose").Schema<Round, import("mongoose").Model<Round, any, any, any, import("mongoose").Document<unknown, any, Round> & Round & {
     _id: import("mongoose").Types.ObjectId;

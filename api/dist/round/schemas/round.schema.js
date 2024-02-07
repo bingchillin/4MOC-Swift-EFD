@@ -17,11 +17,19 @@ exports.Round = Round;
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
+], Round.prototype, "title", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
 ], Round.prototype, "status", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ type: String, ref: 'Package' }),
-    __metadata("design:type", Array)
-], Round.prototype, "packages", void 0);
+    __metadata("design:type", String)
+], Round.prototype, "packageId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: String, ref: 'User' }),
+    __metadata("design:type", String)
+], Round.prototype, "userId", void 0);
 exports.Round = Round = __decorate([
     (0, mongoose_1.Schema)()
 ], Round);

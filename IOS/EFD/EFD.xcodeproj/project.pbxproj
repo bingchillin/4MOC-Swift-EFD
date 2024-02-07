@@ -11,6 +11,8 @@
 		B9ED8A052B6A3C3100ECFB74 /* CreateRoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9ED8A032B6A3C3100ECFB74 /* CreateRoundViewController.xib */; };
 		B9ED8A082B6A71E700ECFB74 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ED8A072B6A71E700ECFB74 /* Package.swift */; };
 		B9ED8A0A2B6A738800ECFB74 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ED8A092B6A738800ECFB74 /* Round.swift */; };
+		C0090D1A2B73BE8800200154 /* UserInMemoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0090D192B73BE8800200154 /* UserInMemoryService.swift */; };
+		C0090D1D2B73C0BF00200154 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0090D1C2B73C0BF00200154 /* UserService.swift */; };
 		C019E4982B718CA100AD41F8 /* ItemDeliveryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019E4962B718CA100AD41F8 /* ItemDeliveryListViewController.swift */; };
 		C019E4992B718CA100AD41F8 /* ItemDeliveryListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C019E4972B718CA100AD41F8 /* ItemDeliveryListViewController.xib */; };
 		C019E49C2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019E49A2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.swift */; };
@@ -38,6 +40,8 @@
 		B9ED8A032B6A3C3100ECFB74 /* CreateRoundViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateRoundViewController.xib; sourceTree = "<group>"; };
 		B9ED8A072B6A71E700ECFB74 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		B9ED8A092B6A738800ECFB74 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		C0090D192B73BE8800200154 /* UserInMemoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInMemoryService.swift; sourceTree = "<group>"; };
+		C0090D1C2B73C0BF00200154 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		C019E4962B718CA100AD41F8 /* ItemDeliveryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDeliveryListViewController.swift; sourceTree = "<group>"; };
 		C019E4972B718CA100AD41F8 /* ItemDeliveryListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDeliveryListViewController.xib; sourceTree = "<group>"; };
 		C019E49A2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyItemDeliveryListViewController.swift; sourceTree = "<group>"; };
@@ -93,11 +97,20 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		C0090D1B2B73C04300200154 /* InMemory */ = {
+			isa = PBXGroup;
+			children = (
+				C0090D192B73BE8800200154 /* UserInMemoryService.swift */,
+			);
+			path = InMemory;
+			sourceTree = "<group>";
+		};
 		C019E4EA2B72D18200AD41F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				C035842C2B66EBB9007F453B /* ConnexionWebServices.swift */,
 				C019E4EB2B72D1AF00AD41F8 /* DeliveryWebServices.swift */,
+				C0090D1C2B73C0BF00200154 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -136,6 +149,7 @@
 		C0B5E77C2B66B00F00A2D3B9 /* EFD */ = {
 			isa = PBXGroup;
 			children = (
+				C0090D1B2B73C04300200154 /* InMemory */,
 				C019E4EA2B72D18200AD41F8 /* Services */,
 				B9ED8A062B6A71C300ECFB74 /* Models */,
 				C0B5E7952B66D44200A2D3B9 /* Connexion */,
@@ -243,6 +257,7 @@
 				C035842D2B66EBB9007F453B /* ConnexionWebServices.swift in Sources */,
 				C03584372B6C612D007F453B /* DeliveryViewController.swift in Sources */,
 				C0B5E7932B66D42B00A2D3B9 /* ConnexionViewController.swift in Sources */,
+				C0090D1A2B73BE8800200154 /* UserInMemoryService.swift in Sources */,
 				C019E4EC2B72D1AF00AD41F8 /* DeliveryWebServices.swift in Sources */,
 				C035843B2B6C640F007F453B /* CreateDeliveryManViewController.swift in Sources */,
 				C019E4982B718CA100AD41F8 /* ItemDeliveryListViewController.swift in Sources */,
@@ -250,6 +265,7 @@
 				C0B5E77E2B66B00F00A2D3B9 /* AppDelegate.swift in Sources */,
 				C03584332B6C4FD4007F453B /* User.swift in Sources */,
 				C0B5E7982B66DB7A00A2D3B9 /* InscriptionViewController.swift in Sources */,
+				C0090D1D2B73C0BF00200154 /* UserService.swift in Sources */,
 				B9ED8A0A2B6A738800ECFB74 /* Round.swift in Sources */,
 				C019E49C2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.swift in Sources */,
 				B9ED8A042B6A3C3100ECFB74 /* CreateRoundViewController.swift in Sources */,

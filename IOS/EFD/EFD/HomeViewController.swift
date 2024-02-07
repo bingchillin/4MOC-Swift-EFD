@@ -12,29 +12,36 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var buttonDeliveryMan: UIButton!
     @IBOutlet weak var labelRound: UILabel!
     
+    
+    var user : User!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // hide back button
         self.navigationItem.hidesBackButton = true
         
-        print(user.email,user.name, user.role)
+        // Récupérer une valeur à partir du cache en utilisant singleton
+        let cache = UserInMemoryService.shared
+
+        user = cache.userValue()
+        
+        print(user.email,user.name, user.role, "OK")
+        
         
         
         buttonDeliveryMan.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         
         showBoss()
+        
 
     }
     
     
-    var user : User!
     
     
-    public class func newInstance(user: User) -> HomeViewController{
-            let homeV = HomeViewController()
-            homeV.user = user
-            return homeV
-    }
+    
+    
     
     @IBAction func goToDeliveryMan(_ sender: Any) {
         let dmViewController = DeliveryViewController()
@@ -42,6 +49,8 @@ class HomeViewController: UIViewController {
     }
     
     public func showBoss() -> Void {
+       
+        
         
         if user.role == "admin" {
             buttonDeliveryMan.isHidden = false

@@ -29,13 +29,13 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export declare class UserController {
     private readonly userService;
     constructor(userService: UserService);
-    create(createUserDto: CreateUserDto): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, import("./schemas/user.schema").User> & import("./schemas/user.schema").User & {
+    create(createUserDto: CreateUserDto): Promise<"User already exists" | (import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, import("./schemas/user.schema").User> & import("./schemas/user.schema").User & {
         _id: import("mongoose").Types.ObjectId;
     }> & import("mongoose").Document<unknown, {}, import("./schemas/user.schema").User> & import("./schemas/user.schema").User & {
         _id: import("mongoose").Types.ObjectId;
     } & Required<{
         _id: import("mongoose").Types.ObjectId;
-    }>) | "User already exists">;
+    }>)>;
     findAll(): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, import("./schemas/user.schema").User> & import("./schemas/user.schema").User & {
         _id: import("mongoose").Types.ObjectId;
     }> & import("mongoose").Document<unknown, {}, import("./schemas/user.schema").User> & import("./schemas/user.schema").User & {

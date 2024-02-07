@@ -30,6 +30,14 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], User.prototype, "role", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Number)
+], User.prototype, "latitude", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Number)
+], User.prototype, "longitude", void 0);
 exports.User = User = __decorate([
     (0, mongoose_1.Schema)()
 ], User);
