@@ -33,6 +33,14 @@ export class PackageService {
     return existingPackage;
   }
 
+  async findPackageByUser(idUserClient: string) {
+    return await this.packageDocumentModel.find({ idUserClient: idUserClient }).exec();
+  }
+
+  async findPackageByDelivery(idUserDelivery: string) {
+    return await this.packageDocumentModel.find({ idUserDelivery: idUserDelivery }).exec();
+  }
+
   async remove(id: string) {
     const result = await this.packageDocumentModel.deleteOne({ _id: id }).exec();
 

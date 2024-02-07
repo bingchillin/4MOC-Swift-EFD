@@ -30,6 +30,9 @@ export declare class Package {
     proof: string;
     latitude: number;
     longitude: number;
+    idUserClient: string;
+    idUserDelivery: string;
+    isAffected: boolean;
 }
 export declare const PackageSchema: import("mongoose").Schema<Package, import("mongoose").Model<Package, any, any, any, import("mongoose").Document<unknown, any, Package> & Package & {
     _id: import("mongoose").Types.ObjectId;

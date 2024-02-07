@@ -34,6 +34,18 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Number)
 ], Package.prototype, "longitude", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Package.prototype, "idUserClient", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Package.prototype, "idUserDelivery", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], Package.prototype, "isAffected", void 0);
 exports.Package = Package = __decorate([
     (0, mongoose_1.Schema)()
 ], Package);

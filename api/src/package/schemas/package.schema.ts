@@ -19,6 +19,16 @@ export class Package {
 
     @Prop()
     longitude: number;
+
+    @Prop()
+    idUserClient: string;
+
+    @Prop()
+    idUserDelivery: string;
+
+    @Prop()
+    isAffected: boolean;
+
 }
 
 export const PackageSchema = SchemaFactory.createForClass(Package);

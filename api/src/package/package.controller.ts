@@ -27,6 +27,16 @@ export class PackageController {
     return this.packageService.update(id, updatePackageDto);
   }
 
+  @Get('user/:id')
+  findPackageByUser(@Param('id') id: string) {
+    return this.packageService.findPackageByUser(id);
+  }
+
+  @Get('delivery/:id')
+  findPackageByDelivery(@Param('id') id: string) {
+    return this.packageService.findPackageByDelivery(id);
+  }
+
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.packageService.remove(id);

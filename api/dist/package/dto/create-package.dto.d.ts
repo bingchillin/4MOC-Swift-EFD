@@ -4,4 +4,7 @@ export declare class CreatePackageDto {
     proof: string;
     latitude: number;
     longitude: number;
+    idUserclient: string;
+    idUserDelivery: string;
+    isAffected: boolean;
 }

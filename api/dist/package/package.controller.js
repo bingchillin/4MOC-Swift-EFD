@@ -33,6 +33,12 @@ let PackageController = class PackageController {
     update(id, updatePackageDto) {
         return this.packageService.update(id, updatePackageDto);
     }
+    findPackageByUser(id) {
+        return this.packageService.findPackageByUser(id);
+    }
+    findPackageByDelivery(id) {
+        return this.packageService.findPackageByDelivery(id);
+    }
     remove(id) {
         return this.packageService.remove(id);
     }
@@ -66,6 +72,20 @@ __decorate([
     __metadata("design:paramtypes", [String, update_package_dto_1.UpdatePackageDto]),
     __metadata("design:returntype", void 0)
 ], PackageController.prototype, "update", null);
+__decorate([
+    (0, common_1.Get)('user/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], PackageController.prototype, "findPackageByUser", null);
+__decorate([
+    (0, common_1.Get)('delivery/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], PackageController.prototype, "findPackageByDelivery", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
