@@ -6,11 +6,16 @@ export type RoundDocument = HydratedDocument<Round>;
 @Schema()
 export class Round {
     @Prop()
+    title: string;
+
+    @Prop()
     status: string;
 
-    // clé étrangère vers Package
     @Prop({ type: String, ref: 'Package' })
-    packages: string[];
+    packageId: string;
+
+    @Prop({ type: String, ref: 'User' })
+    userId: string;
 }
 
 export const RoundSchema = SchemaFactory.createForClass(Round);

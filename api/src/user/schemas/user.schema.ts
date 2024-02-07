@@ -16,6 +16,12 @@ export class User {
 
     @Prop()
     role: string;
+
+    @Prop()
+    latitude: number;
+
+    @Prop()
+    longitude: number;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
