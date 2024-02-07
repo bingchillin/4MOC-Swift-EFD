@@ -20,6 +20,9 @@ class CreateDeliveryManViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // hide back button
+        self.navigationItem.hidesBackButton = true
+        
         buttonToCreateD.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         
 
@@ -32,7 +35,7 @@ class CreateDeliveryManViewController: UIViewController {
             
             if textFieldPassword.text == textFieldConfirmPassword.text{
                 
-                EFDWebServices.addDelivery(username: textFieldUsername.text!, email: textFieldEmail.text!, password: textFieldPassword.text!){ err, success in
+                DeliveryWebServices.addDelivery(username: textFieldUsername.text!, email: textFieldEmail.text!, password: textFieldPassword.text!){ err, success in
                         guard (success != nil) else {
                             return
                         }
@@ -54,6 +57,11 @@ class CreateDeliveryManViewController: UIViewController {
             self.labelStatus.text = "Tous les champs doivent être remplis."
             self.labelStatus.textColor = UIColor.red
         }
+    }
+    
+    @IBAction func goToBack(_ sender: Any) {
+        let nextController = DeliveryViewController()
+        self.navigationController?.pushViewController(nextController, animated: true)
     }
     
    

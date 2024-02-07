@@ -16,6 +16,9 @@ class ItemDeliveryListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // hide back button
+        self.navigationItem.hidesBackButton = true
+        
         labelName.text = user.name
         
         buttonModify.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
@@ -32,6 +35,12 @@ class ItemDeliveryListViewController: UIViewController {
             itemVDelivery.user = user
             return itemVDelivery
     }
+    
+    @IBAction func goToBack(_ sender: Any) {
+        let nextController = DeliveryViewController()
+        self.navigationController?.pushViewController(nextController, animated: true)
+    }
+    
     
     @IBAction func goToModify(_ sender: Any) {
         let nextController = ModifyItemDeliveryListViewController.newInstance(user: user!)

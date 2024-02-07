@@ -36,7 +36,7 @@ class ConnexionViewController: UIViewController {
         
         if textFieldEmail.text != "" && textFieldPassword.text != "" {
             
-            EFDWebServices.connectUser(email: textFieldEmail.text!, password: textFieldPassword.text!){ err, success, user in
+            ConnexionWebServices.connectUser(email: textFieldEmail.text!, password: textFieldPassword.text!){ err, success, user in
                     guard (success != nil) else {
                         return
                     }

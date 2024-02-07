@@ -10,6 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var buttonDeliveryMan: UIButton!
+    @IBOutlet weak var labelRound: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +43,11 @@ class HomeViewController: UIViewController {
     
     public func showBoss() -> Void {
         
-        if user.role != "admin" {
-            buttonDeliveryMan.isHidden = true
+        if user.role == "admin" {
+            buttonDeliveryMan.isHidden = false
+            labelRound.isHidden = false
         }
+        
     }
     
 
