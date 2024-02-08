@@ -204,4 +204,37 @@ class DeliveryWebServices {
         
         task.resume()
     }
+    class func DeleteUser(id: String,completion: @escaping (Error?, Bool?) -> Void){
+        
+        
+        let url = "http://localhost:3000/user/"+id
+        
+        guard let itemURL = URL(string: url) else{
+            return
+        }
+        var request = URLRequest(url: itemURL)
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        request.httpMethod = "DELETE"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, res, err in
+            guard err == nil else {
+                completion(err, false)
+                return
+            }
+            guard data != nil else {
+                completion(NSError(domain: "com.EFD", code: 2, userInfo: [
+                    NSLocalizedFailureReasonErrorKey: "No data found"
+                ]), false)
+                return
+            }
+               
+                completion(nil, true)
+                
+        }
+        
+        task.resume()
+    }
+    
 }

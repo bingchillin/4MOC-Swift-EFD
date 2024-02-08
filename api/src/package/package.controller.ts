@@ -37,6 +37,11 @@ export class PackageController {
     return this.packageService.findPackageByDelivery(id);
   }
 
+  @Get('delivery/:id/process')
+  findPackageByDeliveryProcess(@Param('id') id: string) {
+    return this.packageService.findPackageByDeliveryProcess(id);
+  }
+
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.packageService.remove(id);

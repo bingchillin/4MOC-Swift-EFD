@@ -41,6 +41,10 @@ export class PackageService {
     return await this.packageDocumentModel.find({ idUserDelivery: idUserDelivery }).exec();
   }
 
+  async findPackageByDeliveryProcess(idUserDelivery: string) {
+    return await this.packageDocumentModel.find({ idUserDelivery: idUserDelivery, status: "loading" }).exec();
+  }
+
   async remove(id: string) {
     const result = await this.packageDocumentModel.deleteOne({ _id: id }).exec();
 

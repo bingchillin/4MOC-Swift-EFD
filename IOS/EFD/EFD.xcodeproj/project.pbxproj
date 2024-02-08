@@ -33,6 +33,7 @@
 		C0B5E7942B66D42B00A2D3B9 /* ConnexionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B5E7922B66D42B00A2D3B9 /* ConnexionViewController.xib */; };
 		C0B5E7982B66DB7A00A2D3B9 /* InscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5E7962B66DB7A00A2D3B9 /* InscriptionViewController.swift */; };
 		C0B5E7992B66DB7A00A2D3B9 /* InscriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B5E7972B66DB7A00A2D3B9 /* InscriptionViewController.xib */; };
+		C0BC4AB32B75438F005142CD /* PackageWebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC4AB22B75438F005142CD /* PackageWebServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		C0B5E7922B66D42B00A2D3B9 /* ConnexionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnexionViewController.xib; sourceTree = "<group>"; };
 		C0B5E7962B66DB7A00A2D3B9 /* InscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
 		C0B5E7972B66DB7A00A2D3B9 /* InscriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InscriptionViewController.xib; sourceTree = "<group>"; };
+		C0BC4AB22B75438F005142CD /* PackageWebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageWebServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +110,10 @@
 		C019E4EA2B72D18200AD41F8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C0090D1C2B73C0BF00200154 /* UserService.swift */,
 				C035842C2B66EBB9007F453B /* ConnexionWebServices.swift */,
 				C019E4EB2B72D1AF00AD41F8 /* DeliveryWebServices.swift */,
-				C0090D1C2B73C0BF00200154 /* UserService.swift */,
+				C0BC4AB22B75438F005142CD /* PackageWebServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				C035843B2B6C640F007F453B /* CreateDeliveryManViewController.swift in Sources */,
 				C019E4982B718CA100AD41F8 /* ItemDeliveryListViewController.swift in Sources */,
 				B9ED8A082B6A71E700ECFB74 /* Package.swift in Sources */,
+				C0BC4AB32B75438F005142CD /* PackageWebServices.swift in Sources */,
 				C0B5E77E2B66B00F00A2D3B9 /* AppDelegate.swift in Sources */,
 				C03584332B6C4FD4007F453B /* User.swift in Sources */,
 				C0B5E7982B66DB7A00A2D3B9 /* InscriptionViewController.swift in Sources */,

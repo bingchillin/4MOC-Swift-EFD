@@ -7,12 +7,17 @@
 
 import UIKit
 
-class DeliveryViewController: UIViewController, UITableViewDataSource , UITableViewDelegate {
+class DeliveryViewController: UIViewController {
 
     @IBOutlet weak var buttonCDM: UIButton!
     
     
     @IBOutlet weak var tableViewDelivery: UITableView!
+    
+    @IBOutlet weak var labelEmptyUser: UILabel!
+    
+    
+    @IBOutlet weak var ButtonMap: UIButton!
     
     var userList = [User]()
     
@@ -21,35 +26,74 @@ class DeliveryViewController: UIViewController, UITableViewDataSource , UITableV
         // hide back button
         self.navigationItem.hidesBackButton = true
         
-        
         buttonCDM.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
+        ButtonMap.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         
         tableViewDelivery.delegate = self
         tableViewDelivery.dataSource = self
         tableViewDelivery.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
-            
-        
         
         DeliveryWebServices.getListDelivery() { err, users in
                 
                 DispatchQueue.main.async {
                     if let users = users {
+                        self.labelEmptyUser.textColor = UIColor.white
+                        self.labelEmptyUser.isHidden = true
                         self.userList = users
                         self.tableViewDelivery.reloadData()
                     }
                     else{
-                        //Insérer une erreur si vide après
+                        self.labelEmptyUser.textColor = UIColor.black
+                        self.labelEmptyUser.isHidden = false
+                        self.tableViewDelivery.isHidden = true
                     }
                     
                     
                 }
        
         }
-        
-        
 
       
     }
+    
+   
+    
+    
+
+    @IBAction func goToCreateDeliveryMan(_ sender: Any) {
+        let cdmViewController = CreateDeliveryManViewController()
+        self.navigationController?.pushViewController(cdmViewController, animated: true)
+    }
+    
+    @IBAction func goToBack(_ sender: Any) {
+        let nextController = HomeViewController()
+        self.navigationController?.pushViewController(nextController, animated: true)
+    }
+
+}
+
+extension DeliveryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let userId = self.userList[indexPath.row].id
+        DeliveryWebServices.getDeliveryUnique(id: userId!){err, success, user in
+            guard err == nil else {
+                return
+            }
+            guard (success != nil) else {
+                return
+            }
+            DispatchQueue.main.async {
+                let nextController = ItemDeliveryListViewController.newInstance(user: user!)
+                self.navigationController?.pushViewController(nextController, animated: true)
+            }
+            }
+            
+        
+    }
+}
+
+extension DeliveryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.userList.count
@@ -69,34 +113,4 @@ class DeliveryViewController: UIViewController, UITableViewDataSource , UITableV
        
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let userId = self.userList[indexPath.row].id
-        DeliveryWebServices.getDeliveryUnique(id: userId!){err, success, user in
-            guard err == nil else {
-                return
-            }
-            guard (success != nil) else {
-                return
-            }
-            DispatchQueue.main.async {
-                let nextController = ItemDeliveryListViewController.newInstance(user: user!)
-                self.navigationController?.pushViewController(nextController, animated: true)
-            }
-            }
-            
-        
-    }
-
-    @IBAction func goToCreateDeliveryMan(_ sender: Any) {
-        let cdmViewController = CreateDeliveryManViewController()
-        self.navigationController?.pushViewController(cdmViewController, animated: true)
-    }
-    
-    @IBAction func goToBack(_ sender: Any) {
-        let nextController = HomeViewController()
-        self.navigationController?.pushViewController(nextController, animated: true)
-    }
-
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,9 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemDeliveryListViewController" customModule="EFD" customModuleProvider="target">
             <connections>
+                <outlet property="buttonDelete" destination="6Jb-QM-ucp" id="t1u-WK-faU"/>
                 <outlet property="buttonModify" destination="ZEz-DR-B8l" id="8IX-A8-7hI"/>
-                <outlet property="buttonSeeMap" destination="6Jb-QM-ucp" id="IbD-F8-VVa"/>
+                <outlet property="labelEmptyPackage" destination="fED-0i-m7c" id="ntD-Sc-8ik"/>
                 <outlet property="labelName" destination="l40-6c-jJv" id="GWU-9Q-fPv"/>
+                <outlet property="tableViewPackage" destination="Oy7-Rw-XfE" id="1Vs-Re-MsM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,16 +30,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Jb-QM-ucp">
-                    <rect key="frame" x="218" y="200" width="176" height="43"/>
+                    <rect key="frame" x="303" y="200" width="91" height="43"/>
                     <color key="backgroundColor" red="0.56470588239999997" green="0.79215686269999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Voir sur la map">
+                    <buttonConfiguration key="configuration" style="plain" title="Delete">
                         <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
                     </buttonConfiguration>
+                    <connections>
+                        <action selector="goDeleteDelivery:" destination="-1" eventType="touchUpInside" id="dta-Lb-5o2"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEz-DR-B8l">
-                    <rect key="frame" x="20" y="200" width="148" height="43"/>
+                    <rect key="frame" x="20" y="200" width="183" height="43"/>
                     <color key="backgroundColor" red="0.56470588239999997" green="0.79215686269999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
@@ -58,30 +63,48 @@
                         <action selector="goToBack:" destination="-1" eventType="touchUpInside" id="noQ-0D-OqA"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Colis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSm-pK-Y7e">
-                    <rect key="frame" x="174.5" y="273" width="65" height="36"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Les colis en cours" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSm-pK-Y7e">
+                    <rect key="frame" x="92.5" y="273" width="229" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thre are no package for this delivery man in the database" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fED-0i-m7c">
+                    <rect key="frame" x="0.0" y="359" width="414" height="27"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Oy7-Rw-XfE">
+                    <rect key="frame" x="0.0" y="359" width="414" height="537"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="uxf-85-5xZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3hc-Op-trG"/>
+                <constraint firstItem="Oy7-Rw-XfE" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="5lr-yo-VwS"/>
                 <constraint firstItem="ZEz-DR-B8l" firstAttribute="top" secondItem="l40-6c-jJv" secondAttribute="bottom" constant="40" id="9Ri-zn-jgt"/>
                 <constraint firstItem="l40-6c-jJv" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="A7R-va-e6Z"/>
                 <constraint firstItem="uxf-85-5xZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Eew-cg-sKd"/>
+                <constraint firstAttribute="trailing" secondItem="fED-0i-m7c" secondAttribute="trailing" id="WYk-lS-4hw"/>
+                <constraint firstItem="fED-0i-m7c" firstAttribute="top" secondItem="kSm-pK-Y7e" secondAttribute="bottom" constant="50" id="bOb-MM-mrF"/>
                 <constraint firstItem="l40-6c-jJv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="eTn-Pa-BQK"/>
-                <constraint firstItem="6Jb-QM-ucp" firstAttribute="leading" secondItem="ZEz-DR-B8l" secondAttribute="trailing" constant="50" id="lmQ-gZ-qb5"/>
+                <constraint firstItem="fED-0i-m7c" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eVQ-Yg-MGm"/>
+                <constraint firstItem="Oy7-Rw-XfE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="h62-xs-3A1"/>
+                <constraint firstItem="6Jb-QM-ucp" firstAttribute="leading" secondItem="ZEz-DR-B8l" secondAttribute="trailing" constant="100" id="lmQ-gZ-qb5"/>
                 <constraint firstItem="kSm-pK-Y7e" firstAttribute="top" secondItem="6Jb-QM-ucp" secondAttribute="bottom" constant="30" id="njz-72-2eU"/>
+                <constraint firstAttribute="bottom" secondItem="Oy7-Rw-XfE" secondAttribute="bottom" id="oBe-GY-YHn"/>
                 <constraint firstItem="kSm-pK-Y7e" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pub-4n-VRC"/>
                 <constraint firstItem="6Jb-QM-ucp" firstAttribute="top" secondItem="l40-6c-jJv" secondAttribute="bottom" constant="40" id="qHP-iH-ygN"/>
+                <constraint firstItem="Oy7-Rw-XfE" firstAttribute="top" secondItem="kSm-pK-Y7e" secondAttribute="bottom" constant="50" id="rNz-7T-XKu"/>
                 <constraint firstItem="l40-6c-jJv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vGf-Jv-1xP"/>
                 <constraint firstItem="ZEz-DR-B8l" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="vgS-eb-4Uk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Jb-QM-ucp" secondAttribute="trailing" constant="20" id="zVK-XA-qGq"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="68"/>
+            <point key="canvasLocation" x="137.68115942028987" y="67.633928571428569"/>
         </view>
     </objects>
     <resources>
