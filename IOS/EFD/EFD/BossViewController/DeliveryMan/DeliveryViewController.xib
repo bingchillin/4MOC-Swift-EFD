@@ -69,9 +69,6 @@
                     <buttonConfiguration key="configuration" style="plain" title="MAP">
                         <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
                     </buttonConfiguration>
-                    <connections>
-                        <action selector="goToCreateDeliveryMan:" destination="-1" eventType="touchUpInside" id="BBb-pR-cLy"/>
-                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
