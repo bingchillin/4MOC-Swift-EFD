@@ -48,6 +48,9 @@ let PackageService = class PackageService {
     async findPackageByDeliveryProcess(idUserDelivery) {
         return await this.packageDocumentModel.find({ idUserDelivery: idUserDelivery, status: "loading" }).exec();
     }
+    async findPackageByProcess() {
+        return await this.packageDocumentModel.find({ status: "create" }).exec();
+    }
     async remove(id) {
         const result = await this.packageDocumentModel.deleteOne({ _id: id }).exec();
         if (result.deletedCount === 0) {

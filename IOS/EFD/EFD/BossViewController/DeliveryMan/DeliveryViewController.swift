@@ -33,6 +33,7 @@ class DeliveryViewController: UIViewController {
         tableViewDelivery.dataSource = self
         tableViewDelivery.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         
+        
         DeliveryWebServices.getListDelivery() { err, users in
                 
                 DispatchQueue.main.async {

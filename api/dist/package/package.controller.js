@@ -42,6 +42,9 @@ let PackageController = class PackageController {
     findPackageByDeliveryProcess(id) {
         return this.packageService.findPackageByDeliveryProcess(id);
     }
+    findPackageByProcess() {
+        return this.packageService.findPackageByProcess();
+    }
     remove(id) {
         return this.packageService.remove(id);
     }
@@ -96,6 +99,12 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], PackageController.prototype, "findPackageByDeliveryProcess", null);
+__decorate([
+    (0, common_1.Get)('process/create'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], PackageController.prototype, "findPackageByProcess", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),

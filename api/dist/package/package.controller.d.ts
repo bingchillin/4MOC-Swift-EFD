@@ -78,5 +78,12 @@ export declare class PackageController {
     } & Required<{
         _id: import("mongoose").Types.ObjectId;
     }>)[]>;
+    findPackageByProcess(): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, import("./schemas/package.schema").Package> & import("./schemas/package.schema").Package & {
+        _id: import("mongoose").Types.ObjectId;
+    }> & import("mongoose").Document<unknown, {}, import("./schemas/package.schema").Package> & import("./schemas/package.schema").Package & {
+        _id: import("mongoose").Types.ObjectId;
+    } & Required<{
+        _id: import("mongoose").Types.ObjectId;
+    }>)[]>;
     remove(id: string): Promise<string>;
 }

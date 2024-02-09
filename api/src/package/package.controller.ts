@@ -42,6 +42,11 @@ export class PackageController {
     return this.packageService.findPackageByDeliveryProcess(id);
   }
 
+  @Get('process/create')
+  findPackageByProcess() {
+    return this.packageService.findPackageByProcess();
+  }
+
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.packageService.remove(id);
