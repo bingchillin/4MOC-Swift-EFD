@@ -34,7 +34,7 @@ class MapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         self.zoomToLocation(map.userLocation.location)
         
-        UserServices.getAllUsers { error, users in
+        DeliveryWebServices.getListDelivery() { error, users in
             if let error = error {
                 print("Erreur lors de la récupération des livreurs: \(error.localizedDescription)")
                 return
@@ -47,7 +47,21 @@ class MapViewController: UIViewController {
                     let annotation = MKPointAnnotation()
                     annotation.coordinate = CLLocationCoordinate2D(latitude: user.latitude ?? 0, longitude: user.longitude ?? 0)
                     annotation.title = user.name
-                    annotation.subtitle = "\(annotation.coordinate.latitude), \(annotation.coordinate.longitude)"
+                    
+                    let location = CLLocation(latitude: user.latitude ?? 0, longitude: user.longitude ?? 0)
+                    
+                    let geocoder = CLGeocoder()
+                    
+                    geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                        guard let placemark = placemarks?.first else {
+                            return
+                        }
+                        
+                        let address = "\(placemark.subThoroughfare ?? "") \(placemark.thoroughfare ?? ""), \(placemark.locality ?? "") \(placemark.postalCode ?? ""), \(placemark.country ?? "")"
+                        
+                        annotation.subtitle = "\(address)"
+                    }
+                    
                     
                     userAnnotations.append(annotation)
                 }

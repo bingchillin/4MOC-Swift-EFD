@@ -57,13 +57,7 @@ class DeliveryViewController: UIViewController {
                 }
        
         }
-
-      
     }
-    
-   
-    
-    
 
     @IBAction func goToCreateDeliveryMan(_ sender: Any) {
         let cdmViewController = CreateDeliveryManViewController()
