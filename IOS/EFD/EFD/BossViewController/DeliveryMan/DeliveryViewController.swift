@@ -52,10 +52,25 @@ class DeliveryViewController: UIViewController {
                         self.labelEmptyUser.isHidden = false
                         self.tableViewDelivery.isHidden = true
                     }
-                    
-                    
                 }
-       
+        }
+        
+        PackageWebServices.getPackagesByLivreur(id: "65b40857219e51ae8a02137b") { error, success, packages in
+            if let error = error {
+                print("Erreur lors de la récupération des packages par livreur:", error.localizedDescription)
+                return
+            }
+            
+            if let success = success, success {
+                if let packages = packages {
+                    for package in packages {
+                        print("Package ID:", package.id)
+                        print("Package Name:", package.name)
+                    }
+                }
+            } else {
+                print("La récupération des packages par livreur a échoué.")
+            }
         }
     }
 

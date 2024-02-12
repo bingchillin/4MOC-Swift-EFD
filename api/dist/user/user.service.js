@@ -51,8 +51,9 @@ let UserService = class UserService {
         return livreur;
     }
     async update(id, updateUserDto) {
+        const hashedPassword = await bcrypt.hash(updateUserDto.password, 10);
         const existingUser = await this.userDocumentModel
-            .findOneAndUpdate({ _id: id }, updateUserDto, { new: true })
+            .findByIdAndUpdate({ _id: id }, { ...updateUserDto, password: hashedPassword }, { new: true })
             .exec();
         return existingUser;
     }

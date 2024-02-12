@@ -57,14 +57,14 @@ export declare class PackageController {
     } & Required<{
         _id: import("mongoose").Types.ObjectId;
     }>>;
-    findPackageByUser(id: string): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, import("./schemas/package.schema").Package> & import("./schemas/package.schema").Package & {
+    findPackageByUseId(id: string): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, import("./schemas/package.schema").Package> & import("./schemas/package.schema").Package & {
         _id: import("mongoose").Types.ObjectId;
     }> & import("mongoose").Document<unknown, {}, import("./schemas/package.schema").Package> & import("./schemas/package.schema").Package & {
         _id: import("mongoose").Types.ObjectId;
     } & Required<{
         _id: import("mongoose").Types.ObjectId;
     }>)[]>;
-    findPackageByDelivery(id: string): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, import("./schemas/package.schema").Package> & import("./schemas/package.schema").Package & {
+    findPackageByDeliveryId(id: string): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, import("./schemas/package.schema").Package> & import("./schemas/package.schema").Package & {
         _id: import("mongoose").Types.ObjectId;
     }> & import("mongoose").Document<unknown, {}, import("./schemas/package.schema").Package> & import("./schemas/package.schema").Package & {
         _id: import("mongoose").Types.ObjectId;

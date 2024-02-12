@@ -33,11 +33,11 @@ let PackageController = class PackageController {
     update(id, updatePackageDto) {
         return this.packageService.update(id, updatePackageDto);
     }
-    findPackageByUser(id) {
-        return this.packageService.findPackageByUser(id);
+    findPackageByUseId(id) {
+        return this.packageService.findPackageByUserId(id);
     }
-    findPackageByDelivery(id) {
-        return this.packageService.findPackageByDelivery(id);
+    findPackageByDeliveryId(id) {
+        return this.packageService.findPackageByDeliveryId(id);
     }
     findPackageByDeliveryProcess(id) {
         return this.packageService.findPackageByDeliveryProcess(id);
@@ -84,14 +84,14 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], PackageController.prototype, "findPackageByUser", null);
+], PackageController.prototype, "findPackageByUseId", null);
 __decorate([
     (0, common_1.Get)('delivery/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], PackageController.prototype, "findPackageByDelivery", null);
+], PackageController.prototype, "findPackageByDeliveryId", null);
 __decorate([
     (0, common_1.Get)('delivery/:id/process'),
     __param(0, (0, common_1.Param)('id')),

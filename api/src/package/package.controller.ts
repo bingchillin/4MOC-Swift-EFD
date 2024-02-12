@@ -28,13 +28,13 @@ export class PackageController {
   }
 
   @Get('user/:id')
-  findPackageByUser(@Param('id') id: string) {
-    return this.packageService.findPackageByUser(id);
+  findPackageByUseId(@Param('id') id: string) {
+    return this.packageService.findPackageByUserId(id);
   }
 
   @Get('delivery/:id')
-  findPackageByDelivery(@Param('id') id: string) {
-    return this.packageService.findPackageByDelivery(id);
+  findPackageByDeliveryId(@Param('id') id: string) {
+    return this.packageService.findPackageByDeliveryId(id);
   }
 
   @Get('delivery/:id/process')

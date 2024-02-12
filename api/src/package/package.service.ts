@@ -33,11 +33,11 @@ export class PackageService {
     return existingPackage;
   }
 
-  async findPackageByUser(idUserClient: string) {
+  async findPackageByUserId(idUserClient: string) {
     return await this.packageDocumentModel.find({ idUserClient: idUserClient }).exec();
   }
 
-  async findPackageByDelivery(idUserDelivery: string) {
+  async findPackageByDeliveryId(idUserDelivery: string) {
     return await this.packageDocumentModel.find({ idUserDelivery: idUserDelivery }).exec();
   }
 

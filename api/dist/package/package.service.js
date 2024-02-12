@@ -39,10 +39,10 @@ let PackageService = class PackageService {
             .exec();
         return existingPackage;
     }
-    async findPackageByUser(idUserClient) {
+    async findPackageByUserId(idUserClient) {
         return await this.packageDocumentModel.find({ idUserClient: idUserClient }).exec();
     }
-    async findPackageByDelivery(idUserDelivery) {
+    async findPackageByDeliveryId(idUserDelivery) {
         return await this.packageDocumentModel.find({ idUserDelivery: idUserDelivery }).exec();
     }
     async findPackageByDeliveryProcess(idUserDelivery) {

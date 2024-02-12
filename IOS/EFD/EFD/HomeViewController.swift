@@ -21,8 +21,44 @@ class HomeViewController: UIViewController {
     var packageList = [Package]()
     
     var selectedIndexPaths = [IndexPath]()
-      
     
+    fileprivate func getAllPackages() {
+        PackageWebServices.getListPackageProcessCreate() { err, success, packages  in
+            DispatchQueue.main.async {
+                if let packages = packages, !packages.isEmpty {
+                    self.labelEmptyPackage.textColor = UIColor.white
+                    self.labelEmptyPackage.isHidden = true
+                    self.packageList = packages
+                    self.tableViewPackages.reloadData()
+                }
+                else{
+                    //Si liste retour vide ou erreur
+                    self.labelEmptyPackage.textColor = UIColor.black
+                    self.labelEmptyPackage.isHidden = false
+                    self.tableViewPackages.isHidden = true
+                }
+            }
+        }
+    }
+    
+    fileprivate func getPackagesByLivreur(id: String) {
+        PackageWebServices.getPackagesByLivreur(id: id) { error, success, packages in
+            DispatchQueue.main.async {
+                if let packages = packages, !packages.isEmpty {
+                    self.labelEmptyPackage.textColor = UIColor.white
+                    self.labelEmptyPackage.isHidden = true
+                    self.packageList = packages
+                    self.tableViewPackages.reloadData()
+                }
+                else{
+                    //Si liste retour vide ou erreur
+                    self.labelEmptyPackage.textColor = UIColor.black
+                    self.labelEmptyPackage.isHidden = false
+                    self.tableViewPackages.isHidden = true
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +69,9 @@ class HomeViewController: UIViewController {
         let cache = UserInMemoryService.shared
 
         user = cache.userValue()
+        let userRole = user.role
         
-        print(user.email,user.name, user.role, "OK")
-        
-        
+        print(user.id!, user.email, user.name, user.role, "OK")
         
         buttonDeliveryMan.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         buttonDetail.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
@@ -46,60 +81,34 @@ class HomeViewController: UIViewController {
         tableViewPackages.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         self.tableViewPackages.allowsMultipleSelection = true
         self.tableViewPackages.allowsMultipleSelectionDuringEditing = true
-        
-        PackageWebServices.getListPackageProcessCreate() { err, success, packages  in
-                DispatchQueue.main.async {
-                    if let packages = packages, !packages.isEmpty {
-                        self.labelEmptyPackage.textColor = UIColor.white
-                        self.labelEmptyPackage.isHidden = true
-                        self.packageList = packages
-                        self.tableViewPackages.reloadData()
-                    }
-                    else{
-                        //Si liste retour vide ou erreur
-                        self.labelEmptyPackage.textColor = UIColor.black
-                        self.labelEmptyPackage.isHidden = false
-                        self.tableViewPackages.isHidden = true
-                    }
-                    
-                    
-                }
-       
-        }
-        
-        showBoss()
-        
-
+ 
+        displayViewByRole(role: userRole)
     }
         
-        
-    
-    
-    
-    
-    
-    
-    
     @IBAction func goToDeliveryMan(_ sender: Any) {
         let dmViewController = DeliveryViewController()
         self.navigationController?.pushViewController(dmViewController, animated: true)
     }
     
-    public func showBoss() -> Void {
-       
-        
-        
-        if user.role == "admin" {
+    public func displayViewByRole(role: String) -> Void {
+        if role == "admin" {
             buttonDeliveryMan.isHidden = false
             labelRound.isHidden = false
             buttonDetail.isHidden = false
             tableViewPackages.isHidden = false
+            
+            getAllPackages()
+        } else if role == "livreur" {
+            tableViewPackages.isHidden = false
+            
+            getPackagesByLivreur(id: user.id!)
         }
-        
     }
-    
-
 }
+
+
+
+
 
 extension HomeViewController: UITableViewDelegate {
     
@@ -110,7 +119,6 @@ extension HomeViewController: UITableViewDelegate {
             tableViewPackages.reloadRows(at: [indexPath], with: .automatic)
             
             let cell = tableView.cellForRow(at: indexPath)
-            
             
             // Mettez à jour le tableau des indexPaths sélectionnées
             if let index = selectedIndexPaths.firstIndex(of: indexPath) {
@@ -125,8 +133,6 @@ extension HomeViewController: UITableViewDelegate {
             }
             print(selectedIndexPaths)
         }
-    
-    
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -145,13 +151,10 @@ extension HomeViewController: UITableViewDataSource {
         
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         
-            
-        
         cell.layer.shadowColor = UIColor(red: 58.0/255, green: 73.0/255, blue: 89.0/255, alpha: 1).cgColor
         //cell.layer.shadowOffset = CGSize(width: 2.0, height: 10)
         //cell.layer.shadowOpacity = 4.0
         
-       
         return cell
     }
 }

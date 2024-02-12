@@ -48,9 +48,11 @@ export class UserService {
     return livreur;
   }
 
+  // update but with hashed password
   async update(id: string, updateUserDto: UpdateUserDto) {
+    const hashedPassword = await bcrypt.hash(updateUserDto.password, 10);
     const existingUser = await this.userDocumentModel
-      .findOneAndUpdate({ _id: id }, updateUserDto, { new: true })
+      .findByIdAndUpdate({ _id: id }, { ...updateUserDto, password: hashedPassword }, { new: true })
       .exec();
 
     return existingUser;
