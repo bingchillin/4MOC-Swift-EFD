@@ -37,6 +37,7 @@
 		D7B351132B76C37B0003D633 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B351112B76C37B0003D633 /* MapViewController.swift */; };
 		D7B351142B76C37B0003D633 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7B351122B76C37B0003D633 /* MapViewController.xib */; };
 		D7B3511B2B7A597A0003D633 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7B3511D2B7A597A0003D633 /* Localizable.strings */; };
+		D7B351242B7A60940003D633 /* LocationManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B351232B7A60940003D633 /* LocationManagerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		D7B3511C2B7A597A0003D633 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7B351202B7A59C20003D633 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7B351212B7A5AE70003D633 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7B351232B7A60940003D633 /* LocationManagerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 		C0B5E77C2B66B00F00A2D3B9 /* EFD */ = {
 			isa = PBXGroup;
 			children = (
+				D7B351222B7A60870003D633 /* Extension */,
 				C0090D1B2B73C04300200154 /* InMemory */,
 				C019E4EA2B72D18200AD41F8 /* Services */,
 				B9ED8A062B6A71C300ECFB74 /* Models */,
@@ -195,6 +198,14 @@
 				D7B351122B76C37B0003D633 /* MapViewController.xib */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		D7B351222B7A60870003D633 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D7B351232B7A60940003D633 /* LocationManagerExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +299,7 @@
 				C035843B2B6C640F007F453B /* CreateDeliveryManViewController.swift in Sources */,
 				C019E4982B718CA100AD41F8 /* ItemDeliveryListViewController.swift in Sources */,
 				B9ED8A082B6A71E700ECFB74 /* Package.swift in Sources */,
+				D7B351242B7A60940003D633 /* LocationManagerExtension.swift in Sources */,
 				C0BC4AB32B75438F005142CD /* PackageWebServices.swift in Sources */,
 				C0B5E77E2B66B00F00A2D3B9 /* AppDelegate.swift in Sources */,
 				C03584332B6C4FD4007F453B /* User.swift in Sources */,

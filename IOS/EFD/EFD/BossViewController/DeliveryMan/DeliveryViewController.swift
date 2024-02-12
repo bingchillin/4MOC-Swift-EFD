@@ -54,24 +54,6 @@ class DeliveryViewController: UIViewController {
                     }
                 }
         }
-        
-        PackageWebServices.getPackagesByLivreur(id: "65b40857219e51ae8a02137b") { error, success, packages in
-            if let error = error {
-                print("Erreur lors de la récupération des packages par livreur:", error.localizedDescription)
-                return
-            }
-            
-            if let success = success, success {
-                if let packages = packages {
-                    for package in packages {
-                        print("Package ID:", package.id)
-                        print("Package Name:", package.name)
-                    }
-                }
-            } else {
-                print("La récupération des packages par livreur a échoué.")
-            }
-        }
     }
 
     @IBAction func goToCreateDeliveryMan(_ sender: Any) {
@@ -147,36 +129,5 @@ extension DeliveryViewController: UITableViewDataSource {
         
        
         return cell
-    }
-}
-
-extension DeliveryViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation = locations.last?.coordinate
-        manager.stopUpdatingLocation() // arrête la geoloc
-    }
-    
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        self.handleLocationManagerStatus(manager)
-    }
-    
-    func handleLocationManagerStatus(_ locationManager: CLLocationManager) {
-        let status = CLLocationManager.authorizationStatus()
-        if status == .restricted || status == .denied {
-            self.displayDeniedMessage()
-        } else if status == .authorizedWhenInUse {
-            self.retrieveGPSCoordinate(locationManager)
-        }
-    }
-    
-    func retrieveGPSCoordinate(_ locationManager: CLLocationManager) {
-        locationManager.startUpdatingLocation() // démarre l'écoute de gps
-    }
-    
-    func displayDeniedMessage() {
-        let alert = UIAlertController(title: "Location access denied", message: "Location is needed for a functional app !", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Annuler", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Ouvrir les préférences", style: .destructive))
-        self.present(alert, animated: true)
     }
 }

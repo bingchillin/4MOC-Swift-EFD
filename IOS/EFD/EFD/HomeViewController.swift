@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import CoreLocation
 
 class HomeViewController: UIViewController {
+    
+    var locationManager: CLLocationManager?
 
     @IBOutlet weak var buttonDeliveryMan: UIButton!
     @IBOutlet weak var buttonDetail: UIButton!
@@ -15,6 +18,27 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableViewPackages: UITableView!
     @IBOutlet weak var labelEmptyPackage: UILabel!
+    
+    @IBOutlet weak var buttonMap: UIButton!
+    @IBAction func goToMap(_ sender: Any) {
+        if self.locationManager == nil {
+            print("test")
+            // premier clic sur le bouton gps
+            let manager = CLLocationManager()
+            manager.delegate = self
+            
+            if CLLocationManager.authorizationStatus() == .notDetermined {
+                manager.requestWhenInUseAuthorization()
+            }
+            
+            self.locationManager = manager // obligatoire de mémoriser la variable sinon cancel la geoloc
+        } else {
+            self.handleLocationManagerStatus(self.locationManager!)
+        }
+        
+        let mapViewController = MapViewController()
+                navigationController?.pushViewController(mapViewController, animated: true)
+    }
     
     var user : User!
     
@@ -68,6 +92,7 @@ class HomeViewController: UIViewController {
         buttonDeliveryMan.setTitle(NSLocalizedString("DeliveryMan", comment: ""), for: .normal)
         labelRound.text = NSLocalizedString("Round", comment: "")
         buttonDetail.setTitle(NSLocalizedString("Detail", comment: ""), for: .normal)
+        buttonMap.setTitle(NSLocalizedString("Map", comment: ""), for: .normal)
         
         // Récupérer une valeur à partir du cache en utilisant singleton
         let cache = UserInMemoryService.shared
@@ -97,6 +122,7 @@ class HomeViewController: UIViewController {
     public func displayViewByRole(role: String) -> Void {
         if role == "admin" {
             buttonDeliveryMan.isHidden = false
+            buttonMap.isHidden = true
             labelRound.isHidden = false
             buttonDetail.isHidden = false
             tableViewPackages.isHidden = false
@@ -104,6 +130,7 @@ class HomeViewController: UIViewController {
             getAllPackages()
         } else if role == "livreur" {
             tableViewPackages.isHidden = false
+            buttonMap.isHidden = false
             
             getPackagesByLivreur(id: user.id!)
         }
