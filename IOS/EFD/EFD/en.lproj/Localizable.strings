@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  EFD
+
+  Created by Mohamed El Fakharany on 12/02/2024.
+  
+*/
+
+"DeliveryMan" = "Delivery man";
+"Round" = "Packages to assign";
+"Detail" = "Details";

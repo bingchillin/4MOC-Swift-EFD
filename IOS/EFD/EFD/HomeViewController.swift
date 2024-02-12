@@ -65,6 +65,10 @@ class HomeViewController: UIViewController {
         // hide back button
         self.navigationItem.hidesBackButton = true
         
+        buttonDeliveryMan.setTitle(NSLocalizedString("DeliveryMan", comment: ""), for: .normal)
+        labelRound.text = NSLocalizedString("Round", comment: "")
+        buttonDetail.setTitle(NSLocalizedString("Detail", comment: ""), for: .normal)
+        
         // Récupérer une valeur à partir du cache en utilisant singleton
         let cache = UserInMemoryService.shared
 

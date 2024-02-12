@@ -36,6 +36,7 @@
 		C0BC4AB32B75438F005142CD /* PackageWebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC4AB22B75438F005142CD /* PackageWebServices.swift */; };
 		D7B351132B76C37B0003D633 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B351112B76C37B0003D633 /* MapViewController.swift */; };
 		D7B351142B76C37B0003D633 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7B351122B76C37B0003D633 /* MapViewController.xib */; };
+		D7B3511B2B7A597A0003D633 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7B3511D2B7A597A0003D633 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,9 @@
 		C0BC4AB22B75438F005142CD /* PackageWebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageWebServices.swift; sourceTree = "<group>"; };
 		D7B351112B76C37B0003D633 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D7B351122B76C37B0003D633 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		D7B3511C2B7A597A0003D633 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7B351202B7A59C20003D633 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7B351212B7A5AE70003D633 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 				C0B5E7862B66B01100A2D3B9 /* Assets.xcassets */,
 				C0B5E7882B66B01100A2D3B9 /* LaunchScreen.storyboard */,
 				C0B5E78B2B66B01100A2D3B9 /* Info.plist */,
+				D7B3511D2B7A597A0003D633 /* Localizable.strings */,
 			);
 			path = EFD;
 			sourceTree = "<group>";
@@ -234,6 +239,8 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
+				fr,
 			);
 			mainGroup = C0B5E7712B66B00F00A2D3B9;
 			productRefGroup = C0B5E77B2B66B00F00A2D3B9 /* Products */;
@@ -251,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0B5E7942B66D42B00A2D3B9 /* ConnexionViewController.xib in Resources */,
+				D7B3511B2B7A597A0003D633 /* Localizable.strings in Resources */,
 				C0B5E78A2B66B01100A2D3B9 /* LaunchScreen.storyboard in Resources */,
 				C03584312B66F2AA007F453B /* HomeViewController.xib in Resources */,
 				C019E49D2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.xib in Resources */,
@@ -303,6 +311,16 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		D7B3511D2B7A597A0003D633 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7B3511C2B7A597A0003D633 /* en */,
+				D7B351202B7A59C20003D633 /* es */,
+				D7B351212B7A5AE70003D633 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -310,6 +328,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -371,6 +390,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
