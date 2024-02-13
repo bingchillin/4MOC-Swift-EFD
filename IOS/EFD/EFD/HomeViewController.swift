@@ -132,7 +132,7 @@ class HomeViewController: UIViewController {
             tableViewPackages.isHidden = false
             buttonMap.isHidden = false
             
-            getPackagesByLivreur(id: user.id!)
+            //getPackagesByLivreur(id: user.id!)
         }
     }
 }
