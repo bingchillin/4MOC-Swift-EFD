@@ -39,7 +39,6 @@ class DeliveryViewController: UIViewController {
         
         
         DeliveryWebServices.getListDelivery() { err, users in
-                
                 DispatchQueue.main.async {
                     if let users = users {
                         self.labelEmptyUser.textColor = UIColor.white
@@ -63,7 +62,6 @@ class DeliveryViewController: UIViewController {
     
     @IBAction func goToMap(_ sender: Any) {
         if self.locationManager == nil {
-            print("test")
             // premier clic sur le bouton gps
             let manager = CLLocationManager()
             manager.delegate = self
@@ -78,7 +76,7 @@ class DeliveryViewController: UIViewController {
         }
         
         let mapViewController = MapViewController()
-                navigationController?.pushViewController(mapViewController, animated: true)
+        navigationController?.pushViewController(mapViewController, animated: true)
     }
     
     
@@ -104,9 +102,7 @@ extension DeliveryViewController: UITableViewDelegate {
                 let nextController = ItemDeliveryListViewController.newInstance(user: user!)
                 self.navigationController?.pushViewController(nextController, animated: true)
             }
-            }
-            
-        
+        }
     }
 }
 

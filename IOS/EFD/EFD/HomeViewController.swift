@@ -20,9 +20,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var labelEmptyPackage: UILabel!
     
     @IBOutlet weak var buttonMap: UIButton!
+    
     @IBAction func goToMap(_ sender: Any) {
         if self.locationManager == nil {
-            print("test")
             // premier clic sur le bouton gps
             let manager = CLLocationManager()
             manager.delegate = self
@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
         }
         
         let mapViewController = MapViewController()
-                navigationController?.pushViewController(mapViewController, animated: true)
+        navigationController?.pushViewController(mapViewController, animated: true)
     }
     
     var user : User!
@@ -65,7 +65,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    fileprivate func getPackagesByLivreur(id: String) {
+    func getPackagesByLivreur(id: String) {
         PackageWebServices.getPackagesByLivreur(id: id) { error, success, packages in
             DispatchQueue.main.async {
                 if let packages = packages, !packages.isEmpty {
