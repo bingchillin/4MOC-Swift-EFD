@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,7 +42,7 @@
                     </connections>
                 </button>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thre are no user in database" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWr-Mc-GTF">
-                    <rect key="frame" x="0.0" y="866" width="1024" height="27"/>
+                    <rect key="frame" x="0.0" y="669.5" width="1024" height="27"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -84,7 +84,8 @@
                 <constraint firstAttribute="bottom" secondItem="i5g-kH-NbK" secondAttribute="bottom" id="64E-RH-BJ7"/>
                 <constraint firstAttribute="trailing" secondItem="HY5-qB-Qqp" secondAttribute="trailing" id="8Vf-tl-sMH"/>
                 <constraint firstItem="HY5-qB-Qqp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="A5Z-NA-ohs"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="XWr-Mc-GTF" secondAttribute="bottom" constant="453" id="F4V-IE-zAs"/>
+                <constraint firstItem="XWr-Mc-GTF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Izw-LC-acG"/>
+                <constraint firstItem="XWr-Mc-GTF" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Tp3-97-02V"/>
                 <constraint firstItem="VBm-Fa-4Rm" firstAttribute="top" secondItem="HY5-qB-Qqp" secondAttribute="bottom" constant="50" id="WOf-lh-iEZ"/>
                 <constraint firstItem="i5g-kH-NbK" firstAttribute="top" secondItem="dIF-BA-28d" secondAttribute="bottom" constant="20" id="aCT-fX-RC8"/>
                 <constraint firstItem="f8Y-zy-ska" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aCh-95-05L"/>

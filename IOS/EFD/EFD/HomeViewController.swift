@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var buttonDeliveryMan: UIButton!
     @IBOutlet weak var buttonDetail: UIButton!
+    @IBOutlet weak var buttonAssign: UIButton!
     @IBOutlet weak var labelRound: UILabel!
     
     @IBOutlet weak var tableViewPackages: UITableView!
@@ -43,6 +44,7 @@ class HomeViewController: UIViewController {
     var user : User!
     
     var packageList = [Package]()
+    var listAssign = [String]()
     
     var selectedIndexPaths = [IndexPath]()
     
@@ -100,10 +102,11 @@ class HomeViewController: UIViewController {
         user = cache.userValue()
         let userRole = user.role
         
-        print(user.id!, user.email, user.name, user.role, "OK")
+        //print(user.id!, user.email, user.name, user.role, "OK")
         
         buttonDeliveryMan.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         buttonDetail.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
+        buttonAssign.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         
         tableViewPackages.dataSource = self
         tableViewPackages.delegate = self
@@ -113,15 +116,32 @@ class HomeViewController: UIViewController {
  
         displayViewByRole(role: userRole)
     }
+    
+    
+    @IBAction func goToAssign(_ sender: Any) {
+        listAssign.removeAll()
         
+        for i in 0..<selectedIndexPaths.count {
+                listAssign.append(packageList[selectedIndexPaths[i][1]].id)
+            
+        }
+    
+        let nextController = AssignPackageViewController.newInstance(listAssign: self.listAssign)
+        self.navigationController?.pushViewController(nextController, animated: true)
+    }
+    
     @IBAction func goToDeliveryMan(_ sender: Any) {
         let dmViewController = DeliveryViewController()
         self.navigationController?.pushViewController(dmViewController, animated: true)
     }
     
+    
+    
+    
     public func displayViewByRole(role: String) -> Void {
         if role == "admin" {
             buttonDeliveryMan.isHidden = false
+            buttonAssign.isHidden = true
             buttonMap.isHidden = true
             labelRound.isHidden = false
             buttonDetail.isHidden = false
@@ -145,13 +165,12 @@ extension HomeViewController: UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("ok2")
-            // Mettez à jour l'apparence de la cellule
+            // Mettre à jour l'apparence de la cellule
             tableViewPackages.reloadRows(at: [indexPath], with: .automatic)
             
             let cell = tableView.cellForRow(at: indexPath)
             
-            // Mettez à jour le tableau des indexPaths sélectionnées
+            // Mettre à jour le tableau des indexPaths sélectionnées
             if let index = selectedIndexPaths.firstIndex(of: indexPath) {
                 selectedIndexPaths.remove(at: index)
                 cell?.backgroundColor = UIColor.white // Rétablir la couleur de fond d'origine
@@ -162,7 +181,11 @@ extension HomeViewController: UITableViewDelegate {
                 cell?.backgroundColor = UIColor(red: 0.0, green: 1, blue: 0.0, alpha: 1.0) // Changement de couleur de fond
                 cell?.layer.shadowColor = UIColor.blue.cgColor // Ajout d'une ombre
             }
-            print(selectedIndexPaths)
+        if !selectedIndexPaths.isEmpty{
+            buttonAssign.isHidden = false
+        }else {
+            buttonAssign.isHidden = true
+        }
         }
 }
 

@@ -3,12 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B9ED8A042B6A3C3100ECFB74 /* CreateRoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ED8A022B6A3C3100ECFB74 /* CreateRoundViewController.swift */; };
-		B9ED8A052B6A3C3100ECFB74 /* CreateRoundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9ED8A032B6A3C3100ECFB74 /* CreateRoundViewController.xib */; };
 		B9ED8A082B6A71E700ECFB74 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ED8A072B6A71E700ECFB74 /* Package.swift */; };
 		B9ED8A0A2B6A738800ECFB74 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9ED8A092B6A738800ECFB74 /* Round.swift */; };
 		C0090D1A2B73BE8800200154 /* UserInMemoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0090D192B73BE8800200154 /* UserInMemoryService.swift */; };
@@ -26,6 +24,8 @@
 		C03584382B6C612D007F453B /* DeliveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03584362B6C612D007F453B /* DeliveryViewController.xib */; };
 		C035843B2B6C640F007F453B /* CreateDeliveryManViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03584392B6C640F007F453B /* CreateDeliveryManViewController.swift */; };
 		C035843C2B6C640F007F453B /* CreateDeliveryManViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C035843A2B6C640F007F453B /* CreateDeliveryManViewController.xib */; };
+		C099C50C2B7C34EC00683CF8 /* AssignPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099C50A2B7C34EC00683CF8 /* AssignPackageViewController.swift */; };
+		C099C50D2B7C34EC00683CF8 /* AssignPackageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C099C50B2B7C34EC00683CF8 /* AssignPackageViewController.xib */; };
 		C0B5E77E2B66B00F00A2D3B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5E77D2B66B00F00A2D3B9 /* AppDelegate.swift */; };
 		C0B5E7872B66B01100A2D3B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0B5E7862B66B01100A2D3B9 /* Assets.xcassets */; };
 		C0B5E78A2B66B01100A2D3B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0B5E7882B66B01100A2D3B9 /* LaunchScreen.storyboard */; };
@@ -41,8 +41,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B9ED8A022B6A3C3100ECFB74 /* CreateRoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoundViewController.swift; sourceTree = "<group>"; };
-		B9ED8A032B6A3C3100ECFB74 /* CreateRoundViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateRoundViewController.xib; sourceTree = "<group>"; };
 		B9ED8A072B6A71E700ECFB74 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		B9ED8A092B6A738800ECFB74 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		C0090D192B73BE8800200154 /* UserInMemoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInMemoryService.swift; sourceTree = "<group>"; };
@@ -60,6 +58,8 @@
 		C03584362B6C612D007F453B /* DeliveryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeliveryViewController.xib; sourceTree = "<group>"; };
 		C03584392B6C640F007F453B /* CreateDeliveryManViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeliveryManViewController.swift; sourceTree = "<group>"; };
 		C035843A2B6C640F007F453B /* CreateDeliveryManViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateDeliveryManViewController.xib; sourceTree = "<group>"; };
+		C099C50A2B7C34EC00683CF8 /* AssignPackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignPackageViewController.swift; sourceTree = "<group>"; };
+		C099C50B2B7C34EC00683CF8 /* AssignPackageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssignPackageViewController.xib; sourceTree = "<group>"; };
 		C0B5E77A2B66B00F00A2D3B9 /* EFD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EFD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B5E77D2B66B00F00A2D3B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0B5E7862B66B01100A2D3B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,9 +92,8 @@
 		B9ED8A012B6A3B7500ECFB74 /* BossViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C099C5092B7C34C900683CF8 /* AssignPackage */,
 				C03584342B6C6105007F453B /* DeliveryMan */,
-				B9ED8A022B6A3C3100ECFB74 /* CreateRoundViewController.swift */,
-				B9ED8A032B6A3C3100ECFB74 /* CreateRoundViewController.xib */,
 			);
 			path = BossViewController;
 			sourceTree = "<group>";
@@ -142,6 +141,15 @@
 				C019E49B2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.xib */,
 			);
 			path = DeliveryMan;
+			sourceTree = "<group>";
+		};
+		C099C5092B7C34C900683CF8 /* AssignPackage */ = {
+			isa = PBXGroup;
+			children = (
+				C099C50A2B7C34EC00683CF8 /* AssignPackageViewController.swift */,
+				C099C50B2B7C34EC00683CF8 /* AssignPackageViewController.xib */,
+			);
+			path = AssignPackage;
 			sourceTree = "<group>";
 		};
 		C0B5E7712B66B00F00A2D3B9 = {
@@ -244,7 +252,7 @@
 				};
 			};
 			buildConfigurationList = C0B5E7752B66B00F00A2D3B9 /* Build configuration list for PBXProject "EFD" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -275,8 +283,8 @@
 				C019E49D2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.xib in Resources */,
 				C0B5E7872B66B01100A2D3B9 /* Assets.xcassets in Resources */,
 				C0B5E7992B66DB7A00A2D3B9 /* InscriptionViewController.xib in Resources */,
-				B9ED8A052B6A3C3100ECFB74 /* CreateRoundViewController.xib in Resources */,
 				C03584382B6C612D007F453B /* DeliveryViewController.xib in Resources */,
+				C099C50D2B7C34EC00683CF8 /* AssignPackageViewController.xib in Resources */,
 				C035843C2B6C640F007F453B /* CreateDeliveryManViewController.xib in Resources */,
 				D7B351142B76C37B0003D633 /* MapViewController.xib in Resources */,
 				C019E4992B718CA100AD41F8 /* ItemDeliveryListViewController.xib in Resources */,
@@ -303,12 +311,12 @@
 				C0BC4AB32B75438F005142CD /* PackageWebServices.swift in Sources */,
 				C0B5E77E2B66B00F00A2D3B9 /* AppDelegate.swift in Sources */,
 				C03584332B6C4FD4007F453B /* User.swift in Sources */,
+				C099C50C2B7C34EC00683CF8 /* AssignPackageViewController.swift in Sources */,
 				C0B5E7982B66DB7A00A2D3B9 /* InscriptionViewController.swift in Sources */,
 				D7B351132B76C37B0003D633 /* MapViewController.swift in Sources */,
 				C0090D1D2B73C0BF00200154 /* UserServices.swift in Sources */,
 				B9ED8A0A2B6A738800ECFB74 /* Round.swift in Sources */,
 				C019E49C2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.swift in Sources */,
-				B9ED8A042B6A3C3100ECFB74 /* CreateRoundViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,7 +396,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -444,7 +452,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

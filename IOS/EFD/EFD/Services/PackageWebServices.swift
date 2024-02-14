@@ -202,4 +202,50 @@ class PackageWebServices {
         task.resume()
     }
     
+    class func modifyPackage(idP: String, idUD: String, completion: @escaping (Error?, Bool?) -> Void){
+        
+    
+        let url = "http://localhost:3000/package/" + idP
+        
+        guard let getAddURL = URL(string: url) else{
+            return
+        }
+        
+        var request = URLRequest(url: getAddURL)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+
+        let json: [String: Any] = ["idUserDelivery": idUD,
+                                   "status": "loading"]
+
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        request.httpBody = jsonData
+        request.httpMethod = "PATCH"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, res, err in
+            guard err == nil else {
+                completion(err, false)
+                return
+            }
+            guard let d = data else {
+                completion(NSError(domain: "com.EFD", code: 2, userInfo: [
+                    NSLocalizedFailureReasonErrorKey: "No data found"
+                ]), false)
+                return
+            }
+            
+            do {
+                try JSONSerialization.jsonObject(with: d, options: .allowFragments)
+                completion(nil, true)
+            } catch let err {
+                completion(err, false)
+                return
+            }
+
+        }
+        
+        task.resume()
+    }
+    
 }
