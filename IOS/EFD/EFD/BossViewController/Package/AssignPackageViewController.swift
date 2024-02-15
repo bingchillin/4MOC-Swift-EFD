@@ -16,8 +16,6 @@ class AssignPackageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(listAssign)
         
         tableViewDelivery.delegate = self
         tableViewDelivery.dataSource = self
@@ -66,9 +64,8 @@ extension AssignPackageViewController: UITableViewDelegate {
         alertVerif.addAction(UIAlertAction(title: "Oui", style: .default, handler: { _ in
            
             for i in 0..<self.listAssign.count{
-                print(self.listAssign[i])
                 
-                PackageWebServices.modifyPackage(idP: self.listAssign[i], idUD: userId!){err, success in
+                PackageWebServices.modifyPackage(idP: self.listAssign[i], idUD: userId!, status: "loading"){err, success in
                     guard err == nil else {
                         return
                     }

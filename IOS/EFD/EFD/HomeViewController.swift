@@ -117,6 +117,11 @@ class HomeViewController: UIViewController {
         displayViewByRole(role: userRole)
     }
     
+    @IBAction func goToDetails(_ sender: Any) {
+        let nextViewController = DetailsViewController()
+        self.navigationController?.pushViewController(nextViewController, animated: true)
+    }
+    
     
     @IBAction func goToAssign(_ sender: Any) {
         listAssign.removeAll()

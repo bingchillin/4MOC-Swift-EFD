@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemDetailsViewController" customModule="EFD" customModuleProvider="target">
+            <connections>
+                <outlet property="labelDeliveryMail" destination="GpO-r0-jgs" id="ltv-wd-bKy"/>
+                <outlet property="labelDeliveryName" destination="G5N-Gd-XSJ" id="JzQ-Ar-QrH"/>
+                <outlet property="labelPackageLocation" destination="eA7-fy-9oe" id="Cnl-eC-jBZ"/>
+                <outlet property="labelPackageName" destination="DFz-PE-pvb" id="6pi-j1-0Te"/>
+                <outlet property="labelPackageStatus" destination="27z-Nn-2Nw" id="BI5-KP-gX2"/>
+                <outlet property="labelUserMail" destination="hgp-WF-HoU" id="yzs-20-JYi"/>
+                <outlet property="labelUserName" destination="1gO-Oe-bUQ" id="5kb-jt-L9d"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameColi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DFz-PE-pvb">
+                    <rect key="frame" x="0.0" y="104" width="1024" height="65"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="54"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatusColi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="27z-Nn-2Nw">
+                    <rect key="frame" x="50" y="269" width="169" height="44.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="37"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameUser" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gO-Oe-bUQ">
+                    <rect key="frame" x="50" y="439.5" width="173" height="44.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="37"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameDelivery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5N-Gd-XSJ">
+                    <rect key="frame" x="50" y="600" width="229.5" height="44.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="37"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AdresseColi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eA7-fy-9oe">
+                    <rect key="frame" x="50" y="353.5" width="156" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EmailUser" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgp-WF-HoU">
+                    <rect key="frame" x="50" y="514" width="131" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EmailDelivery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpO-r0-jgs">
+                    <rect key="frame" x="50" y="674.5" width="175" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="DFz-PE-pvb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="80" id="4QW-Gj-Sar"/>
+                <constraint firstItem="DFz-PE-pvb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9DN-Zi-VXN"/>
+                <constraint firstItem="27z-Nn-2Nw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="MEt-5e-uDm"/>
+                <constraint firstItem="hgp-WF-HoU" firstAttribute="top" secondItem="1gO-Oe-bUQ" secondAttribute="bottom" constant="30" id="MoI-1F-wWz"/>
+                <constraint firstItem="eA7-fy-9oe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="RdG-Lu-oYT"/>
+                <constraint firstItem="1gO-Oe-bUQ" firstAttribute="top" secondItem="eA7-fy-9oe" secondAttribute="bottom" constant="50" id="U5N-rk-ABt"/>
+                <constraint firstItem="1gO-Oe-bUQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="VYM-wq-bAG"/>
+                <constraint firstItem="GpO-r0-jgs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="arg-RI-ypb"/>
+                <constraint firstItem="hgp-WF-HoU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="bPb-00-QbV"/>
+                <constraint firstItem="G5N-Gd-XSJ" firstAttribute="top" secondItem="hgp-WF-HoU" secondAttribute="bottom" constant="50" id="fen-rE-paA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DFz-PE-pvb" secondAttribute="trailing" id="fjr-Iv-Aj9"/>
+                <constraint firstItem="27z-Nn-2Nw" firstAttribute="top" secondItem="DFz-PE-pvb" secondAttribute="bottom" constant="100" id="gyV-Ig-f8Y"/>
+                <constraint firstItem="GpO-r0-jgs" firstAttribute="top" secondItem="G5N-Gd-XSJ" secondAttribute="bottom" constant="30" id="nHy-q1-zv6"/>
+                <constraint firstItem="eA7-fy-9oe" firstAttribute="top" secondItem="27z-Nn-2Nw" secondAttribute="bottom" constant="40" id="nLv-VV-bD1"/>
+                <constraint firstItem="G5N-Gd-XSJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="tVS-i0-D6K"/>
+            </constraints>
+            <point key="canvasLocation" x="137.6953125" y="19.765739385065885"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

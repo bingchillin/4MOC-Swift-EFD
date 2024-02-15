@@ -26,6 +26,10 @@
 		C035843C2B6C640F007F453B /* CreateDeliveryManViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C035843A2B6C640F007F453B /* CreateDeliveryManViewController.xib */; };
 		C099C50C2B7C34EC00683CF8 /* AssignPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099C50A2B7C34EC00683CF8 /* AssignPackageViewController.swift */; };
 		C099C50D2B7C34EC00683CF8 /* AssignPackageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C099C50B2B7C34EC00683CF8 /* AssignPackageViewController.xib */; };
+		C099C5102B7D717500683CF8 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099C50E2B7D717500683CF8 /* DetailsViewController.swift */; };
+		C099C5112B7D717500683CF8 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C099C50F2B7D717500683CF8 /* DetailsViewController.xib */; };
+		C099C5152B7D876400683CF8 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099C5132B7D876400683CF8 /* ItemDetailsViewController.swift */; };
+		C099C5162B7D876400683CF8 /* ItemDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C099C5142B7D876400683CF8 /* ItemDetailsViewController.xib */; };
 		C0B5E77E2B66B00F00A2D3B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5E77D2B66B00F00A2D3B9 /* AppDelegate.swift */; };
 		C0B5E7872B66B01100A2D3B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0B5E7862B66B01100A2D3B9 /* Assets.xcassets */; };
 		C0B5E78A2B66B01100A2D3B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0B5E7882B66B01100A2D3B9 /* LaunchScreen.storyboard */; };
@@ -60,6 +64,10 @@
 		C035843A2B6C640F007F453B /* CreateDeliveryManViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateDeliveryManViewController.xib; sourceTree = "<group>"; };
 		C099C50A2B7C34EC00683CF8 /* AssignPackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignPackageViewController.swift; sourceTree = "<group>"; };
 		C099C50B2B7C34EC00683CF8 /* AssignPackageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssignPackageViewController.xib; sourceTree = "<group>"; };
+		C099C50E2B7D717500683CF8 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		C099C50F2B7D717500683CF8 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
+		C099C5132B7D876400683CF8 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
+		C099C5142B7D876400683CF8 /* ItemDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemDetailsViewController.xib; sourceTree = "<group>"; };
 		C0B5E77A2B66B00F00A2D3B9 /* EFD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EFD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B5E77D2B66B00F00A2D3B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0B5E7862B66B01100A2D3B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,7 +100,7 @@
 		B9ED8A012B6A3B7500ECFB74 /* BossViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C099C5092B7C34C900683CF8 /* AssignPackage */,
+				C099C5092B7C34C900683CF8 /* Package */,
 				C03584342B6C6105007F453B /* DeliveryMan */,
 			);
 			path = BossViewController;
@@ -143,13 +151,17 @@
 			path = DeliveryMan;
 			sourceTree = "<group>";
 		};
-		C099C5092B7C34C900683CF8 /* AssignPackage */ = {
+		C099C5092B7C34C900683CF8 /* Package */ = {
 			isa = PBXGroup;
 			children = (
 				C099C50A2B7C34EC00683CF8 /* AssignPackageViewController.swift */,
 				C099C50B2B7C34EC00683CF8 /* AssignPackageViewController.xib */,
+				C099C50E2B7D717500683CF8 /* DetailsViewController.swift */,
+				C099C50F2B7D717500683CF8 /* DetailsViewController.xib */,
+				C099C5132B7D876400683CF8 /* ItemDetailsViewController.swift */,
+				C099C5142B7D876400683CF8 /* ItemDetailsViewController.xib */,
 			);
-			path = AssignPackage;
+			path = Package;
 			sourceTree = "<group>";
 		};
 		C0B5E7712B66B00F00A2D3B9 = {
@@ -284,9 +296,11 @@
 				C0B5E7872B66B01100A2D3B9 /* Assets.xcassets in Resources */,
 				C0B5E7992B66DB7A00A2D3B9 /* InscriptionViewController.xib in Resources */,
 				C03584382B6C612D007F453B /* DeliveryViewController.xib in Resources */,
+				C099C5162B7D876400683CF8 /* ItemDetailsViewController.xib in Resources */,
 				C099C50D2B7C34EC00683CF8 /* AssignPackageViewController.xib in Resources */,
 				C035843C2B6C640F007F453B /* CreateDeliveryManViewController.xib in Resources */,
 				D7B351142B76C37B0003D633 /* MapViewController.xib in Resources */,
+				C099C5112B7D717500683CF8 /* DetailsViewController.xib in Resources */,
 				C019E4992B718CA100AD41F8 /* ItemDeliveryListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +317,7 @@
 				C03584372B6C612D007F453B /* DeliveryViewController.swift in Sources */,
 				C0B5E7932B66D42B00A2D3B9 /* ConnexionViewController.swift in Sources */,
 				C0090D1A2B73BE8800200154 /* UserInMemoryService.swift in Sources */,
+				C099C5152B7D876400683CF8 /* ItemDetailsViewController.swift in Sources */,
 				C019E4EC2B72D1AF00AD41F8 /* DeliveryWebServices.swift in Sources */,
 				C035843B2B6C640F007F453B /* CreateDeliveryManViewController.swift in Sources */,
 				C019E4982B718CA100AD41F8 /* ItemDeliveryListViewController.swift in Sources */,
@@ -317,6 +332,7 @@
 				C0090D1D2B73C0BF00200154 /* UserServices.swift in Sources */,
 				B9ED8A0A2B6A738800ECFB74 /* Round.swift in Sources */,
 				C019E49C2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.swift in Sources */,
+				C099C5102B7D717500683CF8 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
