@@ -76,7 +76,7 @@ class MapViewController: UIViewController {
                 }
             }
         } else if user.role == "livreur" {
-            PackageWebServices.getPackagesByLivreur(id: user.id!) { error, success, packages in
+            PackageWebServices.getListDeliveryPackageProcess(id: user.id!) { error, success, packages in
                 DispatchQueue.main.async {
                     if let error = error {
                         print("Erreur lors de la récupération des colis: \(error.localizedDescription)")

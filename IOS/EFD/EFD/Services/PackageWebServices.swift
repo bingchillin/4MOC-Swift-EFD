@@ -111,7 +111,7 @@ class PackageWebServices {
     class func getListDeliveryPackageProcess(id: String,completion: @escaping (Error?, Bool?, [Package]?) -> Void){
         
         
-        let url = "http://localhost:3000/package/delivery/"+id + "/process"
+        let url = "http://localhost:3000/package/delivery/" + id + "/process"
         guard let itemURL = URL(string: url) else{
             return
         }

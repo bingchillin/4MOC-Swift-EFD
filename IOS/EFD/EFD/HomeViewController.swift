@@ -57,7 +57,7 @@ class HomeViewController: UIViewController {
                     self.packageList = packages
                     self.tableViewPackages.reloadData()
                 }
-                else{
+                else {
                     //Si liste retour vide ou erreur
                     self.labelEmptyPackage.textColor = UIColor.black
                     self.labelEmptyPackage.isHidden = false
@@ -76,10 +76,31 @@ class HomeViewController: UIViewController {
                     self.packageList = packages
                     self.tableViewPackages.reloadData()
                 }
-                else{
+                else {
                     //Si liste retour vide ou erreur
                     self.labelEmptyPackage.textColor = UIColor.black
                     self.labelEmptyPackage.isHidden = false
+                    self.labelEmptyPackage.text = "Vous n'avez pas de tournée en cours"
+                    self.tableViewPackages.isHidden = true
+                }
+            }
+        }
+    }
+    
+    func getPackagesByLivreurLoading(id: String) {
+        PackageWebServices.getListDeliveryPackageProcess(id: id) { error, success, packages in
+            DispatchQueue.main.async {
+                if let packages = packages, !packages.isEmpty {
+                    self.labelEmptyPackage.textColor = UIColor.white
+                    self.labelEmptyPackage.isHidden = true
+                    self.packageList = packages
+                    self.tableViewPackages.reloadData()
+                }
+                else {
+                    //Si liste retour vide ou erreur
+                    self.labelEmptyPackage.textColor = UIColor.black
+                    self.labelEmptyPackage.isHidden = false
+                    self.labelEmptyPackage.text = "Vous n'avez pas de tournée en cours"
                     self.tableViewPackages.isHidden = true
                 }
             }
@@ -157,7 +178,7 @@ class HomeViewController: UIViewController {
             tableViewPackages.isHidden = false
             buttonMap.isHidden = false
             
-            //getPackagesByLivreur(id: user.id!)
+            getPackagesByLivreurLoading(id: user.id!)
         }
     }
 }

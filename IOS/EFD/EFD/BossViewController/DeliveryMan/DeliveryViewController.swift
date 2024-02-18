@@ -46,7 +46,7 @@ class DeliveryViewController: UIViewController {
                         self.userList = users
                         self.tableViewDelivery.reloadData()
                     }
-                    else{
+                    else {
                         self.labelEmptyUser.textColor = UIColor.black
                         self.labelEmptyUser.isHidden = false
                         self.tableViewDelivery.isHidden = true
@@ -76,7 +76,7 @@ class DeliveryViewController: UIViewController {
         }
         
         let mapViewController = MapViewController()
-        navigationController?.pushViewController(mapViewController, animated: true)
+        self.navigationController?.pushViewController(mapViewController, animated: true)
     }
     
     
