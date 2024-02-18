@@ -11,6 +11,8 @@ class DetailsViewController: UIViewController, UITextFieldDelegate {
     
     
 
+    @IBOutlet weak var labelDetails: UILabel!
+    
     @IBOutlet weak var textFieldSearch: UITextField!
     
     @IBOutlet weak var tableViewPackage: UITableView!
@@ -23,7 +25,6 @@ class DetailsViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         textFieldSearch.delegate = self
                 
         // Configure la table view
@@ -33,7 +34,8 @@ class DetailsViewController: UIViewController, UITextFieldDelegate {
         
         callTableView()
         
-        
+        labelDetails.text = NSLocalizedString("Package details", comment: "")
+        textFieldSearch.placeholder = NSLocalizedString("Search", comment: "")
     }
     
     func callTableView(){

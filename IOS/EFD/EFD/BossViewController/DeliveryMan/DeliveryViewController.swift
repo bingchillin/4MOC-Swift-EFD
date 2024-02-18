@@ -12,14 +12,14 @@ class DeliveryViewController: UIViewController {
     
     var locationManager: CLLocationManager?
     var userLocation: CLLocationCoordinate2D?
-
-    @IBOutlet weak var buttonCDM: UIButton!
     
+    @IBOutlet weak var labelDeliveryman: UILabel!
+    
+    @IBOutlet weak var buttonCDM: UIButton!
     
     @IBOutlet weak var tableViewDelivery: UITableView!
     
     @IBOutlet weak var labelEmptyUser: UILabel!
-    
     
     @IBOutlet weak var ButtonMap: UIButton!
     
@@ -37,6 +37,9 @@ class DeliveryViewController: UIViewController {
         tableViewDelivery.dataSource = self
         tableViewDelivery.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         
+        labelDeliveryman.text = NSLocalizedString("DeliveryMan", comment: "")
+        buttonCDM.setTitle(NSLocalizedString("Create delivery man", comment: ""), for: .normal)
+        ButtonMap.setTitle(NSLocalizedString("Map", comment: ""), for: .normal)
         
         DeliveryWebServices.getListDelivery() { err, users in
                 DispatchQueue.main.async {

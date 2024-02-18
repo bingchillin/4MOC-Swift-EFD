@@ -6,6 +6,44 @@
   
 */
 
+// CONNEXION VIEW CONTROLLER
+"Email" = "Email";
+"Password" = "Password";
+"Log in" = "Log in";
+"Sign up" = "Sign up";
+// CONNEXION VIEW CONTROLLER FIN
+
+
+
+// INSCRIPTION VIEW CONTROLLER
+"Username" = "Username";
+"Confirm password" = "Confirm password";
+// INSCRIPTION VIEW CONTROLLER FIN
+
+
+
+// HOME VIEW CONTROLLER
 "DeliveryMan" = "Delivery man";
+"Map" = "Map";
 "Round" = "Packages to assign";
 "Detail" = "Details";
+"Assign" = "Assign";
+"Validate" = "Validate";
+// HOME VIEW CONTROLLER FIN
+
+
+
+// DELIVERY MAN VIEW CONTROLLER
+"Create delivery man" = "Create delivery man";
+// DELIVERY MAN VIEW CONTROLLER FIN
+
+
+
+// CREATE DELIVERY MAN
+"Create" = "Create";
+// CREATE DELIVERY MAN FIN
+
+// DETAILS PACKAGE VIEW CONTROLLER
+"Package details" = " Packages details";
+"Search" = "Search";
+// DETAILS PACKAGE VIEW CONTROLLER FIN

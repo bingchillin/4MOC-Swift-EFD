@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateDeliveryManViewController" customModule="EFD" customModuleProvider="target">
             <connections>
                 <outlet property="buttonToCreateD" destination="t7P-IT-v0M" id="5dI-7Y-2QC"/>
-                <outlet property="labelStatus" destination="e0A-Lz-g5W" id="zKm-D1-MkE"/>
+                <outlet property="labelCreate" destination="PqE-i4-4AQ" id="KI8-aT-Dvf"/>
+                <outlet property="labelStatus" destination="PqE-i4-4AQ" id="6Bf-Tr-5eN"/>
                 <outlet property="textFieldConfirmPassword" destination="cSD-O0-5Fg" id="WXG-64-kvU"/>
                 <outlet property="textFieldEmail" destination="cXX-65-PEa" id="wHa-7H-7Dv"/>
                 <outlet property="textFieldPassword" destination="Xek-nu-hUn" id="a5P-Hy-JlF"/>
@@ -25,41 +27,41 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creation Delivery Man" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqE-i4-4AQ">
-                    <rect key="frame" x="0.0" y="124" width="414" height="36"/>
+                    <rect key="frame" x="0.0" y="128" width="414" height="36"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sRX-MD-mMX">
-                    <rect key="frame" x="30" y="240" width="354" height="34"/>
+                    <rect key="frame" x="30" y="244" width="354" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXX-65-PEa">
-                    <rect key="frame" x="30" y="309" width="354" height="34"/>
+                    <rect key="frame" x="30" y="313" width="354" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xek-nu-hUn">
-                    <rect key="frame" x="30" y="378" width="354" height="34"/>
+                    <rect key="frame" x="30" y="382" width="354" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSD-O0-5Fg">
-                    <rect key="frame" x="30" y="447" width="354" height="34"/>
+                    <rect key="frame" x="30" y="451" width="354" height="34"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="italicSystem" pointSize="20"/>
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t7P-IT-v0M">
-                    <rect key="frame" x="160.5" y="542" width="93" height="43"/>
+                    <rect key="frame" x="160.5" y="546" width="93" height="43"/>
                     <color key="backgroundColor" red="0.56470588239999997" green="0.79215686269999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
@@ -71,13 +73,13 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ce livreur existe déjà" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0A-Lz-g5W">
-                    <rect key="frame" x="0.0" y="501" width="414" height="21"/>
+                    <rect key="frame" x="0.0" y="505" width="414" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygp-ll-Gwl">
-                    <rect key="frame" x="0.0" y="44" width="80.5" height="35.5"/>
+                    <rect key="frame" x="0.0" y="48" width="80.5" height="35.5"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="&lt; Back">
                         <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="18"/>

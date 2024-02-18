@@ -15,6 +15,7 @@ class CreateDeliveryManViewController: UIViewController {
     @IBOutlet weak var textFieldConfirmPassword: UITextField!
     
     @IBOutlet weak var labelStatus: UILabel!
+    @IBOutlet weak var labelCreate: UILabel!
     
     @IBOutlet weak var buttonToCreateD: UIButton!
     
@@ -24,9 +25,14 @@ class CreateDeliveryManViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         
         buttonToCreateD.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
+    
+        labelCreate.text = NSLocalizedString("Create delivery man", comment: "")
+        textFieldUsername.placeholder = NSLocalizedString("Username", comment: "")
+        textFieldEmail.placeholder = NSLocalizedString("Email", comment: "")
+        textFieldPassword.placeholder = NSLocalizedString("Password", comment: "")
+        textFieldConfirmPassword.placeholder = NSLocalizedString("Confirm password", comment: "")
         
-
-        // Do any additional setup after loading the view.
+        buttonToCreateD.setTitle(NSLocalizedString("Create", comment: ""), for: .normal)
     }
 
     

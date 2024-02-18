@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var buttonDeliveryMan: UIButton!
     @IBOutlet weak var buttonDetail: UIButton!
     @IBOutlet weak var buttonAssign: UIButton!
+    @IBOutlet weak var buttonValidate: UIButton!
     @IBOutlet weak var labelRound: UILabel!
     
     @IBOutlet weak var tableViewPackages: UITableView!
@@ -116,6 +117,8 @@ class HomeViewController: UIViewController {
         labelRound.text = NSLocalizedString("Round", comment: "")
         buttonDetail.setTitle(NSLocalizedString("Detail", comment: ""), for: .normal)
         buttonMap.setTitle(NSLocalizedString("Map", comment: ""), for: .normal)
+        buttonAssign.setTitle(NSLocalizedString("Assign", comment: ""), for: .normal)
+        buttonValidate.setTitle(NSLocalizedString("Validate", comment: ""), for: .normal)
         
         // Récupérer une valeur à partir du cache en utilisant singleton
         let cache = UserInMemoryService.shared
@@ -177,6 +180,7 @@ class HomeViewController: UIViewController {
         } else if role == "livreur" {
             tableViewPackages.isHidden = false
             buttonMap.isHidden = false
+            buttonValidate.isHidden = false
             
             getPackagesByLivreurLoading(id: user.id!)
         }
@@ -212,7 +216,7 @@ extension HomeViewController: UITableViewDelegate {
         }else {
             buttonAssign.isHidden = true
         }
-        }
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {

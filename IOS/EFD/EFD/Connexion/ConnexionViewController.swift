@@ -9,11 +9,14 @@ import UIKit
 
 class ConnexionViewController: UIViewController {
 
+    @IBOutlet weak var labelConnexion: UILabel!
+    
     @IBOutlet weak var textFieldEmail: UITextField!
     @IBOutlet weak var textFieldPassword: UITextField!
     @IBOutlet weak var labelError: UILabel!
     
     @IBOutlet weak var buttonConnexion: UIButton!
+    @IBOutlet weak var buttonInscription: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +24,14 @@ class ConnexionViewController: UIViewController {
 
         buttonConnexion.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         
-        // Configurer le texte du bouton
-        buttonConnexion.setTitle("Connexion", for: .normal)
+        labelConnexion.text = NSLocalizedString("Log in", comment: "")
+        textFieldEmail.placeholder = NSLocalizedString("Email", comment: "")
+        textFieldPassword.placeholder = NSLocalizedString("Password", comment: "")
+        //labelError.text = NSLocalizedString("", comment: "")
+        buttonConnexion.setTitle(NSLocalizedString("Log in", comment: ""), for: .normal)
+        buttonInscription.setTitle(NSLocalizedString("Sign up", comment: ""), for: .normal)
         
         textFieldPassword.isSecureTextEntry = true
-        
-        
-
-                
     }
 
 

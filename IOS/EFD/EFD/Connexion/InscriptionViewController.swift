@@ -10,6 +10,9 @@ import UIKit
 class InscriptionViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var buttonInscription: UIButton!
+    @IBOutlet weak var buttonConnexion: UIButton!
+    
+    @IBOutlet weak var labelInscription: UILabel!
     
     @IBOutlet weak var textFieldUsername: UITextField!
     @IBOutlet weak var textFieldEmail: UITextField!
@@ -18,14 +21,21 @@ class InscriptionViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var textFieldReturnMessageError: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         setupButton()
         setupTextField()
         
+        labelInscription.text = NSLocalizedString("Sign up", comment: "")
+        
+        textFieldUsername.placeholder = NSLocalizedString("Username", comment: "")
+        textFieldEmail.placeholder = NSLocalizedString("Email", comment: "")
+        textFieldPassword.placeholder = NSLocalizedString("Password", comment: "")
+        textFieldConfirmPassword.placeholder = NSLocalizedString("Confirm password", comment: "")
+        
+        buttonInscription.setTitle(NSLocalizedString("Sign up", comment: ""), for: .normal)
+        buttonConnexion.setTitle(NSLocalizedString("Log in", comment: ""), for: .normal)
     }
     
     private func setupTextField(){
