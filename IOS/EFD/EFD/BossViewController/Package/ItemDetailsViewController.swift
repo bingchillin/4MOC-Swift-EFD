@@ -20,7 +20,13 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet weak var labelDeliveryName: UILabel!
     @IBOutlet weak var labelDeliveryMail: UILabel!
     
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var buttonValidate: UIButton!
+    
+    
     var package : Package!
+    var user: User!
     
     
     public class func newInstance(package: Package) -> ItemDetailsViewController{
@@ -31,6 +37,28 @@ class ItemDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        let cache = UserInMemoryService.shared
+        user = cache.userValue()
+        
+        
+        
+        
+        if user.role == "livreur" {
+            self.navigationItem.rightBarButtonItems = [
+                UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(openCamera)),
+                UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(openLibrary))
+            ]
+            self.imageView.layer.borderWidth = 2
+            self.imageView.layer.borderColor = UIColor.black.cgColor
+            self.imageView.layer.backgroundColor = UIColor.white.cgColor
+            buttonValidate.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
+            buttonValidate.isHidden = false
+        }
+        
+        
+
         
         labelPackageName.text = package.name
         labelPackageStatus.text = "Status du colis: " + package.status
@@ -86,6 +114,27 @@ class ItemDetailsViewController: UIViewController {
         
     }
     
+    @objc func openCamera(){
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            return
+        }
+        
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.delegate = self
+        picker.allowsEditing = true
+        self.present(picker,animated: true)
+    }
+    
+    @objc func openLibrary(){
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        self.present(picker,animated: true)
+        
+    }
+    
     func locationUser(latitude: Double, longitude: Double, preLabelText: String, labelText: UILabel) -> Void {
         
         let location = CLLocation(latitude: latitude , longitude: longitude )
@@ -106,4 +155,17 @@ class ItemDetailsViewController: UIViewController {
         }
     }
     
+}
+
+extension ItemDetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[.editedImage] as? UIImage else{
+            return
+        }
+        self.imageView.image = image
+        picker.dismiss(animated: true) // Enleve le picker
+    }
+        
 }

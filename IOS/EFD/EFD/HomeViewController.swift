@@ -126,8 +126,6 @@ class HomeViewController: UIViewController {
         user = cache.userValue()
         let userRole = user.role
         
-        //print(user.id!, user.email, user.name, user.role, "OK")
-        
         buttonDeliveryMan.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         buttonDetail.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         buttonAssign.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
@@ -135,9 +133,16 @@ class HomeViewController: UIViewController {
         tableViewPackages.dataSource = self
         tableViewPackages.delegate = self
         tableViewPackages.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
-        self.tableViewPackages.allowsMultipleSelection = true
-        self.tableViewPackages.allowsMultipleSelectionDuringEditing = true
- 
+        if user.role == "admin" {
+            self.tableViewPackages.allowsMultipleSelection = true
+            self.tableViewPackages.allowsMultipleSelectionDuringEditing = true
+        } else {
+            // Pour un utilisateur "livreur", désactivez la sélection multiple
+            self.tableViewPackages.allowsMultipleSelection = false
+            self.tableViewPackages.allowsMultipleSelectionDuringEditing = false
+            self.tableViewPackages.allowsSelection = true
+        }
+        
         displayViewByRole(role: userRole)
     }
     
@@ -180,7 +185,8 @@ class HomeViewController: UIViewController {
         } else if role == "livreur" {
             tableViewPackages.isHidden = false
             buttonMap.isHidden = false
-            buttonValidate.isHidden = false
+            buttonValidate.isHidden = true
+            buttonAssign.isHidden = true
             
             getPackagesByLivreurLoading(id: user.id!)
         }
@@ -195,27 +201,40 @@ extension HomeViewController: UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if user.role == "livreur" {
+            
+            print("ook1")
+            let package = packageList[indexPath.row]
+            let nextController = ItemDetailsViewController.newInstance(package: package)
+            self.navigationController?.pushViewController(nextController, animated: true)
+            
+                   
+        }else if user.role == "admin" {
             // Mettre à jour l'apparence de la cellule
-            tableViewPackages.reloadRows(at: [indexPath], with: .automatic)
-            
-            let cell = tableView.cellForRow(at: indexPath)
-            
-            // Mettre à jour le tableau des indexPaths sélectionnées
-            if let index = selectedIndexPaths.firstIndex(of: indexPath) {
-                selectedIndexPaths.remove(at: index)
-                cell?.backgroundColor = UIColor.white // Rétablir la couleur de fond d'origine
-                cell?.layer.shadowColor = UIColor.clear.cgColor // Supprimer l'ombre
-                        
-            } else {
-                selectedIndexPaths.append(indexPath)
-                cell?.backgroundColor = UIColor(red: 0.0, green: 1, blue: 0.0, alpha: 1.0) // Changement de couleur de fond
-                cell?.layer.shadowColor = UIColor.blue.cgColor // Ajout d'une ombre
+                tableViewPackages.reloadRows(at: [indexPath], with: .automatic)
+                
+                let cell = tableView.cellForRow(at: indexPath)
+                
+                // Mettre à jour le tableau des indexPaths sélectionnées
+                if let index = selectedIndexPaths.firstIndex(of: indexPath) {
+                    selectedIndexPaths.remove(at: index)
+                    cell?.backgroundColor = UIColor.white // Rétablir la couleur de fond d'origine
+                    cell?.layer.shadowColor = UIColor.clear.cgColor // Supprimer l'ombre
+                            
+                } else {
+                    selectedIndexPaths.append(indexPath)
+                    cell?.backgroundColor = UIColor(red: 0.0, green: 1, blue: 0.0, alpha: 1.0) // Changement de couleur de fond
+                    cell?.layer.shadowColor = UIColor.blue.cgColor // Ajout d'une ombre
+                }
+            if !selectedIndexPaths.isEmpty{
+                buttonAssign.isHidden = false
+            }else {
+                buttonAssign.isHidden = true
             }
-        if !selectedIndexPaths.isEmpty{
-            buttonAssign.isHidden = false
-        }else {
-            buttonAssign.isHidden = true
         }
+        
+        
+        
     }
 }
 
