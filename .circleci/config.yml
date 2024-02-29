@@ -13,7 +13,7 @@ jobs:
       - run: ls -la
       - run:
           name: Fastlane
-          command: cd IOS/EFD && bundle exec fastlane $FASTLANE_LANE
+          command: cd IOS/EFD && bundle exec fastlane ios_test
       - store_artifacts:
           path: output
       - store_test_results:
