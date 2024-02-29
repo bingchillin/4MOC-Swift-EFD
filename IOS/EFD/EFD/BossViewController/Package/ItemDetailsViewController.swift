@@ -21,12 +21,16 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet weak var labelDeliveryMail: UILabel!
     
     @IBOutlet weak var imageView: UIImageView!
-    
+    @IBOutlet weak var imageViewAdmin: UIImageView!
+   
+    @IBOutlet weak var labelNoPicture: UILabel!
     @IBOutlet weak var buttonValidate: UIButton!
     
     
     var package : Package!
     var user: User!
+    var savePicture: Bool = false
+    var fileUrlSave: String!
     
     
     public class func newInstance(package: Package) -> ItemDetailsViewController{
@@ -42,9 +46,17 @@ class ItemDetailsViewController: UIViewController {
         let cache = UserInMemoryService.shared
         user = cache.userValue()
         
+        displayD()
+        displayDet()
+        displayI()
         
         
         
+        
+        
+    }
+    
+    func displayD(){
         if user.role == "livreur" {
             self.navigationItem.rightBarButtonItems = [
                 UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(openCamera)),
@@ -55,11 +67,15 @@ class ItemDetailsViewController: UIViewController {
             self.imageView.layer.backgroundColor = UIColor.white.cgColor
             buttonValidate.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
             buttonValidate.isHidden = false
+            imageView.isHidden = false
+        }
+        else if user.role == "admin" {
+            imageViewAdmin.isHidden = false
         }
         
-        
-
-        
+    }
+    
+    func displayDet(){
         labelPackageName.text = package.name
         labelPackageStatus.text = "Status du colis: " + package.status
         
@@ -104,15 +120,34 @@ class ItemDetailsViewController: UIViewController {
                 }
             }
         }else {
-            print("okk1")
             labelDeliveryName.isHidden = true
             labelDeliveryMail.isHidden = true
         }
-        
-        
-        
-        
     }
+    
+    func displayI() {
+        if user.role == "admin" {
+            if !package.proof.isEmpty {
+                // Spécifiez le chemin complet de l'image
+                let imagePath = package.proof
+
+                // Chargez l'image à partir du chemin spécifié
+                if let image = UIImage(contentsOfFile: imagePath) {
+                    // Afficher l'image dans votre UIImageView
+                    imageViewAdmin.image = image
+                } else {
+                    print("Erreur: Impossible de charger l'image.")
+                }
+            }
+            else {
+                labelNoPicture.isHidden = false
+            }
+        }
+        
+        
+
+    }
+
     
     @objc func openCamera(){
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
@@ -155,6 +190,28 @@ class ItemDetailsViewController: UIViewController {
         }
     }
     
+    @IBAction func goToHome(_ sender: Any) {
+        if savePicture == false {
+            let alert = UIAlertController(title: "Success Impossible", message: "Vous devez prendre une photo pour valider un coli", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Fermer", style: .cancel))
+            self.present(alert, animated: true)
+        }else {
+            PackageWebServices.modifySavePackage(idP: package.id, proof: fileUrlSave){err, success in
+                guard err == nil else {
+                    return
+                }
+                guard (success != nil) else {
+                    return
+                }
+                
+            }
+            let nextController = HomeViewController()
+            self.navigationController?.pushViewController(nextController, animated: true)
+        }
+        
+    }
+    
+    
 }
 
 extension ItemDetailsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -164,8 +221,38 @@ extension ItemDetailsViewController: UIImagePickerControllerDelegate, UINavigati
         guard let image = info[.editedImage] as? UIImage else{
             return
         }
+        // Définir le chemin du répertoire de destination
+       let directoryURL = URL(fileURLWithPath: "/Users/gabriel/Documents/ESGI/QuatriemeAnnee/IOS/projectExam/picture")
+       
+       // Créer le nom du fichier
+       let fileName = "image_\(Date().timeIntervalSince1970).jpg"
+       
+       // Créer le chemin complet pour le fichier
+       let fileURL = directoryURL.appendingPathComponent(fileName)
+       
+       // Convertir l'image en données JPEG et écrire dans le fichier
+       if let imageData = image.jpegData(compressionQuality: 1.0) {
+           do {
+               // Créer le répertoire s'il n'existe pas déjà
+               try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)
+               
+               // Écrire les données de l'image dans le fichier
+               try imageData.write(to: fileURL)
+               
+               // Afficher le chemin dans les logs
+               savePicture = true
+               fileUrlSave = fileURL.path
+               print("Chemin de l'image enregistrée : \(fileURL.path)")
+               
+           } catch {
+               print("Erreur lors de l'enregistrement de l'image : \(error)")
+           }
+       }
+        
         self.imageView.image = image
+        
         picker.dismiss(animated: true) // Enleve le picker
     }
         
 }
+
