@@ -10,11 +10,10 @@ jobs:
     steps:
       - checkout
       - run: bundle install
-      - run: cd IOS/EFD
       - run: ls -la
       - run:
           name: Fastlane
-          command: bundle exec fastlane $FASTLANE_LANE
+          command: cd IOS/EFD && bundle exec fastlane $FASTLANE_LANE
       - store_artifacts:
           path: output
       - store_test_results:
