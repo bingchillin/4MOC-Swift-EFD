@@ -15,9 +15,10 @@ jobs:
           command: cd IOS/EFD && bundle exec fastlane ios_test
       - run:
           name: Unit test
-          command: |
+          command: 
+            cd IOS/EFD|
             xcodebuild -resolvePackageDependencies
-            xcodebuild -workspace YourProjectName.xcworkspace -scheme YourSchemeName clean build-for-testing test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=15.0'
+            xcodebuild -workspace EFD.xcworkspace -scheme EFD clean build-for-testing test -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 12,OS=15.0'
       - store_artifacts:
           path: output
       - store_test_results:
