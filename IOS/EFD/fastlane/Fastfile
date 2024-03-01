@@ -16,8 +16,13 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
+  desc "Build and test"
   lane :ios_test do
-    # add actions here: https://docs.fastlane.tools/actions
+    scan(
+			include_simulator_logs: false,
+			scheme: "EFD",
+			only_testing: "EFDTests",
+			output_types: "html"
+		)
   end
 end
