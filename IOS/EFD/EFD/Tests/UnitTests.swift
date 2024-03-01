@@ -23,7 +23,43 @@ class CalculatorTests: XCTestCase {
     }
 
     func testAddition() {
-        XCTAssertEqual(calculator.add(2, 3), 6, "Adding 2 and 3 should result in 5")
+        XCTAssertEqual(calculator.add(2, 3), 5, "Adding 2 and 3 should result in 5")
     }
+}
+
+class AuthenticationManagerTests: XCTestCase {
+
+    func testSuccessfulLogin() {
+        let expectation = self.expectation(description: "Login succeeded")
+        let email = "ezezez"
+        let password = "ezezez"
+        
+            ConnexionWebServices.connectUser(email: email, password: password) { error, success, user in
+            XCTAssertNil(error, "Error should be nil")
+            XCTAssertTrue(success ?? false, "Login should succeed")
+            XCTAssertNotNil(user, "User should not be nil")
+            XCTAssertEqual(user?.email, email, "User email should match")
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testFailedLogin() {
+        let expectation = self.expectation(description: "Login failed")
+        let email = "test@test.com"
+        let password = "wrongpassword"
+        
+        ConnexionWebServices.connectUser(email: email, password: password) { error, success, user in
+            XCTAssertNotNil(error, "Error should not be nil")
+            XCTAssertFalse(success ?? true, "Login should fail")
+            XCTAssertNil(user, "User should be nil")
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    // Test other scenarios such as network errors, etc.
 }
 
