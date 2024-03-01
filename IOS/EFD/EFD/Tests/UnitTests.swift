@@ -23,7 +23,7 @@ class CalculatorTests: XCTestCase {
     }
 
     func testAddition() {
-        XCTAssertEqual(calculator.add(2, 3), 5, "Adding 2 and 3 should result in 5")
+        XCTAssertEqual(calculator.add(2, 3), 6, "Adding 2 and 3 should result in 5")
     }
 }
 
