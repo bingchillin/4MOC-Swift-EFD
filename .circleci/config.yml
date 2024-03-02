@@ -33,7 +33,7 @@ jobs:
           command: cd api/ && npm i -g @nestjs/cli
       - run:
           name: Start API
-          command: cd api/ && nest start --watch &
+          command: cd api/ && npm run start:dev
       - run:
           name: Fastlane
           command: cd IOS/EFD && bundle exec fastlane ios_test
