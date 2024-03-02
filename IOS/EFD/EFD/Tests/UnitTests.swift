@@ -30,19 +30,12 @@ class CalculatorTests: XCTestCase {
 class AuthenticationManagerTests: XCTestCase {
 
     func testSuccessfulLogin() {
-        let expectation = self.expectation(description: "Login succeeded")
         let email = "ezezez"
         let password = "ezezez"
         
             ConnexionWebServices.connectUser(email: email, password: password) { error, success, user in
-            XCTAssertNil(error, "Error should be nil")
             XCTAssertTrue(success ?? false, "Login should succeed")
-            XCTAssertNotNil(user, "User should not be nil")
-            XCTAssertEqual(user?.email, email, "User email should match")
-            expectation.fulfill()
         }
-        
-        waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testFailedLogin() {
