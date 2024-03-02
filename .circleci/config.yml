@@ -19,13 +19,13 @@ jobs:
           name: Install MongoDB
           command: |
             cd api/
-            sudo apt-get install -y mongodb
+            brew install mongodb-community
       - run:
           name: Restore MongoDB backup
           command: mongorestore
       - run:
           name: Start MongoDB service
-          command: cd api/ && sudo service mongod start
+          command: cd api/ && brew services start mongodb-community
 
       - run:
           name: Fastlane
