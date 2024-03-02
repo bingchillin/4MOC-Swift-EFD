@@ -18,11 +18,16 @@ default_platform(:ios)
 platform :ios do
   desc "Build and test"
   lane :ios_test do
-    scan(
-			include_simulator_logs: false,
-			scheme: "EFD",
-			only_testing: "EFDTests",
-			output_types: "html"
-		)
+    begin
+      scan(
+        include_simulator_logs: false,
+        scheme: "EFD",
+        only_testing: "EFDTests",
+        output_types: "html"
+      )
+    rescue => error
+      UI.error("Une erreur s'est produite lors de l'exécution des tests : #{error.message}")
+      raise error
+    end
   end
 end

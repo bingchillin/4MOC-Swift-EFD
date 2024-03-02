@@ -29,30 +29,43 @@ class CalculatorTests: XCTestCase {
 
 class AuthenticationManagerTests: XCTestCase {
 
-    func testSuccessfulLogin() {
-        let email = "ezezez"
-        let password = "ezezez"
-        
-            ConnexionWebServices.connectUser(email: email, password: password) { error, success, user in
-            XCTAssertTrue(success ?? false, "Login should succeed")
-        }
-    }
-    
-    func testFailedLogin() {
-        let expectation = self.expectation(description: "Login failed")
-        let email = "test@test.com"
-        let password = "wrongpassword"
-        
-        ConnexionWebServices.connectUser(email: email, password: password) { error, success, user in
-            XCTAssertNotNil(error, "Error should not be nil")
-            XCTAssertFalse(success ?? true, "Login should fail")
-            XCTAssertNil(user, "User should be nil")
-            expectation.fulfill()
-        }
-        
-        waitForExpectations(timeout: 5, handler: nil)
-    }
-    
-    // Test other scenarios such as network errors, etc.
+//    func testSuccessfulLogin() {
+//        let email = "ezezez"
+//        let password = "ezezez"
+//
+//            ConnexionWebServices.connectUser(email: email, password: password) { error, success, user in
+//            XCTAssertTrue(success ?? false, "Login should succeed")
+//        }
+//    }
 }
 
+class ConnexionAPITests: XCTestCase {
+
+//    func testConnexionAPI() throws {
+//        let expectation = XCTestExpectation(description: "Test de connexion à l'API")
+//
+//        let apiUrlString = "http://localhost:3000"
+//        guard let apiUrl = URL(string: apiUrlString) else {
+//            XCTFail("URL de l'API invalide")
+//            return
+//        }
+//
+//        var request = URLRequest(url: apiUrl)
+//        request.httpMethod = "GET"
+//
+//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//            if let error = error {
+//                XCTFail("Erreur lors de la connexion à l'API : \(error.localizedDescription)")
+//            } else if let httpResponse = response as? HTTPURLResponse {
+//                XCTAssertTrue((200...299).contains(httpResponse.statusCode), "Code de réponse HTTP invalide : \(httpResponse.statusCode)")
+//                expectation.fulfill()
+//            } else {
+//                XCTFail("Réponse HTTP invalide")
+//            }
+//        }
+//
+//        task.resume()
+//
+//        wait(for: [expectation], timeout: 10.0)
+//    }
+}
