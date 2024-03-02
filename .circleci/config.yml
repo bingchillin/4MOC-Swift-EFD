@@ -19,10 +19,12 @@ jobs:
           name: Install MongoDB
           command: |
             cd api/
-            brew install --cask mongodb-compass
-#      - run:
- #         name: Start MongoDB service
-  #        command: cd api/ && brew services start mongodb-community
+            brew tap mongodb/brew
+            brew update
+            brew install mongodb-community@7.0
+      - run:
+          name: Start MongoDB service
+          command: cd api/ && brew services start mongodb-community
       - run:
           name: Restore MongoDB backup
           command: mongorestore
