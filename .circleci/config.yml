@@ -33,11 +33,17 @@ jobs:
           command: cd api/ && npm i -g @nestjs/cli
       - run:
           name: Start API
-          command: cd api/ && npm run start:dev &
+          command: |
+            cd api/
+            npm run start:dev &
+            # Attendre que l'API soit prête à recevoir des requêtes
+            until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
+                printf '.'
+                sleep 1
+            done
       - run:
           name: Fastlane
           command: cd IOS/EFD && bundle exec fastlane ios_test
-
       - store_artifacts:
           path: output
       - store_test_results:
