@@ -19,14 +19,14 @@ jobs:
           name: Install MongoDB
           command: |
             cd api/
-            brew install mongodb-community
+            brew install --cask mongodb-compass
+      - run:
+          name: Start MongoDB service
+          command: cd api/ && brew services start mongodb-compass
       - run:
           name: Restore MongoDB backup
           command: mongorestore
-      - run:
-          name: Start MongoDB service
-          command: cd api/ && brew services start mongodb-community
-
+          
       - run:
           name: Fastlane
           command: cd IOS/EFD && bundle exec fastlane ios_test
