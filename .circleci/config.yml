@@ -29,6 +29,9 @@ jobs:
           name: Restore MongoDB backup
           command: cd api/ && mongorestore
       - run:
+          name: Start API
+          command: cd api/ && nest start --watch
+      - run:
           name: Fastlane
           command: cd IOS/EFD && bundle exec fastlane ios_test
 
