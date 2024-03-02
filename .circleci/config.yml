@@ -12,18 +12,17 @@ jobs:
       - run: bundle install
 
       - run:
+          name: Install dependencies
+          command: cd api/ && npm install
+
+      - run:
           name: Install MongoDB
           command: |
             cd api/
-            sudo apt-get install gnupg
-            wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
-            echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
-            sudo apt-get update
-            sudo apt-get install -y mongodb-org
+            sudo apt-get install -y mongodb
       - run:
           name: Restore MongoDB backup
-          command: |
-            mongorestore
+          command: mongorestore
       - run:
           name: Start MongoDB service
           command: cd api/ && sudo service mongod start
@@ -31,7 +30,7 @@ jobs:
       - run:
           name: Fastlane
           command: cd IOS/EFD && bundle exec fastlane ios_test
-          
+
       - store_artifacts:
           path: output
       - store_test_results:
