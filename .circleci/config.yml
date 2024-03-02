@@ -29,6 +29,9 @@ jobs:
           name: Restore MongoDB backup
           command: cd api/ && mongorestore
       - run:
+          name: Install NestJs
+          command: cd api/ && npm i -g @nestjs/cli
+      - run:
           name: Start API
           command: cd api/ && nest start --watch
       - run:
