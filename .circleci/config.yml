@@ -75,7 +75,9 @@ workflows:
   build-test-adhoc:
     jobs:
       - setup-project
-      - build-and-test
+      - build-and-test:
+          requires:
+            - setup-project
       - adhoc:
           filters:
             branches:
