@@ -42,7 +42,9 @@ jobs:
       - checkout
       - run:
           name: Ping API
-          command: curl http://localhost:3000
+          command: |
+            sleep 10
+            curl http://localhost:3000
 
   build-and-test:
     macos:
