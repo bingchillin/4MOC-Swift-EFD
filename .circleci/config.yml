@@ -33,6 +33,7 @@ jobs:
           name: Start API
           command: |
             cd api/
+            sleep 20
             npm run start:dev &
 
   ping-api:
@@ -42,8 +43,7 @@ jobs:
       - checkout
       - run:
           name: Ping API
-          command: |
-            sleep 10
+          command: 
             curl http://localhost:3000
 
   build-and-test:
