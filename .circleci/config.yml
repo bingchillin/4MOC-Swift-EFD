@@ -112,7 +112,7 @@ jobs:
           command: |
             export INSTALL_DIR=/tmp
             curl -Ls https://github.com/testappio/cli/releases/latest/download/install | bash
-            $INSTALL_DIR/ta-cli publish --api_token=$TESTAPPIO_API_TOKEN --app_id=$TESTAPPIO_APP_ID --release="ios" --ipa=./ipa/ios-staging-build.ipa --notify=true --git_release_notes=true --git_commit_id=true --source="Circle CI"
+            $INSTALL_DIR/ta-cli publish --api_token=$TESTAPPIO_API_TOKEN --app_id=$TESTAPPIO_APP_ID --release="ios" --notify=true --git_release_notes=true --git_commit_id=true --source="Circle CI"
 
 workflows:
   build-test-adhoc:
