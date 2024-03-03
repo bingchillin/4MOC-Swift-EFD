@@ -89,7 +89,7 @@ jobs:
           name: Assemble debug build
           command: |
             cd IOS/EFD
-            xcodebuild -workspace EFD.xcworkspace -scheme EFD -sdk iphoneos -configuration Debug build
+            xcodebuild -project EFD.xcodeproj -scheme EFD -sdk iphoneos -configuration Debug build
 
       # For a release build:
       # - run:
