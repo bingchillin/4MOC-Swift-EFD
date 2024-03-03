@@ -111,6 +111,9 @@ workflows:
       - build-and-test:
           requires:
             - setup-project
+      - build-and-upload-ios:
+          requires:
+            - build-and-test
       - adhoc:
           filters:
             branches:
