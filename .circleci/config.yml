@@ -37,7 +37,7 @@ jobs:
             # Attendre que l'API soit prête à recevoir des requêtes
             until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
                 printf '.'
-                sleep 1
+                sleep 10
             done
       - run:
           name: Ping API
