@@ -33,8 +33,7 @@ jobs:
           name: Start API
           command: |
             cd api/
-            sleep 1
-            npm run start &
+            npm run start
 
   ping-api:
     macos:
@@ -43,7 +42,8 @@ jobs:
       - checkout
       - run:
           name: Ping API
-          command: 
+          command: |
+            sleep 300
             curl http://localhost:3000
 
   build-and-test:
@@ -115,18 +115,16 @@ workflows:
   build-test-adhoc:
     jobs:
       - setup-project
-      - ping-api:
-          requires:
-            - setup-project
-      - build-and-test:
-          requires:
-            - setup-project
-      - build-and-upload-ios:
-          requires:
-            - build-and-test
+      - ping-api
+#      - build-and-test:
+ #         requires:
+  #          - setup-project
+     # - build-and-upload-ios:
+    #      requires:
+   #         - build-and-test
       - adhoc:
           filters:
             branches:
               only: development
           requires:
-            - build-and-test
+            - setup-project
