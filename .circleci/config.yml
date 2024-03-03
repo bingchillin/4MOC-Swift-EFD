@@ -8,6 +8,7 @@ jobs:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: test
     steps:
+      - checkout
       - run: bundle install
       - run:
           name: Install dependencies
