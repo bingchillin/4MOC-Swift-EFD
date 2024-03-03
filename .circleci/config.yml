@@ -50,7 +50,7 @@ jobs:
       - run: bundle install
       - run:
           name: Fastlane
-          command: cd IOS/EFD && bundle exec fastlane ios_test 
+          command: cd IOS/EFD && bundle exec fastlane adhoc --verbose
       - store_artifacts:
           path: output
       - store_test_results:
