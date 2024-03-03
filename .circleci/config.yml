@@ -46,9 +46,8 @@ jobs:
       - checkout
       - run:
           name: Ping API
-          command: |
-            echo "Vérification des autorisations d'exécution :"
-            ls -l api/src/main.ts
+          command:
+            curl http://localhost:3000
 
   build-and-test:
     macos:
