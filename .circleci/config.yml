@@ -1,12 +1,13 @@
 # .circleci/config.yml
 version: 2.1
+
+orbs:
+  macos: circleci/macos@2.4.1
+
 jobs:
   setup-project:
     macos:
       xcode: 14.2.0
-    environment:
-      FL_OUTPUT_DIR: output
-      FASTLANE_LANE: test
     steps:
       - checkout
       - run:
@@ -50,7 +51,7 @@ jobs:
       - run: bundle install
       - run:
           name: Fastlane
-          command: cd IOS/EFD && bundle exec fastlane adhoc --verbose
+          command: cd IOS/EFD && bundle exec fastlane ios_test 
       - store_artifacts:
           path: output
       - store_test_results:
@@ -70,6 +71,38 @@ jobs:
           command: bundle exec fastlane $FASTLANE_LANE
       - store_artifacts:
           path: output
+
+  build-and-upload-ios:
+    macos:
+      xcode: 14.2.0
+    environment: 
+      release_notes: "Release of the sample app"
+      git_release_notes: true
+      git_commit_id: false
+      notify: true
+    steps:
+      - checkout
+
+      # Uncomment one of the following lines depending on whether you want a debug or release build.
+      # For a debug build:
+      - run:
+          name: Assemble debug build
+          command: |
+            xcodebuild -workspace EFD.xcworkspace -scheme EFD -sdk iphoneos -configuration Debug build
+
+      # For a release build:
+      # - run:
+      #     name: Assemble release build
+      #     command: |
+      #       xcodebuild -workspace YourWorkspace.xcworkspace -scheme YourScheme -sdk iphoneos -configuration Release build
+
+      # Upload to TestApp.io
+      - run:
+          name: Upload to TestApp.io
+          command: |
+            export INSTALL_DIR=/tmp
+            curl -Ls https://github.com/testappio/cli/releases/latest/download/install | bash
+            $INSTALL_DIR/ta-cli publish --api_token=$TESTAPPIO_API_TOKEN --app_id=$TESTAPPIO_APP_ID --release="android" --apk=./app/build/outputs/apk/debug/app-debug.apk --release_notes=$release_notes --notify=$notify --git_release_notes=$git_release_notes --git_commit_id=$git_commit_id --source="Circle CI"
 
 workflows:
   build-test-adhoc:
