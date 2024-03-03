@@ -9,7 +9,6 @@ jobs:
       FASTLANE_LANE: test
     steps:
       - checkout
-      - run: bundle install
       - run:
           name: Install dependencies
           command: cd api/ && npm install
