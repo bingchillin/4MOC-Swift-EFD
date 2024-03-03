@@ -33,7 +33,7 @@ jobs:
           name: Start API
           command: |
             cd api/
-            npm run start
+            nest start --watch &
 
   ping-api:
     macos:
