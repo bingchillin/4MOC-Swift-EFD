@@ -7,6 +7,8 @@
 
 import XCTest
 
+@testable import EFD
+
 final class EFDTests: XCTestCase {
 
     override func setUpWithError() throws {
@@ -24,11 +26,13 @@ final class EFDTests: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
+    
+    func testSuccessfulLogin() throws {
+        let email = "ezezez"
+        let password = "ezezez"
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+            ConnexionWebServices.connectUser(email: email, password: password) { error, success, user in
+            XCTAssertTrue(success ?? false, "Login should succeed")
         }
     }
 

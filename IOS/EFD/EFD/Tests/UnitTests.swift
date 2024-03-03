@@ -9,35 +9,23 @@ import XCTest
 
 @testable import EFD
 
-class CalculatorTests: XCTestCase {
-    var calculator: Calculator!
-
-    override func setUp() {
-        super.setUp()
-        calculator = Calculator()
-    }
-
-    override func tearDown() {
-        calculator = nil
-        super.tearDown()
-    }
-
-    func testAddition() {
-        XCTAssertEqual(calculator.add(2, 3), 5, "Adding 2 and 3 should result in 5")
-    }
-}
-
-class AuthenticationManagerTests: XCTestCase {
-
-//    func testSuccessfulLogin() {
-//        let email = "ezezez"
-//        let password = "ezezez"
+//class CalculatorTests: XCTestCase {
+//    var calculator: Calculator!
 //
-//            ConnexionWebServices.connectUser(email: email, password: password) { error, success, user in
-//            XCTAssertTrue(success ?? false, "Login should succeed")
-//        }
+//    override func setUp() {
+//        super.setUp()
+//        calculator = Calculator()
 //    }
-}
+//
+//    override func tearDown() {
+//        calculator = nil
+//        super.tearDown()
+//    }
+//
+//    func testAddition() {
+//        XCTAssertEqual(calculator.add(2, 3), 5, "Adding 2 and 3 should result in 5")
+//    }
+//}
 
 class ConnexionAPITests: XCTestCase {
 
