@@ -1,20 +1,19 @@
 # .circleci/config.yml
 version: 2.1
 jobs:
-  build-and-test:
+  setup-project:
     macos:
       xcode: 14.2.0
     environment:
       FL_OUTPUT_DIR: output
-      FASTLANE_LANE: ios_test
+      FASTLANE_LANE: test
     steps:
-      - checkout
-      - run: bundle install
-
       - run:
           name: Install dependencies
           command: cd api/ && npm install
-
+      - run:
+          name: Install NestJs
+          command: cd api/ && npm i -g @nestjs/cli
       - run:
           name: Install MongoDB
           command: |
@@ -29,9 +28,6 @@ jobs:
           name: Restore MongoDB backup
           command: cd api/ && mongorestore
       - run:
-          name: Install NestJs
-          command: cd api/ && npm i -g @nestjs/cli
-      - run:
           name: Start API
           command: |
             cd api/
@@ -41,6 +37,16 @@ jobs:
                 printf '.'
                 sleep 1
             done
+
+  build-and-test:
+    macos:
+      xcode: 14.2.0
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: ios_test
+    steps:
+      - checkout
+      - run: bundle install
       - run:
           name: Fastlane
           command: cd IOS/EFD && bundle exec fastlane ios_test 
@@ -67,6 +73,7 @@ jobs:
 workflows:
   build-test-adhoc:
     jobs:
+      - setup-project
       - build-and-test
       - adhoc:
           filters:
