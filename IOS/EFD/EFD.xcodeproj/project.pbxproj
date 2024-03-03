@@ -45,6 +45,7 @@
 		D7B351302B9280F10003D633 /* EFDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B3512F2B9280F10003D633 /* EFDTests.swift */; };
 		D7B351372B92812B0003D633 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B351362B92812B0003D633 /* UnitTests.swift */; };
 		D7B3513C2B9282140003D633 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B3513B2B9282140003D633 /* Calculator.swift */; };
+		D7B3513F2B94B3140003D633 /* exportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7B3513E2B94B3140003D633 /* exportOptions.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		D7B3512F2B9280F10003D633 /* EFDTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFDTests.swift; sourceTree = "<group>"; };
 		D7B351362B92812B0003D633 /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
 		D7B3513B2B9282140003D633 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		D7B3513E2B94B3140003D633 /* exportOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = exportOptions.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 				C0B5E7882B66B01100A2D3B9 /* LaunchScreen.storyboard */,
 				C0B5E78B2B66B01100A2D3B9 /* Info.plist */,
 				D7B3511D2B7A597A0003D633 /* Localizable.strings */,
+				D7B3513E2B94B3140003D633 /* exportOptions.plist */,
 			);
 			path = EFD;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				C019E49D2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.xib in Resources */,
 				C0B5E7872B66B01100A2D3B9 /* Assets.xcassets in Resources */,
 				C0B5E7992B66DB7A00A2D3B9 /* InscriptionViewController.xib in Resources */,
+				D7B3513F2B94B3140003D633 /* exportOptions.plist in Resources */,
 				C03584382B6C612D007F453B /* DeliveryViewController.xib in Resources */,
 				C099C5162B7D876400683CF8 /* ItemDetailsViewController.xib in Resources */,
 				C099C50D2B7C34EC00683CF8 /* AssignPackageViewController.xib in Resources */,
