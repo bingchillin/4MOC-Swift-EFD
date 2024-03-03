@@ -118,7 +118,9 @@ workflows:
   build-test-adhoc:
     jobs:
       - setup-project
-      - ping-api
+      - ping-api:
+          requires: 
+            - setup-project
 #      - build-and-test:
  #         requires:
   #          - setup-project
