@@ -104,7 +104,7 @@ jobs:
           command: |
             cd IOS/EFD
             xcodebuild -project EFD.xcodeproj -scheme EFD -sdk iphoneos -configuration Debug -destination generic/platform=iOS build archive -archivePath build/EFD.xcarchive
-            xcodebuild -exportArchive -archivePath build/EFD.xcarchive -exportOptionsPlist EFD/exportOptions.plist -exportPath build
+            xcodebuild -exportArchive -archivePath build/EFD.xcarchive -exportOptionsPlist EFD/exportOptions.plist -exportPath build -allowProvisioningUpdates
 
 
       # For a release build:
