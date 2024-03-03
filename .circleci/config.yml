@@ -34,11 +34,12 @@ jobs:
           command: |
             cd api/
             npm run start:dev &
-            # Attendre que l'API soit prête à recevoir des requêtes
-            until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
-                printf '.'
-                sleep 10
-            done
+
+  ping-api:
+    macos:
+      xcode: 14.2.0
+    steps:
+      - checkout
       - run:
           name: Ping API
           command: curl http://localhost:3000
@@ -112,6 +113,9 @@ workflows:
   build-test-adhoc:
     jobs:
       - setup-project
+      - ping-api:
+          requires:
+            - setup-project
       - build-and-test:
           requires:
             - setup-project
