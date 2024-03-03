@@ -43,8 +43,10 @@ jobs:
       - run:
           name: Ping API
           command: |
-            sleep 300
-            curl http://localhost:3000
+            echo "Variables d'environnement dans Fastlane :"
+            printenv
+            echo "Variables d'environnement dans le terminal :"
+            env 
 
   build-and-test:
     macos:
