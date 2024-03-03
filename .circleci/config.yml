@@ -34,6 +34,10 @@ jobs:
           command: |
             cd api/
             nest start --watch &
+            until $(curl --output /dev/null --silent --head --fail http://localhost:3000); do
+                printf '.'
+                sleep 1
+            done
 
   ping-api:
     macos:
@@ -43,10 +47,8 @@ jobs:
       - run:
           name: Ping API
           command: |
-            echo "Variables d'environnement dans Fastlane :"
-            printenv
-            echo "Variables d'environnement dans le terminal :"
-            env 
+            echo "Vérification des autorisations d'exécution :"
+            ls -l api/src/main.ts
 
   build-and-test:
     macos:
