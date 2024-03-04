@@ -71,6 +71,13 @@ export declare class PackageService {
     } & Required<{
         _id: import("mongoose").Types.ObjectId;
     }>)[]>;
+    findPackageByUserIdSuccess(idUserClient: string): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, Package> & Package & {
+        _id: import("mongoose").Types.ObjectId;
+    }> & import("mongoose").Document<unknown, {}, Package> & Package & {
+        _id: import("mongoose").Types.ObjectId;
+    } & Required<{
+        _id: import("mongoose").Types.ObjectId;
+    }>)[]>;
     findPackageByDeliveryId(idUserDelivery: string): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, Package> & Package & {
         _id: import("mongoose").Types.ObjectId;
     }> & import("mongoose").Document<unknown, {}, Package> & Package & {

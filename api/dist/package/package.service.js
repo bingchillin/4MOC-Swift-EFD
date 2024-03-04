@@ -42,6 +42,9 @@ let PackageService = class PackageService {
     async findPackageByUserId(idUserClient) {
         return await this.packageDocumentModel.find({ idUserClient: idUserClient }).exec();
     }
+    async findPackageByUserIdSuccess(idUserClient) {
+        return await this.packageDocumentModel.find({ idUserClient: idUserClient, status: "success" }).exec();
+    }
     async findPackageByDeliveryId(idUserDelivery) {
         return await this.packageDocumentModel.find({ idUserDelivery: idUserDelivery }).exec();
     }

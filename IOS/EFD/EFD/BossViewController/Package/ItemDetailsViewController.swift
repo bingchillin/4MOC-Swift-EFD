@@ -26,6 +26,10 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet weak var labelNoPicture: UILabel!
     @IBOutlet weak var buttonValidate: UIButton!
     
+    @IBOutlet weak var buttonError: UIButton!
+
+    @IBOutlet weak var buttonPackValidate: UIButton!
+    
     
     var package : Package!
     var user: User!
@@ -49,6 +53,7 @@ class ItemDetailsViewController: UIViewController {
         displayD()
         displayDet()
         displayI()
+        displayClient()
         
         
         
@@ -69,7 +74,7 @@ class ItemDetailsViewController: UIViewController {
             buttonValidate.isHidden = false
             imageView.isHidden = false
         }
-        else if user.role == "admin" {
+        else if user.role == "admin" || user.role == "client" {
             imageViewAdmin.isHidden = false
         }
         
@@ -109,7 +114,6 @@ class ItemDetailsViewController: UIViewController {
         }
         
         if !package.idUserDelivery!.isEmpty {
-            print("okk12")
             DeliveryWebServices.getDeliveryUnique(id: package.idUserDelivery!) { err, success, user  in
                 DispatchQueue.main.async { [self] in
                     if let user = user {
@@ -126,11 +130,11 @@ class ItemDetailsViewController: UIViewController {
     }
     
     func displayI() {
-        if user.role == "admin" {
+        if user.role == "admin" || user.role == "client" {
             if !package.proof.isEmpty {
                 // Spécifiez le chemin complet de l'image
                 let imagePath = package.proof
-
+                
                 // Chargez l'image à partir du chemin spécifié
                 if let image = UIImage(contentsOfFile: imagePath) {
                     // Afficher l'image dans votre UIImageView
@@ -147,7 +151,85 @@ class ItemDetailsViewController: UIViewController {
         
 
     }
+    
+    func displayClient() {
+        if user.role == "client" {
+            buttonError.isHidden = false
+            buttonPackValidate.isHidden = false
+            
+        }
+    }
+    
+    @IBAction func goToPackValidate(_ sender: Any) {
+        let alertVerif = UIAlertController(title: "Demande de validation", message: "Ce colis vous est bien arrivé ?", preferredStyle: .alert)
+        
+        // Action "Oui"
+        alertVerif.addAction(UIAlertAction(title: "Oui", style: .default, handler: { _ in
+           
+            PackageWebServices.modifyStatusPackageC(idP: self.package.id, status: "close"){ err, success in
+                    guard (success != nil) else {
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        if success == true {
+                            let alert = UIAlertController(title: "Validation executée", message: "La validation a bien été effectuée", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: { _ in
+                                let hViewController = HomeViewController()
+                                self.navigationController?.pushViewController(hViewController, animated: true)
+                            }))
+                            self.present(alert, animated: true)
+                            
 
+                        }else{
+                            let alertError = UIAlertController(title: "Suppression impossible", message: "Error: suppression impossible", preferredStyle: .alert)
+                            alertError.addAction(UIAlertAction(title: "Fermer", style: .cancel))
+                            self.present(alertError, animated: true)
+                        }
+                        
+                    }
+            }
+        }))
+
+        // Action "Non"
+        alertVerif.addAction(UIAlertAction(title: "Non", style: .cancel))
+        self.present(alertVerif, animated: true)
+    }
+    
+    @IBAction func goToError(_ sender: Any) {
+        let alertVerif = UIAlertController(title: "Demande de validation", message: "Etes vous sur de vouloir mentiionné une erreur sur ce coli ?", preferredStyle: .alert)
+        
+        // Action "Oui"
+        alertVerif.addAction(UIAlertAction(title: "Oui", style: .default, handler: { _ in
+           
+            PackageWebServices.modifyStatusPackageC(idP: self.package.id, status: "error"){ err, success in
+                    guard (success != nil) else {
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        if success == true {
+                            let alert = UIAlertController(title: "Erreur validée", message: "L'erreur a bien été prise en compte, nous reviendrons vers vous", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Fermer", style: .cancel, handler: { _ in
+                                let hViewController = HomeViewController()
+                                self.navigationController?.pushViewController(hViewController, animated: true)
+                            }))
+                            self.present(alert, animated: true)
+                            
+
+                        }else{
+                            let alertError = UIAlertController(title: "Suppression impossible", message: "Error: suppression impossible", preferredStyle: .alert)
+                            alertError.addAction(UIAlertAction(title: "Fermer", style: .cancel))
+                            self.present(alertError, animated: true)
+                        }
+                        
+                    }
+            }
+        }))
+
+        // Action "Non"
+        alertVerif.addAction(UIAlertAction(title: "Non", style: .cancel))
+        self.present(alertVerif, animated: true)
+    }
+    
     
     @objc func openCamera(){
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {

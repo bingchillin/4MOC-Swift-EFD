@@ -20,6 +20,7 @@ class ConnexionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
         
 
         buttonConnexion.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis

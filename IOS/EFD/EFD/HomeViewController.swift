@@ -18,6 +18,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var buttonValidate: UIButton!
     @IBOutlet weak var labelRound: UILabel!
     
+    @IBOutlet weak var labelPackageClient: UILabel!
+    @IBOutlet weak var buttonHistory: UIButton!
+    @IBOutlet weak var buttonCreate: UIButton!
+    @IBOutlet weak var buttonDeconnect: UIButton!
+    @IBOutlet weak var buttonReload: UIButton!
     @IBOutlet weak var tableViewPackages: UITableView!
     @IBOutlet weak var labelEmptyPackage: UILabel!
     
@@ -108,6 +113,26 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func getPackagesByClientSuccess(id: String) {
+        PackageWebServices.getListClientPackageSuccess(id: id) { error, success, packages in
+            DispatchQueue.main.async {
+                if let packages = packages, !packages.isEmpty {
+                    self.labelEmptyPackage.textColor = UIColor.white
+                    self.labelEmptyPackage.isHidden = true
+                    self.packageList = packages
+                    self.tableViewPackages.reloadData()
+                }
+                else {
+                    //Si liste retour vide ou erreur
+                    self.labelEmptyPackage.textColor = UIColor.black
+                    self.labelEmptyPackage.isHidden = false
+                    self.labelEmptyPackage.text = "Vous n'avez pas de colis en cours"
+                    self.tableViewPackages.isHidden = true
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // hide back button
@@ -129,6 +154,10 @@ class HomeViewController: UIViewController {
         buttonDeliveryMan.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         buttonDetail.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         buttonAssign.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
+        buttonDeconnect.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
+        buttonReload.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
+        buttonCreate.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
+        buttonHistory.layer.cornerRadius = 8.00 // Pour obtenir les coins arrondis
         
         tableViewPackages.dataSource = self
         tableViewPackages.delegate = self
@@ -169,8 +198,21 @@ class HomeViewController: UIViewController {
         self.navigationController?.pushViewController(dmViewController, animated: true)
     }
     
+    @IBAction func goToDeconnect(_ sender: Any) {
+        UserInMemoryService.shared.clearCache()
+        let cViewController = ConnexionViewController()
+        self.navigationController?.pushViewController(cViewController, animated: true)
+    }
     
+    @IBAction func goToReload(_ sender: Any) {
+        let cViewController = HomeViewController()
+        self.navigationController?.pushViewController(cViewController, animated: false)
+    }
     
+    @IBAction func goToCreation(_ sender: Any) {
+        let cPViewController = CreatePackageClientViewController()
+        self.navigationController?.pushViewController(cPViewController, animated: false)
+    }
     
     public func displayViewByRole(role: String) -> Void {
         if role == "admin" {
@@ -180,6 +222,7 @@ class HomeViewController: UIViewController {
             labelRound.isHidden = false
             buttonDetail.isHidden = false
             tableViewPackages.isHidden = false
+            buttonReload.isHidden = false
             
             getAllPackages()
         } else if role == "livreur" {
@@ -187,8 +230,20 @@ class HomeViewController: UIViewController {
             buttonMap.isHidden = false
             buttonValidate.isHidden = true
             buttonAssign.isHidden = true
+            buttonReload.isHidden = false
             
             getPackagesByLivreurLoading(id: user.id!)
+        }else if role == "client" {
+            tableViewPackages.isHidden = false
+            buttonMap.isHidden = true
+            buttonValidate.isHidden = true
+            buttonAssign.isHidden = true
+            buttonReload.isHidden = false
+            labelPackageClient.isHidden = false
+            buttonCreate.isHidden = false
+            buttonHistory.isHidden = false
+            
+            getPackagesByClientSuccess(id: user.id!)
         }
     }
 }
@@ -201,9 +256,8 @@ extension HomeViewController: UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if user.role == "livreur" {
+        if user.role == "livreur" || user.role == "client" {
             
-            print("ook1")
             let package = packageList[indexPath.row]
             let nextController = ItemDetailsViewController.newInstance(package: package)
             self.navigationController?.pushViewController(nextController, animated: true)

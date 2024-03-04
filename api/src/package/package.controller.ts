@@ -32,6 +32,11 @@ export class PackageController {
     return this.packageService.findPackageByUserId(id);
   }
 
+  @Get('user/:id/success')
+  findPackageByUserIdSuccess(@Param('id') id: string) {
+    return this.packageService.findPackageByUserIdSuccess(id);
+  }
+
   @Get('delivery/:id')
   findPackageByDeliveryId(@Param('id') id: string) {
     return this.packageService.findPackageByDeliveryId(id);

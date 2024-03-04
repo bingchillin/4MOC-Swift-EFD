@@ -23,6 +23,7 @@ class InscriptionViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
         
         setupButton()
         setupTextField()

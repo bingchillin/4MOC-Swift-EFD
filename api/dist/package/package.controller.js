@@ -36,6 +36,9 @@ let PackageController = class PackageController {
     findPackageByUseId(id) {
         return this.packageService.findPackageByUserId(id);
     }
+    findPackageByUserIdSuccess(id) {
+        return this.packageService.findPackageByUserIdSuccess(id);
+    }
     findPackageByDeliveryId(id) {
         return this.packageService.findPackageByDeliveryId(id);
     }
@@ -85,6 +88,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], PackageController.prototype, "findPackageByUseId", null);
+__decorate([
+    (0, common_1.Get)('user/:id/success'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], PackageController.prototype, "findPackageByUserIdSuccess", null);
 __decorate([
     (0, common_1.Get)('delivery/:id'),
     __param(0, (0, common_1.Param)('id')),

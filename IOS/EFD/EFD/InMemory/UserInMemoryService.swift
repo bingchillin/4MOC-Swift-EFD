@@ -22,4 +22,9 @@ class UserInMemoryService {
     func userValue() -> User? {
         return cache
     }
+    
+    // Fonction pour supprimer le cache
+    func clearCache() {
+        cache = nil
+    }
 }

@@ -24,6 +24,8 @@
 		C03584382B6C612D007F453B /* DeliveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03584362B6C612D007F453B /* DeliveryViewController.xib */; };
 		C035843B2B6C640F007F453B /* CreateDeliveryManViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03584392B6C640F007F453B /* CreateDeliveryManViewController.swift */; };
 		C035843C2B6C640F007F453B /* CreateDeliveryManViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C035843A2B6C640F007F453B /* CreateDeliveryManViewController.xib */; };
+		C0794B0E2B952C340090F5D2 /* CreatePackageClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0794B0C2B952C340090F5D2 /* CreatePackageClientViewController.swift */; };
+		C0794B0F2B952C340090F5D2 /* CreatePackageClientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0794B0D2B952C340090F5D2 /* CreatePackageClientViewController.xib */; };
 		C099C50C2B7C34EC00683CF8 /* AssignPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099C50A2B7C34EC00683CF8 /* AssignPackageViewController.swift */; };
 		C099C50D2B7C34EC00683CF8 /* AssignPackageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C099C50B2B7C34EC00683CF8 /* AssignPackageViewController.xib */; };
 		C099C5102B7D717500683CF8 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C099C50E2B7D717500683CF8 /* DetailsViewController.swift */; };
@@ -62,6 +64,8 @@
 		C03584362B6C612D007F453B /* DeliveryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeliveryViewController.xib; sourceTree = "<group>"; };
 		C03584392B6C640F007F453B /* CreateDeliveryManViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDeliveryManViewController.swift; sourceTree = "<group>"; };
 		C035843A2B6C640F007F453B /* CreateDeliveryManViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateDeliveryManViewController.xib; sourceTree = "<group>"; };
+		C0794B0C2B952C340090F5D2 /* CreatePackageClientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePackageClientViewController.swift; sourceTree = "<group>"; };
+		C0794B0D2B952C340090F5D2 /* CreatePackageClientViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatePackageClientViewController.xib; sourceTree = "<group>"; };
 		C099C50A2B7C34EC00683CF8 /* AssignPackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignPackageViewController.swift; sourceTree = "<group>"; };
 		C099C50B2B7C34EC00683CF8 /* AssignPackageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AssignPackageViewController.xib; sourceTree = "<group>"; };
 		C099C50E2B7D717500683CF8 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 		B9ED8A012B6A3B7500ECFB74 /* BossViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C0794B0B2B952C140090F5D2 /* Client */,
 				C099C5092B7C34C900683CF8 /* Package */,
 				C03584342B6C6105007F453B /* DeliveryMan */,
 			);
@@ -149,6 +154,15 @@
 				C019E49B2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.xib */,
 			);
 			path = DeliveryMan;
+			sourceTree = "<group>";
+		};
+		C0794B0B2B952C140090F5D2 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				C0794B0C2B952C340090F5D2 /* CreatePackageClientViewController.swift */,
+				C0794B0D2B952C340090F5D2 /* CreatePackageClientViewController.xib */,
+			);
+			path = Client;
 			sourceTree = "<group>";
 		};
 		C099C5092B7C34C900683CF8 /* Package */ = {
@@ -295,6 +309,7 @@
 				C019E49D2B71912C00AD41F8 /* ModifyItemDeliveryListViewController.xib in Resources */,
 				C0B5E7872B66B01100A2D3B9 /* Assets.xcassets in Resources */,
 				C0B5E7992B66DB7A00A2D3B9 /* InscriptionViewController.xib in Resources */,
+				C0794B0F2B952C340090F5D2 /* CreatePackageClientViewController.xib in Resources */,
 				C03584382B6C612D007F453B /* DeliveryViewController.xib in Resources */,
 				C099C5162B7D876400683CF8 /* ItemDetailsViewController.xib in Resources */,
 				C099C50D2B7C34EC00683CF8 /* AssignPackageViewController.xib in Resources */,
@@ -314,6 +329,7 @@
 			files = (
 				C03584302B66F2AA007F453B /* HomeViewController.swift in Sources */,
 				C035842D2B66EBB9007F453B /* ConnexionWebServices.swift in Sources */,
+				C0794B0E2B952C340090F5D2 /* CreatePackageClientViewController.swift in Sources */,
 				C03584372B6C612D007F453B /* DeliveryViewController.swift in Sources */,
 				C0B5E7932B66D42B00A2D3B9 /* ConnexionViewController.swift in Sources */,
 				C0090D1A2B73BE8800200154 /* UserInMemoryService.swift in Sources */,

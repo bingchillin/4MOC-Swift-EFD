@@ -37,6 +37,10 @@ export class PackageService {
     return await this.packageDocumentModel.find({ idUserClient: idUserClient }).exec();
   }
 
+  async findPackageByUserIdSuccess(idUserClient: string) {
+    return await this.packageDocumentModel.find({ idUserClient: idUserClient, status: "success" }).exec();
+  }
+
   async findPackageByDeliveryId(idUserDelivery: string) {
     return await this.packageDocumentModel.find({ idUserDelivery: idUserDelivery }).exec();
   }
