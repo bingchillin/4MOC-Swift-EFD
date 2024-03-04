@@ -71,8 +71,10 @@ class InscriptionViewController: UIViewController, UITextFieldDelegate {
                             let cache = UserInMemoryService.shared
                             cache.setValue(user!)
                             
-                            let homeViewController = HomeViewController()
-                            self.navigationController?.pushViewController(homeViewController, animated: true)
+                            //let homeViewController = HomeViewController()
+                            //self.navigationController?.pushViewController(homeViewController, animated: true)
+                            self.textFieldReturnMessageError.text = "L'utilisateur a été ajouté avec succès, veuillez vous connecter."
+                            self.textFieldReturnMessageError.textColor = UIColor.green
                         }else{
                             self.textFieldReturnMessageError.text = "Cette utilisateur existe déjà"
                             self.textFieldReturnMessageError.textColor = UIColor.red
