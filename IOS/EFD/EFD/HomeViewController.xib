@@ -29,6 +29,7 @@
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EFD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBn-ON-NCs">
                     <rect key="frame" x="0.0" y="78" width="428" height="65"/>
+                    <accessibility key="accessibilityConfiguration" identifier="welcomeLabelIdentifier"/>
                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="54"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>

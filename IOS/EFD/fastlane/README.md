@@ -23,6 +23,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Build and test
 
+### ios beta
+
+```sh
+[bundle exec] fastlane ios beta
+```
+
+Build and test IPA
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

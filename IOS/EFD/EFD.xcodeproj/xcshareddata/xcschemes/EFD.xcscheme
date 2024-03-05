@@ -39,6 +39,17 @@
                ReferencedContainer = "container:EFD.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D74B0A2C2B96B02B00B76D9E"
+               BuildableName = "EFDUITests.xctest"
+               BlueprintName = "EFDUITests"
+               ReferencedContainer = "container:EFD.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -27,33 +27,4 @@ import XCTest
 //    }
 //}
 
-class ConnexionAPITests: XCTestCase {
 
-//    func testConnexionAPI() throws {
-//        let expectation = XCTestExpectation(description: "Test de connexion à l'API")
-//
-//        let apiUrlString = "http://localhost:3000"
-//        guard let apiUrl = URL(string: apiUrlString) else {
-//            XCTFail("URL de l'API invalide")
-//            return
-//        }
-//
-//        var request = URLRequest(url: apiUrl)
-//        request.httpMethod = "GET"
-//
-//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//            if let error = error {
-//                XCTFail("Erreur lors de la connexion à l'API : \(error.localizedDescription)")
-//            } else if let httpResponse = response as? HTTPURLResponse {
-//                XCTAssertTrue((200...299).contains(httpResponse.statusCode), "Code de réponse HTTP invalide : \(httpResponse.statusCode)")
-//                expectation.fulfill()
-//            } else {
-//                XCTFail("Réponse HTTP invalide")
-//            }
-//        }
-//
-//        task.resume()
-//
-//        wait(for: [expectation], timeout: 10.0)
-//    }
-}

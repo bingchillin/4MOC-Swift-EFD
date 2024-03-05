@@ -38,6 +38,8 @@
 		C0B5E7982B66DB7A00A2D3B9 /* InscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5E7962B66DB7A00A2D3B9 /* InscriptionViewController.swift */; };
 		C0B5E7992B66DB7A00A2D3B9 /* InscriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0B5E7972B66DB7A00A2D3B9 /* InscriptionViewController.xib */; };
 		C0BC4AB32B75438F005142CD /* PackageWebServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC4AB22B75438F005142CD /* PackageWebServices.swift */; };
+		D74B0A302B96B02B00B76D9E /* EFDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74B0A2F2B96B02B00B76D9E /* EFDUITests.swift */; };
+		D74B0A322B96B02B00B76D9E /* EFDUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74B0A312B96B02B00B76D9E /* EFDUITestsLaunchTests.swift */; };
 		D7B351132B76C37B0003D633 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B351112B76C37B0003D633 /* MapViewController.swift */; };
 		D7B351142B76C37B0003D633 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7B351122B76C37B0003D633 /* MapViewController.xib */; };
 		D7B3511B2B7A597A0003D633 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7B3511D2B7A597A0003D633 /* Localizable.strings */; };
@@ -49,6 +51,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D74B0A332B96B02B00B76D9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0B5E7722B66B00F00A2D3B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0B5E7792B66B00F00A2D3B9;
+			remoteInfo = EFD;
+		};
 		D7B351312B9280F10003D633 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C0B5E7722B66B00F00A2D3B9 /* Project object */;
@@ -92,6 +101,9 @@
 		C0B5E7962B66DB7A00A2D3B9 /* InscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InscriptionViewController.swift; sourceTree = "<group>"; };
 		C0B5E7972B66DB7A00A2D3B9 /* InscriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InscriptionViewController.xib; sourceTree = "<group>"; };
 		C0BC4AB22B75438F005142CD /* PackageWebServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageWebServices.swift; sourceTree = "<group>"; };
+		D74B0A2D2B96B02B00B76D9E /* EFDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EFDUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D74B0A2F2B96B02B00B76D9E /* EFDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFDUITests.swift; sourceTree = "<group>"; };
+		D74B0A312B96B02B00B76D9E /* EFDUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFDUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D7B351112B76C37B0003D633 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D7B351122B76C37B0003D633 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		D7B3511C2B7A597A0003D633 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -107,6 +119,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		C0B5E7772B66B00F00A2D3B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D74B0A2A2B96B02B00B76D9E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -195,6 +214,7 @@
 			children = (
 				C0B5E77C2B66B00F00A2D3B9 /* EFD */,
 				D7B3512E2B9280F10003D633 /* EFDTests */,
+				D74B0A2E2B96B02B00B76D9E /* EFDUITests */,
 				C0B5E77B2B66B00F00A2D3B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -204,6 +224,7 @@
 			children = (
 				C0B5E77A2B66B00F00A2D3B9 /* EFD.app */,
 				D7B3512D2B9280F10003D633 /* EFDTests.xctest */,
+				D74B0A2D2B96B02B00B76D9E /* EFDUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -239,6 +260,15 @@
 				C0B5E7972B66DB7A00A2D3B9 /* InscriptionViewController.xib */,
 			);
 			path = Connexion;
+			sourceTree = "<group>";
+		};
+		D74B0A2E2B96B02B00B76D9E /* EFDUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D74B0A2F2B96B02B00B76D9E /* EFDUITests.swift */,
+				D74B0A312B96B02B00B76D9E /* EFDUITestsLaunchTests.swift */,
+			);
+			path = EFDUITests;
 			sourceTree = "<group>";
 		};
 		D7B351102B76C3430003D633 /* Map */ = {
@@ -295,6 +325,24 @@
 			productReference = C0B5E77A2B66B00F00A2D3B9 /* EFD.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D74B0A2C2B96B02B00B76D9E /* EFDUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D74B0A352B96B02B00B76D9E /* Build configuration list for PBXNativeTarget "EFDUITests" */;
+			buildPhases = (
+				D74B0A292B96B02B00B76D9E /* Sources */,
+				D74B0A2A2B96B02B00B76D9E /* Frameworks */,
+				D74B0A2B2B96B02B00B76D9E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D74B0A342B96B02B00B76D9E /* PBXTargetDependency */,
+			);
+			name = EFDUITests;
+			productName = EFDUITests;
+			productReference = D74B0A2D2B96B02B00B76D9E /* EFDUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		D7B3512C2B9280F10003D633 /* EFDTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7B351332B9280F10003D633 /* Build configuration list for PBXNativeTarget "EFDTests" */;
@@ -326,6 +374,10 @@
 					C0B5E7792B66B00F00A2D3B9 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
+					D74B0A2C2B96B02B00B76D9E = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = C0B5E7792B66B00F00A2D3B9;
+					};
 					D7B3512C2B9280F10003D633 = {
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = C0B5E7792B66B00F00A2D3B9;
@@ -349,6 +401,7 @@
 			targets = (
 				C0B5E7792B66B00F00A2D3B9 /* EFD */,
 				D7B3512C2B9280F10003D633 /* EFDTests */,
+				D74B0A2C2B96B02B00B76D9E /* EFDUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -373,6 +426,13 @@
 				D7B351142B76C37B0003D633 /* MapViewController.xib in Resources */,
 				C099C5112B7D717500683CF8 /* DetailsViewController.xib in Resources */,
 				C019E4992B718CA100AD41F8 /* ItemDeliveryListViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D74B0A2B2B96B02B00B76D9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +475,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D74B0A292B96B02B00B76D9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D74B0A322B96B02B00B76D9E /* EFDUITestsLaunchTests.swift in Sources */,
+				D74B0A302B96B02B00B76D9E /* EFDUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7B351292B9280F10003D633 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -427,6 +496,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D74B0A342B96B02B00B76D9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0B5E7792B66B00F00A2D3B9 /* EFD */;
+			targetProxy = D74B0A332B96B02B00B76D9E /* PBXContainerItemProxy */;
+		};
 		D7B351322B9280F10003D633 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C0B5E7792B66B00F00A2D3B9 /* EFD */;
@@ -581,7 +655,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EFD/Info.plist;
@@ -610,7 +684,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EFD/Info.plist;
@@ -632,13 +706,49 @@
 			};
 			name = Release;
 		};
+		D74B0A362B96B02B00B76D9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EFDUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EFD;
+			};
+			name = Debug;
+		};
+		D74B0A372B96B02B00B76D9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.EFDUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EFD;
+			};
+			name = Release;
+		};
 		D7B351342B9280F10003D633 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MARKETING_VERSION = 1.0;
@@ -657,7 +767,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MARKETING_VERSION = 1.0;
@@ -687,6 +797,15 @@
 			buildConfigurations = (
 				C0B5E78F2B66B01100A2D3B9 /* Debug */,
 				C0B5E7902B66B01100A2D3B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D74B0A352B96B02B00B76D9E /* Build configuration list for PBXNativeTarget "EFDUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D74B0A362B96B02B00B76D9E /* Debug */,
+				D74B0A372B96B02B00B76D9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

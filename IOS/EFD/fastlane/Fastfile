@@ -16,13 +16,13 @@
 default_platform(:ios)
 
 platform :ios do
+
   desc "Build and test"
   lane :ios_test do
     begin
       scan(
         include_simulator_logs: false,
         scheme: "EFD",
-        only_testing: "EFDTests",
         output_types: "html"
       )
     rescue => error
@@ -30,4 +30,26 @@ platform :ios do
       raise error
     end
   end
+
+  desc "Build and test IPA"
+  lane :beta do
+    increment_build_number
+    match(type: "adhoc")
+    gym(export_method: "ad-hoc")
+  
+    upload_to_testappio(
+      api_token: "$TESTAPPIO_API_TOKEN",
+      app_id: "$TESTAPPIO_APP_ID",
+      release: "ios",
+      ipa_file: "./EFD/build/EFD.ipa",
+      release_notes: "Manual release notes for iOS",
+      git_release_notes: true,
+      git_commit_id: false,
+      notify: false
+    )
+    
+    clean_build_artifacts #optional
+    
+  end
+
 end

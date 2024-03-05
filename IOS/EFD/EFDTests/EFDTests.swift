@@ -10,21 +10,12 @@ import XCTest
 @testable import EFD
 
 final class EFDTests: XCTestCase {
-
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
     
     func testSuccessfulLogin() throws {
@@ -36,4 +27,31 @@ final class EFDTests: XCTestCase {
         }
     }
 
+    func testConnexionAPI() throws {
+        let expectation = XCTestExpectation(description: "Test de connexion à l'API")
+
+        let apiUrlString = "http://localhost:3000"
+        guard let apiUrl = URL(string: apiUrlString) else {
+            XCTFail("URL de l'API invalide")
+            return
+        }
+
+        var request = URLRequest(url: apiUrl)
+        request.httpMethod = "GET"
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                XCTFail("Erreur lors de la connexion à l'API : \(error.localizedDescription)")
+            } else if let httpResponse = response as? HTTPURLResponse {
+                XCTAssertTrue((200...299).contains(httpResponse.statusCode), "Code de réponse HTTP invalide : \(httpResponse.statusCode)")
+                expectation.fulfill()
+            } else {
+                XCTFail("Réponse HTTP invalide")
+            }
+        }
+
+        task.resume()
+
+        wait(for: [expectation], timeout: 10.0)
+    }
 }
