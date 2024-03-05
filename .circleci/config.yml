@@ -113,9 +113,7 @@ workflows:
       - ping-api:
           requires: 
             - setup-project
-      - build-and-test:
-          requires:
-            - ping-api
+      - build-and-test
       - build-and-upload-ios:
           requires:
             - build-and-test
