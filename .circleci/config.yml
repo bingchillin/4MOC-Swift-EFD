@@ -96,8 +96,8 @@ jobs:
           command: |
             cd IOS/EFD
             xcodebuild -project EFD.xcodeproj -scheme EFD -sdk iphoneos -configuration Debug -destination generic/platform=iOS build archive -archivePath build/EFD.xcarchive
-            xcodebuild -exportArchive -archivePath "buid/EFD.xcarchive" -exportPath "build/" -exportOptionsPlist -
-
+            xcodebuild -exportArchive -archivePath "buid/EFD.xcarchive" -exportPath "build/" -exportOptionsPlist '{}'
+            
       # For a release build:
       # - run:
       #     name: Assemble release build
@@ -113,21 +113,19 @@ jobs:
             $INSTALL_DIR/ta-cli publish --api_token=$TESTAPPIO_API_TOKEN --app_id=$TESTAPPIO_APP_ID --release="ios" --ipa=./IOS/EFD/build/EFD.ipa --notify=true --git_release_notes=true --git_commit_id=true --source="Circle CI"
 
 workflows:
-  build-test-adhoc:
+  build-test:
     jobs:
-      - setup-project
+      #- setup-project
 #      - ping-api:
  #         requires: 
   #          - setup-project
 #      - build-and-test:
  #         requires:
   #          - setup-project
-      - build-and-upload-ios:
-          requires:
-            - setup-project
+      - build-and-upload-ios
+          #requires:
+           # - setup-project
       - adhoc:
           filters:
             branches:
               only: development
-          requires:
-            - setup-project
