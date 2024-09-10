@@ -79,4 +79,6 @@ export declare class UserService {
     } & Required<{
         _id: import("mongoose").Types.ObjectId;
     }>) | "User not found" | "Password is incorrect">;
+    findAllTest(): Promise<User[]>;
+    createTest(userInput: Partial<User>): Promise<User>;
 }

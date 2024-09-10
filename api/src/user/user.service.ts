@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -12,7 +12,7 @@ export class UserService {
   async create(createUserDto: CreateUserDto) {
     const existingUser = await this.userDocumentModel.findOne({ email: createUserDto.email }).exec();
 
-    if(existingUser) {
+    if (existingUser) {
       return 'User already exists';
     }
 
@@ -82,5 +82,21 @@ export class UserService {
     }
 
     return user;
+  }
+
+
+  // graphql
+  async findAllTest(): Promise<User[]> {
+    return this.userDocumentModel.find().exec();
+  }
+
+  async createTest(userInput: Partial<User>): Promise<User> {
+    const existingUser = await this.userDocumentModel.findOne({ email: userInput.email }).exec();
+    if (existingUser) {
+      throw new ConflictException('User already exists');
+    }
+
+    const createdUser = new this.userDocumentModel(userInput);
+    return createdUser.save();
   }
 }

@@ -75,6 +75,17 @@ let UserService = class UserService {
         }
         return user;
     }
+    async findAllTest() {
+        return this.userDocumentModel.find().exec();
+    }
+    async createTest(userInput) {
+        const existingUser = await this.userDocumentModel.findOne({ email: userInput.email }).exec();
+        if (existingUser) {
+            throw new common_1.ConflictException('User already exists');
+        }
+        const createdUser = new this.userDocumentModel(userInput);
+        return createdUser.save();
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([

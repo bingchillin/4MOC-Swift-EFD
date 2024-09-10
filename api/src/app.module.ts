@@ -6,6 +6,10 @@ import { UserModule } from './user/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { RoundModule } from './round/round.module';
 import { PackageModule } from './package/package.module';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
+import { AppResolver } from './app.resolver';
 
 @Module({
   imports: [
@@ -19,11 +23,15 @@ import { PackageModule } from './package/package.module';
       }),
       inject: [ConfigService],
     }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    }),
     UserModule,
     RoundModule,
     PackageModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AppResolver], // Ajoutez AppResolver ici
 })
-export class AppModule {}
+export class AppModule { }
