@@ -29,6 +29,7 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/mongoose": "^10.0.2",
     "@nestjs/platform-express": "^10.0.0",
+    "apollo": "^2.34.0",
     "apollo-server-express": "^3.13.0",
     "bcrypt": "^5.1.1",
     "graphql": "^16.9.0",

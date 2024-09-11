@@ -2,6 +2,30 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Query {
-  hello: String!
+type users {
+  id: ID
+  name: String
+  email: String
+  password: String
+  role: String
+  latitude: Float
+  longtude: Float
+}
+
+type packages {
+  id: ID
+  name: String
+  status: String
+  proof: String
+  latitude: Float
+  longtude: Float
+  idUserClient: ID
+  idUserDelivery: ID
+  isAffected: Boolean
+}
+
+type picture {
+  id: ID
+  idPackage: ID
+  link: String
 }
