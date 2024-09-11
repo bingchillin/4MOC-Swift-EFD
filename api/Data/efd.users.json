@@ -1,0 +1,170 @@
+[{
+  "_id": {
+    "$oid": "65b2f4566e35b6fbe5a73783"
+  },
+  "name": "Kenny",
+  "email": "aze@aze",
+  "password": "aze",
+  "role": "admin",
+  "__v": 0,
+  "latitude": 48.840000005,
+  "longitude": 2.380000005
+},
+{
+  "_id": {
+    "$oid": "65b40857219e51ae8a02137b"
+  },
+  "name": "Gabriel",
+  "email": "gabriel",
+  "password": "$2b$10$QRtvqDj9YDHm4GlnXElq6OtbNu.NQybygk3tjuT6SYlEzx/87vuQq",
+  "role": "livreur",
+  "__v": 0,
+  "latitude": 48.840000001,
+  "longitude": 2.380000001
+},
+{
+  "_id": {
+    "$oid": "65b4085b219e51ae8a02137d"
+  },
+  "name": "Mohamed",
+  "email": "aze",
+  "password": "aze",
+  "role": "livreur",
+  "__v": 0,
+  "latitude": 48.8594,
+  "longitude": 2.3437
+},
+{
+  "_id": {
+    "$oid": "65c69bda2654673df10e5fd2"
+  },
+  "name": "Admin",
+  "email": "ez@ez",
+  "password": "$2b$10$.rctrKx3ePbgoYT1jLMU8Ocjh9wqshwHTum0tDa4w2k/Ctki913lq",
+  "role": "admin",
+  "latitude": 48.2,
+  "longitude": 2.38,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c9fc454b0f08bfd7605c85"
+  },
+  "name": "Livreur",
+  "email": "ezezez",
+  "password": "$2b$10$bjoPrkpHDfcC31II1ds1xubfS1FYgNJFwyGsqW0sadZ7Svdgq1hXm",
+  "role": "livreur",
+  "latitude": 48.2,
+  "longitude": 2.38,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65cbeb112d678d5a23543552"
+  },
+  "name": "g",
+  "email": "g",
+  "password": "$2b$10$80BK9qI0FeQyAIKzRywa4.s86vRw856NuPLtJ76EROeWSxcSWykIK",
+  "role": "client",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65cbeb3b2d678d5a23543555"
+  },
+  "name": "a",
+  "email": "a",
+  "password": "$2b$10$hZ7y9gl8n8tpkzYg7ptm.u8F6Mdwz6nqYcaV9QrweWUASigcZq6ua",
+  "role": "admin",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65d3d2ff2d678d5a2354378c"
+  },
+  "name": "livreur2",
+  "email": "l",
+  "password": "$2b$10$fUjOr/o/fI1KL3zLkaM3oOABZIQS5.7I8tX5lS6WkSnpfz9VXLA4u",
+  "role": "livreur",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e4e2ab7dd837cbda512556"
+  },
+  "name": "c",
+  "email": "c",
+  "password": "$2b$10$I7jTEUvxyfcRgDF9dB9zZuPCEn1O8nrFD29h4LMdazpzt8NLLZC.O",
+  "role": "client",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e593962e6675b5c5d057a6"
+  },
+  "name": "client",
+  "email": "client@efd.com",
+  "password": "$2b$10$PJQ3QRo4xXVLD7UA5A8Jyu9POeDz2rHyED2JLhHbBstOQfkRxfe2m",
+  "role": "client",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e594572e6675b5c5d057a9"
+  },
+  "name": "&azerty",
+  "email": "Azeroth Azeroth",
+  "password": "$2b$10$osl48226S92IzL07vr4twe2UKm.xg1kIHO2KZWLki2L/dU5I.6mzu",
+  "role": "client",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e5947e2e6675b5c5d057ac"
+  },
+  "name": "azertyui",
+  "email": "rtgdtghdtgt",
+  "password": "$2b$10$d0ds6XoXjmr801tLSzLk8O6300f00yRPoUUXjIjm5st377k.so6Pa",
+  "role": "client",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e595732e6675b5c5d057af"
+  },
+  "name": "livreur",
+  "email": "livreur@efd.com",
+  "password": "$2b$10$NbYcazt07bU78dLyopsvQuAm9fp8TwyGnM6RtLIsiJwSUgz6ipMUa",
+  "role": "livreur",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e5959b2e6675b5c5d057b2"
+  },
+  "name": "admin",
+  "email": "admin@efd.com",
+  "password": "$2b$10$oP0jFE3tI6FCGXsaUv1cnu/hubISf4Wv/GiHxvmMwpRE8dKl4LIKC",
+  "role": "admin",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e59ace2e6675b5c5d057fb"
+  },
+  "name": "soutenance",
+  "email": "soutenance@ss.com",
+  "password": "$2b$10$ytvUVexm6WUpMze8oGYOg.GQ/cnW7AKK//3hpyeh3LqQZvuK7CvDa",
+  "role": "livreur",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e06f31773d670cf9befc12"
+  },
+  "name": "az",
+  "email": "az",
+  "password": "$2b$10$OkcA9rZURQq9Xr.bh0qqFuvzP1kyJCUJWAdjfwgYkKfVHzLJ7MclW",
+  "role": "client",
+  "__v": 0
+}]

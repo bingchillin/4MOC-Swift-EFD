@@ -1,0 +1,98 @@
+[{
+  "_id": {
+    "$oid": "65c3f6f781d861ce4364a70b"
+  },
+  "name": "Gabriel bath water 2",
+  "status": "loading",
+  "proof": "",
+  "latitude": 48.840000001,
+  "longitude": 2.380000001,
+  "idUserClient": "65e4e2ab7dd837cbda512556",
+  "idUserDelivery": "65b40857219e51ae8a02137b",
+  "isAffected": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ca10304b0f08bfd7605c9d"
+  },
+  "name": "Kenny's pen",
+  "status": "success",
+  "proof": "/Users/gabriel/Documents/ESGI/QuatriemeAnnee/IOS/projectExam/picture/image_1709546741.297719.jpg",
+  "latitude": 48.840000005,
+  "longitude": 2.380000005,
+  "idUserClient": "65cbeb112d678d5a23543552",
+  "idUserDelivery": "65e59ace2e6675b5c5d057fb",
+  "isAffected": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ca10584b0f08bfd7605c9f"
+  },
+  "name": "Mohamed's bottle",
+  "status": "create",
+  "proof": "",
+  "latitude": 48.8594,
+  "longitude": 2.3437,
+  "idUserClient": "65cbeb112d678d5a23543552",
+  "idUserDelivery": "",
+  "isAffected": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65ca106a4b0f08bfd7605ca1"
+  },
+  "name": "GKM's project",
+  "status": "create",
+  "proof": "",
+  "latitude": 3.9,
+  "longitude": 8.9,
+  "idUserClient": "65cbeb112d678d5a23543552",
+  "idUserDelivery": "",
+  "isAffected": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e503317dd837cbda5125df"
+  },
+  "name": "colis suspect",
+  "status": "error",
+  "proof": "",
+  "latitude": 54,
+  "longitude": 43,
+  "idUserClient": "65e4e2ab7dd837cbda512556",
+  "idUserDelivery": "",
+  "isAffected": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e592f82e6675b5c5d0579a"
+  },
+  "name": "colis validate",
+  "status": "create",
+  "proof": "",
+  "latitude": 45,
+  "longitude": 23,
+  "idUserClient": "65e4e2ab7dd837cbda512556",
+  "idUserDelivery": "",
+  "isAffected": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65e59d972e6675b5c5d0582e"
+  },
+  "name": "aze",
+  "status": "create",
+  "proof": "",
+  "latitude": 2,
+  "longitude": 2,
+  "idUserClient": "65e593962e6675b5c5d057a6",
+  "idUserDelivery": "",
+  "isAffected": false,
+  "__v": 0
+}]
