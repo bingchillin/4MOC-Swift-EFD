@@ -2,30 +2,43 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type users {
+type User {
   id: ID
+  name: String!
+  email: String!
+  password: String!
+  role: String!
+  latitude: Float
+  longitude: Float
+}
+
+type Query {
+  hello: String!
+  users: [User!]!
+  user(id: String!): User!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(id: String!, updateUserInput: UpdateUserInput!): User!
+  removeUser(id: String!): String!
+  login(email: String!, password: String!): User!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+  role: String!
+  latitude: Float
+  longitude: Float
+}
+
+input UpdateUserInput {
   name: String
   email: String
   password: String
   role: String
   latitude: Float
-  longtude: Float
-}
-
-type packages {
-  id: ID
-  name: String
-  status: String
-  proof: String
-  latitude: Float
-  longtude: Float
-  idUserClient: ID
-  idUserDelivery: ID
-  isAffected: Boolean
-}
-
-type picture {
-  id: ID
-  idPackage: ID
-  link: String
+  longitude: Float
 }

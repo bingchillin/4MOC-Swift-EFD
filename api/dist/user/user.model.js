@@ -9,38 +9,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateUserDto = void 0;
-const class_validator_1 = require("class-validator");
-class UpdateUserDto {
-}
-exports.UpdateUserDto = UpdateUserDto;
+exports.User = void 0;
+const graphql_1 = require("@nestjs/graphql");
+let User = class User {
+};
+exports.User = User;
 __decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, graphql_1.Field)(() => graphql_1.ID, { nullable: true }),
     __metadata("design:type", String)
-], UpdateUserDto.prototype, "name", void 0);
+], User.prototype, "id", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsEmail)(),
+    (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], UpdateUserDto.prototype, "email", void 0);
+], User.prototype, "name", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsString)(),
+    (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], UpdateUserDto.prototype, "password", void 0);
+], User.prototype, "email", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsString)(),
+    (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], UpdateUserDto.prototype, "role", void 0);
+], User.prototype, "password", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], User.prototype, "role", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_1.Float, { nullable: true }),
     __metadata("design:type", Number)
-], UpdateUserDto.prototype, "latitude", void 0);
+], User.prototype, "latitude", void 0);
 __decorate([
-    (0, class_validator_1.IsOptional)(),
+    (0, graphql_1.Field)(() => graphql_1.Float, { nullable: true }),
     __metadata("design:type", Number)
-], UpdateUserDto.prototype, "longitude", void 0);
-//# sourceMappingURL=update-user.dto.js.map
+], User.prototype, "longitude", void 0);
+exports.User = User = __decorate([
+    (0, graphql_1.ObjectType)()
+], User);
+//# sourceMappingURL=user.model.js.map

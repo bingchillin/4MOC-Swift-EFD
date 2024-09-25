@@ -14,40 +14,79 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
-const user_entity_1 = require("./entities/user.entity");
+const user_model_1 = require("./user.model");
 const user_service_1 = require("./user.service");
+const create_user_input_1 = require("./dto/create-user.input");
+const update_user_input_1 = require("./dto/update-user.input");
 let UserResolver = class UserResolver {
     constructor(userService) {
         this.userService = userService;
     }
-    findAll() {
+    async findAll() {
         return this.userService.findAll();
     }
-    async createUser(name, email, password, role, latitude, longitude) {
-        return this.userService.createTest({ name, email, password, role, latitude, longitude });
+    async findOne(id) {
+        return this.userService.findOne(id);
+    }
+    async createUser(createUserInput) {
+        return this.userService.create(createUserInput);
+    }
+    async updateUser(id, updateUserInput) {
+        return this.userService.update(id, updateUserInput);
+    }
+    async removeUser(id) {
+        return this.userService.remove(id);
+    }
+    async login(email, password) {
+        return this.userService.login(email, password);
     }
 };
 exports.UserResolver = UserResolver;
 __decorate([
-    (0, graphql_1.Query)(() => [user_entity_1.User], { name: 'users' }),
+    (0, graphql_1.Query)(() => [user_model_1.User], { name: 'users' }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "findAll", null);
 __decorate([
-    (0, graphql_1.Mutation)(() => user_entity_1.User),
-    __param(0, (0, graphql_1.Args)('name')),
-    __param(1, (0, graphql_1.Args)('email')),
-    __param(2, (0, graphql_1.Args)('password')),
-    __param(3, (0, graphql_1.Args)('role')),
-    __param(4, (0, graphql_1.Args)('latitude', { nullable: true })),
-    __param(5, (0, graphql_1.Args)('longitude', { nullable: true })),
+    (0, graphql_1.Query)(() => user_model_1.User, { name: 'user' }),
+    __param(0, (0, graphql_1.Args)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, String, String, Number, Number]),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "findOne", null);
+__decorate([
+    (0, graphql_1.Mutation)(() => user_model_1.User),
+    __param(0, (0, graphql_1.Args)('createUserInput')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_user_input_1.CreateUserInput]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "createUser", null);
+__decorate([
+    (0, graphql_1.Mutation)(() => user_model_1.User),
+    __param(0, (0, graphql_1.Args)('id')),
+    __param(1, (0, graphql_1.Args)('updateUserInput')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, update_user_input_1.UpdateUserInput]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "updateUser", null);
+__decorate([
+    (0, graphql_1.Mutation)(() => String),
+    __param(0, (0, graphql_1.Args)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "removeUser", null);
+__decorate([
+    (0, graphql_1.Mutation)(() => user_model_1.User),
+    __param(0, (0, graphql_1.Args)('email')),
+    __param(1, (0, graphql_1.Args)('password')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "login", null);
 exports.UserResolver = UserResolver = __decorate([
-    (0, graphql_1.Resolver)(() => user_entity_1.User),
+    (0, graphql_1.Resolver)(() => user_model_1.User),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], UserResolver);
 //# sourceMappingURL=user.resolver.js.map

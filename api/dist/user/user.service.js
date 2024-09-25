@@ -22,40 +22,36 @@ let UserService = class UserService {
     constructor(userDocumentModel) {
         this.userDocumentModel = userDocumentModel;
     }
-    async create(createUserDto) {
-        const existingUser = await this.userDocumentModel.findOne({ email: createUserDto.email }).exec();
+    async create(createUserInput) {
+        const existingUser = await this.userDocumentModel.findOne({ email: createUserInput.email }).exec();
         if (existingUser) {
-            return 'User already exists';
+            throw new common_1.ConflictException('User already exists');
         }
-        const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+        const hashedPassword = await bcrypt.hash(createUserInput.password, 10);
         const newUser = new this.userDocumentModel({
-            ...createUserDto,
+            ...createUserInput,
             password: hashedPassword
         });
         return newUser.save();
     }
     async findAll() {
-        return await this.userDocumentModel.find().exec();
-    }
-    async findAllLivreur() {
-        return await this.userDocumentModel.find({ role: 'livreur' }).exec();
+        return this.userDocumentModel.find().exec();
     }
     async findOne(id) {
-        return await this.userDocumentModel.findById(id).exec();
+        return this.userDocumentModel.findById(id).exec();
+    }
+    async findAllLivreur() {
+        return this.userDocumentModel.find({ role: 'livreur' }).exec();
     }
     async findOneLivreur(id) {
-        const livreur = await this.userDocumentModel.findOne({ _id: id, role: 'livreur' }).exec();
-        if (!livreur) {
-            return 'Livreur not found';
-        }
-        return livreur;
+        return this.userDocumentModel.findOne({ _id: id, role: 'livreur' }).exec();
     }
-    async update(id, updateUserDto) {
-        const hashedPassword = await bcrypt.hash(updateUserDto.password, 10);
-        const existingUser = await this.userDocumentModel
-            .findByIdAndUpdate({ _id: id }, { ...updateUserDto, password: hashedPassword }, { new: true })
-            .exec();
-        return existingUser;
+    async update(id, updateUserInput) {
+        if (updateUserInput.password) {
+            const hashedPassword = await bcrypt.hash(updateUserInput.password, 10);
+            updateUserInput.password = hashedPassword;
+        }
+        return this.userDocumentModel.findByIdAndUpdate(id, updateUserInput, { new: true }).exec();
     }
     async remove(id) {
         const result = await this.userDocumentModel.deleteOne({ _id: id }).exec();
@@ -74,17 +70,6 @@ let UserService = class UserService {
             return 'Password is incorrect';
         }
         return user;
-    }
-    async findAllTest() {
-        return this.userDocumentModel.find().exec();
-    }
-    async createTest(userInput) {
-        const existingUser = await this.userDocumentModel.findOne({ email: userInput.email }).exec();
-        if (existingUser) {
-            throw new common_1.ConflictException('User already exists');
-        }
-        const createdUser = new this.userDocumentModel(userInput);
-        return createdUser.save();
     }
 };
 exports.UserService = UserService;

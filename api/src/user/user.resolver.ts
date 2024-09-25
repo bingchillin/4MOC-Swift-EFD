@@ -1,25 +1,49 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import { User } from './entities/user.entity';
+import { User as UserModel } from './user.model'; 
 import { UserService } from './user.service';
+import { CreateUserInput } from './dto/create-user.input';
+import { UpdateUserInput } from './dto/update-user.input';
 
-@Resolver(() => User)
+@Resolver(() => UserModel)
 export class UserResolver {
-    constructor(private readonly userService: UserService) { }
+  constructor(private readonly userService: UserService) { }
 
-    @Query(() => [User], { name: 'users' })
-    findAll(): Promise<User[]> {
-        return this.userService.findAll();
-    }
+  @Query(() => [UserModel], { name: 'users' })
+  async findAll(): Promise<UserModel[]> {
+    return this.userService.findAll();
+  }
 
-    @Mutation(() => User)
-    async createUser(
-        @Args('name') name: string,
-        @Args('email') email: string,
-        @Args('password') password: string,
-        @Args('role') role: string,
-        @Args('latitude', { nullable: true }) latitude?: number,
-        @Args('longitude', { nullable: true }) longitude?: number,
-    ): Promise<User> {
-        return this.userService.createTest({ name, email, password, role, latitude, longitude });
-    }
+  @Query(() => UserModel, { name: 'user' })
+  async findOne(@Args('id') id: string): Promise<UserModel | null> {
+    return this.userService.findOne(id);
+  }
+
+  @Mutation(() => UserModel)
+  async createUser(
+    @Args('createUserInput') createUserInput: CreateUserInput,
+  ): Promise<UserModel> {
+    return this.userService.create(createUserInput);
+  }
+
+  @Mutation(() => UserModel)
+  async updateUser(
+    @Args('id') id: string,
+    @Args('updateUserInput') updateUserInput: UpdateUserInput,
+  ): Promise<UserModel | null> {
+    return this.userService.update(id, updateUserInput);
+  }
+
+  @Mutation(() => String)
+  async removeUser(@Args('id') id: string): Promise<string> {
+    return this.userService.remove(id);
+  }
+
+  @Mutation(() => UserModel)
+  async login(
+    @Args('email') email: string,
+    @Args('password') password: string,
+  ): Promise<UserModel | string> {
+    return this.userService.login(email, password);
+  }
 }
+
