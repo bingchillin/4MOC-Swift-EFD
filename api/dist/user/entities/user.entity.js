@@ -17,6 +17,10 @@ exports.User = User;
 __decorate([
     (0, graphql_1.Field)(() => String),
     __metadata("design:type", String)
+], User.prototype, "id", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => String),
+    __metadata("design:type", String)
 ], User.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(() => String),

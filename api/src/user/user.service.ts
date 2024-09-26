@@ -60,19 +60,39 @@ export class UserService {
     return `User with id ${id} has been deleted`;
   }
 
-  async login(email: string, password: string): Promise<UserSchema | string> {
+  
+  async login(email: string, password: string): Promise<UserDocument | string> {
+    // Recherche l'utilisateur par email
+    const user = await this.userDocumentModel.findOne({ email });
+  
+    if (!user) {
+      throw new Error('User not found');
+    }
+  
+    // Vérifie que le mot de passe est correct (tu peux utiliser bcrypt pour comparer les hashs)
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+  
+    if (!isPasswordValid) {
+      throw new Error('Invalid password');
+    }
+  
+    // Si tout est valide, retourne l'utilisateur
+    return user;
+  }
+
+  async validateUser(email: string, password: string): Promise<UserDocument | null> {
     const user = await this.userDocumentModel.findOne({ email }).exec();
 
     if (!user) {
-      return 'User not found';
+      return null; // L'utilisateur n'existe pas
     }
 
-    const isPasswordCorrect = await bcrypt.compare(password, user.password);
-
-    if (!isPasswordCorrect) {
-      return 'Password is incorrect';
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return null; // Le mot de passe est incorrect
     }
 
-    return user;
+    return user; // Retourner l'utilisateur si tout est correct
   }
+
 }

@@ -6,7 +6,7 @@ export declare class UserController {
     constructor(userService: UserService);
     create(createUserDto: CreateUserDto): Promise<import("./schemas/user.schema").User>;
     findAll(): Promise<import("./schemas/user.schema").User[]>;
-    login(body: any): Promise<string | import("./schemas/user.schema").User>;
+    login(body: any): Promise<string | import("./schemas/user.schema").UserDocument>;
     findAllLivreur(): Promise<import("./schemas/user.schema").User[]>;
     findOne(id: string): Promise<import("./schemas/user.schema").User>;
     findOneLivreur(id: string): Promise<import("./schemas/user.schema").User>;

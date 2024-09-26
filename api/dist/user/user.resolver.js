@@ -38,7 +38,19 @@ let UserResolver = class UserResolver {
         return this.userService.remove(id);
     }
     async login(email, password) {
-        return this.userService.login(email, password);
+        const user = await this.userService.validateUser(email, password);
+        if (!user) {
+            throw new Error('Invalid credentials');
+        }
+        return {
+            id: user._id.toString(),
+            name: user.name,
+            email: user.email,
+            password: user.password,
+            role: user.role,
+            latitude: user.latitude,
+            longitude: user.longitude,
+        };
     }
 };
 exports.UserResolver = UserResolver;

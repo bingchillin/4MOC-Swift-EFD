@@ -36,5 +36,6 @@ export declare class UserService {
     findOneLivreur(id: string): Promise<UserSchema | null>;
     update(id: string, updateUserInput: UpdateUserInput): Promise<UserSchema | null>;
     remove(id: string): Promise<string>;
-    login(email: string, password: string): Promise<UserSchema | string>;
+    login(email: string, password: string): Promise<UserDocument | string>;
+    validateUser(email: string, password: string): Promise<UserDocument | null>;
 }

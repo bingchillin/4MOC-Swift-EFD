@@ -10,5 +10,5 @@ export declare class UserResolver {
     createUser(createUserInput: CreateUserInput): Promise<UserModel>;
     updateUser(id: string, updateUserInput: UpdateUserInput): Promise<UserModel | null>;
     removeUser(id: string): Promise<string>;
-    login(email: string, password: string): Promise<UserModel | string>;
+    login(email: string, password: string): Promise<UserModel | null>;
 }

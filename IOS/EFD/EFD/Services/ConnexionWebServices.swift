@@ -144,69 +144,75 @@ class ConnexionWebServices{
            task.resume()
        }
     
-    class func connectUser(email : String, password : String, completion: @escaping (Error?, Bool?, User?) -> Void){
-        
-        
-        let url = "http://localhost:3000/user/login"
-        
-        guard let getConnectUrl = URL(string: url) else{
-            return
-        }
-        
-        var request = URLRequest(url: getConnectUrl)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        
-        let json: [String: Any] = ["email": email,
-                                   "password": password]
-
-        let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        
-        
-        request.httpBody = jsonData
-        request.httpMethod = "POST"
-        
-        
-        let task = URLSession.shared.dataTask(with: request) { data, res, err in
-            guard err == nil else {
-                completion(err, false, nil)
-                return
-            }
-            guard let d = data else {
-                completion(NSError(domain: "com.EFD", code: 3, userInfo: [
-                    NSLocalizedFailureReasonErrorKey: "No data found"
-                ]), nil, nil)
+    class func connectUser(email: String, password: String, completion: @escaping (Error?, Bool?, User?) -> Void) {
+            
+            guard let connectUrl = URL(string: baseURL) else {
                 return
             }
             
-            do {
-                if let jsonObject = try JSONSerialization.jsonObject(with: d, options: .allowFragments) as? [String: Any] {
-                    if let id = jsonObject["_id"] as? String, let role = jsonObject["role"] as? String,  let name = jsonObject["name"] as? String{
-                                        self.userId = id
-                                        self.userRole = role
-                                        self.username = name
-                                    }
-                                }
-                if let userId = userId, let username = username, let userRole = userRole {
-                    let user = User(id: userId, name: username, email: email, password: password, role: userRole, latitude: nil, longitude: nil)
-                        completion(nil, true, user)
+            var request = URLRequest(url: connectUrl)
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "POST"
+            
+            // Composer la requête GraphQL pour la connexion
+            let query = """
+            mutation {
+              login(email: "\(email)", password: "\(password)") {
+                id
+                name
+                email
+                role
+              }
+            }
+            """
+            
+            let json: [String: Any] = ["query": query]
+            let jsonData = try? JSONSerialization.data(withJSONObject: json)
+            
+            request.httpBody = jsonData
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard error == nil else {
+                    completion(error, false, nil)
+                    return
+                }
+                guard let d = data else {
+                    completion(NSError(domain: "com.EFD", code: 3, userInfo: [
+                        NSLocalizedFailureReasonErrorKey: "No data found"
+                    ]), false, nil)
+                    return
+                }
+                
+                do {
+                    if let jsonObject = try JSONSerialization.jsonObject(with: d, options: .allowFragments) as? [String: Any],
+                       let data = jsonObject["data"] as? [String: Any],
+                       let userJson = data["login"] as? [String: Any] {
+                        
+                        // Extraire les valeurs utilisateur à partir de la réponse GraphQL
+                        if let userId = userJson["id"] as? String,
+                           let username = userJson["name"] as? String,
+                           let userEmail = userJson["email"] as? String,
+                           let userRole = userJson["role"] as? String {
+                            
+                            // Créer un utilisateur et retourner via le callback
+                            let user = User(id: userId, name: username, email: userEmail, password: password, role: userRole, latitude: nil, longitude: nil)
+                            completion(nil, true, user)
+                        } else {
+                            completion(NSError(domain: "com.EFD", code: 4, userInfo: [
+                                NSLocalizedFailureReasonErrorKey: "Failed to extract user data from JSON"
+                            ]), false, nil)
+                        }
                     } else {
-                        completion(NSError(domain: "com.EFD", code: 4, userInfo: [
-                            NSLocalizedFailureReasonErrorKey: "Failed to extract username and/or userRole from JSON"
+                        completion(NSError(domain: "com.EFD", code: 5, userInfo: [
+                            NSLocalizedFailureReasonErrorKey: "Unexpected response format"
                         ]), false, nil)
                     }
-                
-            } catch let err {
-                print("ok4")
-                print("Error during JSON serialization: \(err)")
-                completion(err, false,nil)
-                return
+                } catch let err {
+                    completion(err, false, nil)
+                }
             }
-
+            task.resume()
         }
-        task.resume()
-        
-    }
     
     
     

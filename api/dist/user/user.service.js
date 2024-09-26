@@ -61,13 +61,24 @@ let UserService = class UserService {
         return `User with id ${id} has been deleted`;
     }
     async login(email, password) {
+        const user = await this.userDocumentModel.findOne({ email });
+        if (!user) {
+            throw new Error('User not found');
+        }
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            throw new Error('Invalid password');
+        }
+        return user;
+    }
+    async validateUser(email, password) {
         const user = await this.userDocumentModel.findOne({ email }).exec();
         if (!user) {
-            return 'User not found';
+            return null;
         }
-        const isPasswordCorrect = await bcrypt.compare(password, user.password);
-        if (!isPasswordCorrect) {
-            return 'Password is incorrect';
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            return null;
         }
         return user;
     }
