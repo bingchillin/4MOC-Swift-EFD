@@ -1,10 +1,7 @@
-import { ObjectType, Field, ID, Float } from '@nestjs/graphql';
+import { InputType, Field, Float } from '@nestjs/graphql';
 
-@ObjectType()
-export class Package {
-  @Field(() => ID)
-  id: string;
-
+@InputType()
+export class CreatePackageInput {
   @Field()
   name: string;
 

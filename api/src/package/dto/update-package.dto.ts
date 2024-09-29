@@ -1,4 +1,15 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreatePackageDto } from './create-package.dto';
+import { InputType, Field } from '@nestjs/graphql';
 
-export class UpdatePackageDto extends PartialType(CreatePackageDto) {}
+@InputType()  
+export class UpdatePackageDto {
+    @Field({ nullable: true }) 
+    status?: string;
+
+    @Field({ nullable: true })
+    idUserClient?: string;
+
+    @Field({ nullable: true })
+    idUserDelivery?: string;
+
+ 
+}

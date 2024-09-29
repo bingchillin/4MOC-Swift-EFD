@@ -9,48 +9,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Package = void 0;
+exports.CreatePackageInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
-let Package = class Package {
+let CreatePackageInput = class CreatePackageInput {
 };
-exports.Package = Package;
-__decorate([
-    (0, graphql_1.Field)(() => graphql_1.ID),
-    __metadata("design:type", String)
-], Package.prototype, "id", void 0);
+exports.CreatePackageInput = CreatePackageInput;
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Package.prototype, "name", void 0);
+], CreatePackageInput.prototype, "name", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Package.prototype, "status", void 0);
+], CreatePackageInput.prototype, "status", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Package.prototype, "proof", void 0);
+], CreatePackageInput.prototype, "proof", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_1.Float),
     __metadata("design:type", Number)
-], Package.prototype, "latitude", void 0);
+], CreatePackageInput.prototype, "latitude", void 0);
 __decorate([
     (0, graphql_1.Field)(() => graphql_1.Float),
     __metadata("design:type", Number)
-], Package.prototype, "longitude", void 0);
+], CreatePackageInput.prototype, "longitude", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Package.prototype, "idUserClient", void 0);
+], CreatePackageInput.prototype, "idUserClient", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], Package.prototype, "idUserDelivery", void 0);
+], CreatePackageInput.prototype, "idUserDelivery", void 0);
 __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", Boolean)
-], Package.prototype, "isAffected", void 0);
-exports.Package = Package = __decorate([
-    (0, graphql_1.ObjectType)()
-], Package);
-//# sourceMappingURL=package.entity.js.map
+], CreatePackageInput.prototype, "isAffected", void 0);
+exports.CreatePackageInput = CreatePackageInput = __decorate([
+    (0, graphql_1.InputType)()
+], CreatePackageInput);
+//# sourceMappingURL=create-package.input.js.map

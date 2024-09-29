@@ -1,5 +1,4 @@
-export declare class Package {
-    id: string;
+export declare class CreatePackageInput {
     name: string;
     status: string;
     proof: string;

@@ -10,44 +10,58 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PackageSchema = exports.Package = void 0;
+const graphql_1 = require("@nestjs/graphql");
 const mongoose_1 = require("@nestjs/mongoose");
 let Package = class Package {
 };
 exports.Package = Package;
 __decorate([
+    (0, graphql_1.Field)(() => graphql_1.ID),
+    __metadata("design:type", String)
+], Package.prototype, "id", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Package.prototype, "name", void 0);
 __decorate([
+    (0, graphql_1.Field)(),
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Package.prototype, "status", void 0);
 __decorate([
+    (0, graphql_1.Field)(),
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Package.prototype, "proof", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_1.Float),
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Number)
 ], Package.prototype, "latitude", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_1.Float),
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Number)
 ], Package.prototype, "longitude", void 0);
 __decorate([
+    (0, graphql_1.Field)(),
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Package.prototype, "idUserClient", void 0);
 __decorate([
+    (0, graphql_1.Field)(),
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], Package.prototype, "idUserDelivery", void 0);
 __decorate([
+    (0, graphql_1.Field)(),
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Boolean)
 ], Package.prototype, "isAffected", void 0);
 exports.Package = Package = __decorate([
-    (0, mongoose_1.Schema)()
+    (0, mongoose_1.Schema)(),
+    (0, graphql_1.ObjectType)()
 ], Package);
 exports.PackageSchema = mongoose_1.SchemaFactory.createForClass(Package);
 //# sourceMappingURL=package.schema.js.map

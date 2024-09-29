@@ -12,10 +12,25 @@ type User {
   longitude: Float
 }
 
+type Package {
+  id: ID!
+  name: String!
+  status: String!
+  proof: String!
+  latitude: Float!
+  longitude: Float!
+  idUserClient: String!
+  idUserDelivery: String!
+  isAffected: Boolean!
+}
+
 type Query {
   hello: String!
   users: [User!]!
   user(id: String!): User!
+  packages: [Package!]!
+  package(id: ID!): Package!
+  findPackageByUserIdSuccess(idUserClient: String!): [Package!]!
 }
 
 type Mutation {
@@ -23,6 +38,9 @@ type Mutation {
   updateUser(id: String!, updateUserInput: UpdateUserInput!): User!
   removeUser(id: String!): String!
   login(email: String!, password: String!): User!
+  createPackage(createPackageInput: CreatePackageInput!): Package!
+  updatePackage(id: String!, updatePackageInput: UpdatePackageDto!): Package!
+  removePackage(id: ID!): String!
 }
 
 input CreateUserInput {
@@ -41,4 +59,21 @@ input UpdateUserInput {
   role: String
   latitude: Float
   longitude: Float
+}
+
+input CreatePackageInput {
+  name: String!
+  status: String!
+  proof: String!
+  latitude: Float!
+  longitude: Float!
+  idUserClient: String!
+  idUserDelivery: String!
+  isAffected: Boolean!
+}
+
+input UpdatePackageDto {
+  status: String
+  idUserClient: String
+  idUserDelivery: String
 }

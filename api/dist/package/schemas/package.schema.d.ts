@@ -22,9 +22,10 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
-import { HydratedDocument } from 'mongoose';
-export type PackageDocument = HydratedDocument<Package>;
+import { Document } from 'mongoose';
+export type PackageDocument = Package & Document;
 export declare class Package {
+    id: string;
     name: string;
     status: string;
     proof: string;
@@ -34,8 +35,8 @@ export declare class Package {
     idUserDelivery: string;
     isAffected: boolean;
 }
-export declare const PackageSchema: import("mongoose").Schema<Package, import("mongoose").Model<Package, any, any, any, import("mongoose").Document<unknown, any, Package> & Package & {
+export declare const PackageSchema: import("mongoose").Schema<Package, import("mongoose").Model<Package, any, any, any, Document<unknown, any, Package> & Package & {
     _id: import("mongoose").Types.ObjectId;
-}, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, Package, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<Package>> & import("mongoose").FlatRecord<Package> & {
+}, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, Package, Document<unknown, {}, import("mongoose").FlatRecord<Package>> & import("mongoose").FlatRecord<Package> & {
     _id: import("mongoose").Types.ObjectId;
 }>;

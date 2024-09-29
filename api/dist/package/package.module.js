@@ -9,7 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PackageModule = void 0;
 const common_1 = require("@nestjs/common");
 const package_service_1 = require("./package.service");
-const package_controller_1 = require("./package.controller");
+const package_resolver_1 = require("./package.resolver");
 const mongoose_1 = require("@nestjs/mongoose");
 const package_schema_1 = require("./schemas/package.schema");
 let PackageModule = class PackageModule {
@@ -23,8 +23,7 @@ exports.PackageModule = PackageModule = __decorate([
                     schema: package_schema_1.PackageSchema
                 }]),
         ],
-        controllers: [package_controller_1.PackageController],
-        providers: [package_service_1.PackageService],
+        providers: [package_service_1.PackageService, package_resolver_1.PackageResolver],
     })
 ], PackageModule);
 //# sourceMappingURL=package.module.js.map

@@ -299,7 +299,7 @@ class PackageWebServices {
         task.resume()
     }
     
-    class func addPackage(idUserClient : String, name : String, longitude: String, latitude : String, completion: @escaping (Error?, Bool?) -> Void){
+    /*class func addPackage(idUserClient : String, name : String, longitude: String, latitude : String, completion: @escaping (Error?, Bool?) -> Void){
         
     
         let url = "http://localhost:3000/package"
@@ -349,20 +349,131 @@ class PackageWebServices {
         }
         
         task.resume()
-    }
+    }*/
     
-    class func getListClientPackageSuccess(id: String,completion: @escaping (Error?, Bool?, [Package]?) -> Void){
+    class func addPackage(idUserClient: String, name: String, longitude: String, latitude: String, completion: @escaping (Error?, Bool?) -> Void) {
+
+        let url = "http://localhost:3000/graphql"  // URL de l'API GraphQL
         
-        
-        let url = "http://localhost:3000/package/user/" + id + "/success"
-        guard let itemURL = URL(string: url) else{
+        guard let getAddURL = URL(string: url) else {
             return
         }
         
-        var request = URLRequest(url: itemURL)
-        
+        var request = URLRequest(url: getAddURL)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        // GraphQL Mutation as a string
+        let graphQLMutation = """
+        mutation {
+          createPackage(createPackageInput: {
+            name: "\(name)",
+            status: "create",
+            proof: "",
+            latitude: \(latitude),
+            longitude: \(longitude),
+            idUserClient: "\(idUserClient)",
+            idUserDelivery: "",
+            isAffected: false
+          }) {
+            id
+            name
+          }
+        }
+        """
+        
+        // Construct the GraphQL request body
+        let json: [String: Any] = [
+            "query": graphQLMutation
+        ]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        request.httpBody = jsonData
+        request.httpMethod = "POST"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, res, err in
+            guard err == nil else {
+                completion(err, false)
+                return
+            }
+            guard let d = data else {
+                completion(NSError(domain: "com.EFD", code: 2, userInfo: [
+                    NSLocalizedFailureReasonErrorKey: "No data found"
+                ]), nil)
+                return
+            }
+            
+            do {
+                // Parse the GraphQL response
+                if let jsonResponse = try JSONSerialization.jsonObject(with: d, options: []) as? [String: Any],
+                   let data = jsonResponse["data"] as? [String: Any],
+                   let createPackageResponse = data["createPackage"] as? [String: Any] {
+                    
+                    // Check for a successful response, for example:
+                    if let packageId = createPackageResponse["id"] as? String {
+                        print("Package created with ID: \(packageId)")
+                        completion(nil, true)
+                    } else {
+                        completion(NSError(domain: "com.EFD", code: 3, userInfo: [
+                            NSLocalizedFailureReasonErrorKey: "Failed to create package"
+                        ]), false)
+                    }
+                    
+                } else {
+                    completion(NSError(domain: "com.EFD", code: 4, userInfo: [
+                        NSLocalizedFailureReasonErrorKey: "Invalid response format"
+                    ]), false)
+                }
+                
+            } catch let err {
+                completion(err, false)
+                return
+            }
+
+        }
+        
+        task.resume()
+    }
+
+    
+    class func getListClientPackageSuccess(id: String, completion: @escaping (Error?, Bool?, [Package]?) -> Void) {
+
+        let url = "http://localhost:3000/graphql"  // URL de l'API GraphQL
+
+        guard let itemURL = URL(string: url) else {
+            return
+        }
+
+        var request = URLRequest(url: itemURL)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        // GraphQL Query
+        let graphQLQuery = """
+        query {
+          findPackageByUserIdSuccess(idUserClient: "\(id)") {
+            id
+            name
+            status
+            proof
+            latitude
+            longitude
+            idUserClient
+            idUserDelivery
+            isAffected
+          }
+        }
+        """
+
+        // Construire le corps de la requête GraphQL
+        let json: [String: Any] = [
+            "query": graphQLQuery
+        ]
+
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+
+        request.httpBody = jsonData
+        request.httpMethod = "POST"
+
         let task = URLSession.shared.dataTask(with: request) { data, res, err in
             guard err == nil else {
                 completion(err, false, nil)
@@ -374,51 +485,68 @@ class PackageWebServices {
                 ]), false, nil)
                 return
             }
-            
+
             do {
-                if let itemList = try JSONSerialization.jsonObject(with: d, options: []) as? [[String: Any]] {
-                    let packages = itemList.compactMap { dict in
-                                        return Package(id: dict["_id"] as? String ?? "",
-                                                       name: dict["name"] as? String ?? "",
-                                                       status: dict["status"] as? String ?? "",
-                                                       proof: dict["proof"] as? String ?? "",
-                                                       latitude: dict["latitude"] as? Double,
-                                                       longitude: dict["longitude"] as? Double,
-                                                       idUserDelivery: dict["idUserDelivery"] as? String ?? "",
-                                                       isAffected: dict["isAffected"] as? Bool ?? false,
-                                                       idUserClient: dict["idUserClient"] as? String ?? "")
-                                    }
-                                    completion(nil, true, packages)
-        
+                // Analyse de la réponse GraphQL
+                if let jsonResponse = try JSONSerialization.jsonObject(with: d, options: []) as? [String: Any],
+                   let data = jsonResponse["data"] as? [String: Any],
+                   let packageList = data["findPackageByUserIdSuccess"] as? [[String: Any]] {
+
+                    let packages = packageList.compactMap { dict in
+                        return Package(id: dict["id"] as? String ?? "",
+                                       name: dict["name"] as? String ?? "",
+                                       status: dict["status"] as? String ?? "",
+                                       proof: dict["proof"] as? String ?? "",
+                                       latitude: dict["latitude"] as? Double,
+                                       longitude: dict["longitude"] as? Double,
+                                       idUserDelivery: dict["idUserDelivery"] as? String ?? "",
+                                       isAffected: dict["isAffected"] as? Bool ?? false,
+                                       idUserClient: dict["idUserClient"] as? String ?? "")
+                    }
+                    completion(nil, true, packages)
+
+                } else {
+                    completion(NSError(domain: "com.EFD", code: 4, userInfo: [
+                        NSLocalizedFailureReasonErrorKey: "Invalid response format"
+                    ]), false, nil)
                 }
-                
+
             } catch let err {
                 completion(err, false, nil)
                 return
             }
         }
+
         task.resume()
     }
+
     
-    class func modifyStatusPackageC(idP: String, status: String, completion: @escaping (Error?, Bool?) -> Void){
+    class func modifyStatusPackageC(idP: String, status: String, completion: @escaping (Error?, Bool?) -> Void) {
         
-    
-        let url = "http://localhost:3000/package/" + idP
+        let url = "http://localhost:3000/graphql"  // Assurez-vous que l'URL correspond à votre endpoint GraphQL.
         
-        guard let getAddURL = URL(string: url) else{
+        guard let getAddURL = URL(string: url) else {
             return
         }
         
         var request = URLRequest(url: getAddURL)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-
-        let json: [String: Any] = ["status": status]
-
+        // Créez la requête GraphQL
+        let query = """
+        mutation {
+            updatePackage(id: "\(idP)", updatePackageInput: { status: "\(status)" }) {
+                id
+                status
+            }
+        }
+        """
+        
+        let json: [String: Any] = ["query": query]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
         request.httpBody = jsonData
-        request.httpMethod = "PATCH"
+        request.httpMethod = "POST"
         
         let task = URLSession.shared.dataTask(with: request) { data, res, err in
             guard err == nil else {
@@ -433,15 +561,16 @@ class PackageWebServices {
             }
             
             do {
-                try JSONSerialization.jsonObject(with: d, options: .allowFragments)
+                let responseJSON = try JSONSerialization.jsonObject(with: d, options: [])
+                print("Response: \(responseJSON)")  // Déboguer la réponse ici si nécessaire
                 completion(nil, true)
             } catch let err {
                 completion(err, false)
                 return
             }
-
         }
         
         task.resume()
     }
+
 }

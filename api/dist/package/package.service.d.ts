@@ -29,75 +29,35 @@ import { Package, PackageDocument } from './schemas/package.schema';
 export declare class PackageService {
     private packageDocumentModel;
     constructor(packageDocumentModel: Model<PackageDocument>);
-    create(createPackageDto: CreatePackageDto): Promise<import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, Package> & Package & {
+    create(createPackageDto: CreatePackageDto): Promise<import("mongoose").Document<unknown, {}, PackageDocument> & Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    }> & import("mongoose").Document<unknown, {}, Package> & Package & {
+    }>;
+    findAll(): Promise<(import("mongoose").Document<unknown, {}, PackageDocument> & Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    } & Required<{
+    })[]>;
+    findAllByRoundId(roundId: string): Promise<(import("mongoose").Document<unknown, {}, PackageDocument> & Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    }>>;
-    findAll(): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, Package> & Package & {
+    })[]>;
+    findOne(id: string): Promise<import("mongoose").Document<unknown, {}, PackageDocument> & Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    }> & import("mongoose").Document<unknown, {}, Package> & Package & {
+    }>;
+    update(id: string, updatePackageDto: UpdatePackageDto): Promise<import("mongoose").Document<unknown, {}, PackageDocument> & Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    } & Required<{
+    }>;
+    findPackageByUserId(idUserClient: string): Promise<(import("mongoose").Document<unknown, {}, PackageDocument> & Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    }>)[]>;
-    findAllByRoundId(roundId: string): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, Package> & Package & {
+    })[]>;
+    findPackageByUserIdSuccess(idUserClient: string): Promise<(import("mongoose").Document<unknown, {}, PackageDocument> & Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    }> & import("mongoose").Document<unknown, {}, Package> & Package & {
+    })[]>;
+    findPackageByDeliveryId(idUserDelivery: string): Promise<(import("mongoose").Document<unknown, {}, PackageDocument> & Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    } & Required<{
+    })[]>;
+    findPackageByDeliveryProcess(idUserDelivery: string): Promise<(import("mongoose").Document<unknown, {}, PackageDocument> & Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    }>)[]>;
-    findOne(id: string): Promise<import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, Package> & Package & {
+    })[]>;
+    findPackageByProcess(): Promise<(import("mongoose").Document<unknown, {}, PackageDocument> & Package & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    }> & import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    } & Required<{
-        _id: import("mongoose").Types.ObjectId;
-    }>>;
-    update(id: string, updatePackageDto: UpdatePackageDto): Promise<import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    }> & import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    } & Required<{
-        _id: import("mongoose").Types.ObjectId;
-    }>>;
-    findPackageByUserId(idUserClient: string): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    }> & import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    } & Required<{
-        _id: import("mongoose").Types.ObjectId;
-    }>)[]>;
-    findPackageByUserIdSuccess(idUserClient: string): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    }> & import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    } & Required<{
-        _id: import("mongoose").Types.ObjectId;
-    }>)[]>;
-    findPackageByDeliveryId(idUserDelivery: string): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    }> & import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    } & Required<{
-        _id: import("mongoose").Types.ObjectId;
-    }>)[]>;
-    findPackageByDeliveryProcess(idUserDelivery: string): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    }> & import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    } & Required<{
-        _id: import("mongoose").Types.ObjectId;
-    }>)[]>;
-    findPackageByProcess(): Promise<(import("mongoose").Document<unknown, {}, import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    }> & import("mongoose").Document<unknown, {}, Package> & Package & {
-        _id: import("mongoose").Types.ObjectId;
-    } & Required<{
-        _id: import("mongoose").Types.ObjectId;
-    }>)[]>;
+    })[]>;
     remove(id: string): Promise<string>;
 }

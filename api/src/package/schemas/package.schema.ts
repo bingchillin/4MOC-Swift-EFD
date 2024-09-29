@@ -1,34 +1,46 @@
+import { ObjectType, Field, Float, ID } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { Document } from 'mongoose';
 
-export type PackageDocument = HydratedDocument<Package>;
+export type PackageDocument = Package & Document;
 
 @Schema()
+@ObjectType() // Decorateur => c'est un type GraphQL
 export class Package {
-    @Prop()
-    name: string;
+  @Field(() => ID) //  `id` pour GraphQL
+  id: string; // comme à `_id` dans MongoDB
 
-    @Prop()
-    status: string;
+  @Field()
+  @Prop()
+  name: string;
 
-    @Prop()
-    proof: string;
+  @Field()
+  @Prop()
+  status: string;
 
-    @Prop()
-    latitude: number;
+  @Field()
+  @Prop()
+  proof: string;
 
-    @Prop()
-    longitude: number;
+  @Field(() => Float)
+  @Prop()
+  latitude: number;
 
-    @Prop()
-    idUserClient: string;
+  @Field(() => Float)
+  @Prop()
+  longitude: number;
 
-    @Prop()
-    idUserDelivery: string;
+  @Field()
+  @Prop()
+  idUserClient: string;
 
-    @Prop()
-    isAffected: boolean;
+  @Field()
+  @Prop()
+  idUserDelivery: string;
 
+  @Field()
+  @Prop()
+  isAffected: boolean;
 }
 
 export const PackageSchema = SchemaFactory.createForClass(Package);
