@@ -55,6 +55,15 @@ export class PackageResolver {
         return this.packageService.remove(id);
     }
 
+    @Mutation(() => Package)
+    async update(
+        @Args("id") id: string,
+        @Args("updatePackageDto") updatePackageDto: UpdatePackageDto
+    ): Promise<Package> {
+        return this.packageService.update(id, updatePackageDto);
+
+}
+
   
 
 }

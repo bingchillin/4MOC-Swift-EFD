@@ -8,33 +8,36 @@
 import Foundation
 class DeliveryWebServices {
     
-    class func addDelivery(username : String, email: String, password : String, completion: @escaping (Error?, Bool?) -> Void){
-        
+    static let url = "http://localhost:3000/graphql"
     
-        let url = "http://localhost:3000/user"
+    class func addDelivery(username: String, email: String, password: String, completion: @escaping (Error?, Bool?) -> Void) {
         
-        guard let getAddURL = URL(string: url) else{
+        
+        guard let getAddURL = URL(string: url) else {
             return
         }
         
         var request = URLRequest(url: getAddURL)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        //let inputData = password.data(using: .utf8)
+        // Mutation GraphQL pour ajouter un livreur
+        let mutation = """
+        mutation {
+            createUser(createUserInput: {
+                name: "\(username)",
+                email: "\(email)",
+                password: "\(password)",
+                role: "livreur"
+            }) {
+                id
+                name
+                email
+                role
+            }
+        }
+        """
         
-        // Calculer le hachage SHA-256
-        //let hashedData = SHA256.hash(data: inputData!)
-            
-        // Convertir le hachage en une chaîne hexadécimale
-        //let passwordDataHash = hashedData.map { String(format: "%02hhx", $0) }.joined()
-        
-        
-
-        let json: [String: Any] = ["name": username,
-                                   "email": email,
-                                   "password": password,
-                                   "role": "livreur"]
-
+        let json: [String: Any] = ["query": mutation]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
         request.httpBody = jsonData
@@ -45,6 +48,7 @@ class DeliveryWebServices {
                 completion(err, false)
                 return
             }
+            
             guard let d = data else {
                 completion(NSError(domain: "com.EFD", code: 2, userInfo: [
                     NSLocalizedFailureReasonErrorKey: "No data found"
@@ -53,21 +57,33 @@ class DeliveryWebServices {
             }
             
             do {
-                try JSONSerialization.jsonObject(with: d, options: .allowFragments)
-                completion(nil, true)
+                // Vérifiez si la réponse contient des données valides
+                if let jsonResponse = try JSONSerialization.jsonObject(with: d, options: []) as? [String: Any],
+                   let data = jsonResponse["data"] as? [String: Any],
+                   let newUser = data["createUser"] as? [String: Any] {
+                    
+                    // Optionnel: Affichez les informations de l'utilisateur créé
+                    print("User created: \(newUser["id"] ?? ""), \(newUser["name"] ?? ""), \(newUser["email"] ?? "")")
+                    
+                    // La création a réussi
+                    completion(nil, true)
+                } else {
+                    completion(NSError(domain: "com.EFD", code: 4, userInfo: [
+                        NSLocalizedFailureReasonErrorKey: "Failed to parse response"
+                    ]), false)
+                }
             } catch let err {
                 completion(err, false)
-                return
             }
-
         }
         
         task.resume()
     }
+
     
     class func getListDelivery(completion: @escaping (Error?, [User]?) -> Void) {
         
-        let url = "http://localhost:3000/graphql"
+        
         guard let deliveryURL = URL(string: url) else {
             return
         }
@@ -138,17 +154,35 @@ class DeliveryWebServices {
     }
 
     
-    class func getDeliveryUnique(id: String,completion: @escaping (Error?, Bool?, User?) -> Void){
+    class func getDeliveryUnique(id: String, completion: @escaping (Error?, Bool?, User?) -> Void) {
         
         
-        let url = "http://localhost:3000/user/"+id
-        
-        guard let itemURL = URL(string: url) else{
+        guard let getUserURL = URL(string: url) else {
             return
         }
-        var request = URLRequest(url: itemURL)
         
+        var request = URLRequest(url: getUserURL)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let query = """
+        query {
+            user(id: "\(id)") {
+                id
+                name
+                email
+                password
+                role
+                latitude
+                longitude
+            }
+        }
+        """
+        
+        let json: [String: Any] = ["query": query]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        request.httpBody = jsonData
+        request.httpMethod = "POST"
         
         let task = URLSession.shared.dataTask(with: request) { data, res, err in
             guard err == nil else {
@@ -163,47 +197,67 @@ class DeliveryWebServices {
             }
             
             do {
-                if let item = try JSONSerialization.jsonObject(with: d, options: .allowFragments) as? [String: Any] {
-                    let user = User(id: item["_id"] as? String ?? "",
-                                    name: item["name"] as? String ?? "",
-                                    email: item["email"] as? String ?? "",
-                                    password: item["password"] as? String ?? "",
-                                    role: item["role"] as? String ?? "",
-                                    latitude: item["latitude"] as? Double,
-                                    longitude: item["longitude"] as? Double)
+  
+                if let jsonResponse = try JSONSerialization.jsonObject(with: d, options: []) as? [String: Any],
+                   let data = jsonResponse["data"] as? [String: Any],
+                   let userData = data["user"] as? [String: Any] {
+                    
+                    // Créez un objet User à partir des données récupérées
+                    let user = User(
+                        id: userData["id"] as? String ?? "",
+                        name: userData["name"] as? String ?? "",
+                        email: userData["email"] as? String ?? "",
+                        password: userData["password"] as? String ?? "",
+                        role: userData["role"] as? String ?? "",
+                        latitude: userData["latitude"] as? Double,
+                        longitude: userData["longitude"] as? Double
+                    )
                     completion(nil, true, user)
+                } else {
+                    completion(NSError(domain: "com.EFD", code: 4, userInfo: [
+                        NSLocalizedFailureReasonErrorKey: "Failed to parse response"
+                    ]), false, nil)
                 }
-                
             } catch let err {
                 completion(err, false, nil)
-                return
             }
         }
+        
         task.resume()
     }
     
-    class func modifyDelivery(user: User, completion: @escaping (Error?, Bool?) -> Void){
+    class func modifyDelivery(user: User, completion: @escaping (Error?, Bool?) -> Void) {
         
-    
-        let url = "http://localhost:3000/user/" + user.id!
         
-        guard let getAddURL = URL(string: url) else{
+        guard let modifyURL = URL(string: url) else {
             return
         }
         
-        var request = URLRequest(url: getAddURL)
+        var request = URLRequest(url: modifyURL)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-
-        let json: [String: Any] = ["name": user.name,
-                                   "email": user.email,
-                                   "password": user.password,
-                                   "role": user.role]
-
+        // Mutation GraphQL pour mettre à jour un utilisateur
+        let mutation = """
+        mutation {
+            updateUser(id: "\(user.id!)", updateUserInput: {
+                name: "\(user.name)",
+                email: "\(user.email)",
+                password: "\(user.password)",
+                role: "\(user.role)"
+            }) {
+                id
+                name
+                email
+                role
+            }
+        }
+        """
+        
+        let json: [String: Any] = ["query": mutation]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
         request.httpBody = jsonData
-        request.httpMethod = "PATCH"
+        request.httpMethod = "POST"
         
         let task = URLSession.shared.dataTask(with: request) { data, res, err in
             guard err == nil else {
@@ -218,48 +272,90 @@ class DeliveryWebServices {
             }
             
             do {
-                try JSONSerialization.jsonObject(with: d, options: .allowFragments)
-                completion(nil, true)
+                // Vérifiez si JSON contient des données valides
+                if let jsonResponse = try JSONSerialization.jsonObject(with: d, options: []) as? [String: Any],
+                   let data = jsonResponse["data"] as? [String: Any],
+                   let updatedUser = data["updateUser"] as? [String: Any] {
+                    
+                    // Affiche des infos de l'utilisateur mis à jour
+                    print("User updated: \(updatedUser["id"] ?? ""), \(updatedUser["name"] ?? ""), \(updatedUser["email"] ?? ""), \(updatedUser["role"] ?? "")")
+                    
+                    // Modifs réussie
+                    completion(nil, true)
+                } else {
+                    completion(NSError(domain: "com.EFD", code: 4, userInfo: [
+                        NSLocalizedFailureReasonErrorKey: "Failed to parse response"
+                    ]), false)
+                }
             } catch let err {
                 completion(err, false)
-                return
             }
-
         }
         
         task.resume()
     }
-    class func DeleteUser(id: String,completion: @escaping (Error?, Bool?) -> Void){
-        
-        
-        let url = "http://localhost:3000/user/"+id
-        
-        guard let itemURL = URL(string: url) else{
+
+    
+    class func DeleteUser(id: String, completion: @escaping (Error?, Bool?) -> Void) {
+
+        guard let deleteURL = URL(string: url) else {
             return
         }
-        var request = URLRequest(url: itemURL)
         
+
+        var request = URLRequest(url: deleteURL)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        request.httpMethod = "DELETE"
+        let mutation = """
+        mutation {
+            remove(id: "\(id)")
+        }
+        """
         
+        let json: [String: Any] = ["query": mutation]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+
+        request.httpBody = jsonData
+        request.httpMethod = "POST" // Utilisez POST
+
         let task = URLSession.shared.dataTask(with: request) { data, res, err in
             guard err == nil else {
+                print("Error: \(String(describing: err))")
                 completion(err, false)
                 return
             }
-            guard data != nil else {
+            
+            guard let d = data else {
                 completion(NSError(domain: "com.EFD", code: 2, userInfo: [
                     NSLocalizedFailureReasonErrorKey: "No data found"
                 ]), false)
                 return
             }
-               
-                completion(nil, true)
+            
+            // Débogage de la réponse
+            print("Response Data: \(String(data: d, encoding: .utf8) ?? "No response data")")
+            
+            do {
+                if let jsonResponse = try JSONSerialization.jsonObject(with: d, options: []) as? [String: Any],
+                   let data = jsonResponse["data"] as? [String: Any],
+                   let removedUser = data["remove"] as? String { // Assurez-vous que le nom correspond
                 
+                    print("User removed: \(removedUser)")
+                    completion(nil, true)
+                } else {
+                    completion(NSError(domain: "com.EFD", code: 4, userInfo: [
+                        NSLocalizedFailureReasonErrorKey: "Failed to parse response"
+                    ]), false)
+                }
+            } catch let err {
+                print("Error parsing response: \(err)")
+                completion(err, false)
+            }
         }
         
         task.resume()
     }
+
+
     
 }

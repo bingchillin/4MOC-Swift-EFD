@@ -1,4 +1,4 @@
-import { Injectable, ConflictException } from '@nestjs/common';
+import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User as UserSchema, UserDocument } from './schemas/user.schema'; // Type Mongoose
@@ -31,12 +31,37 @@ export class UserService {
   }
 
   async findOne(id: string): Promise<UserSchema | null> {
-    return this.userDocumentModel.findById(id).exec();
+    const user = await this.userDocumentModel.findById(id).exec();
+
+    if (!user) {
+        return null; 
+    }
+
+    return {
+        id: user._id.toString(), 
+        name: user.name,
+        email: user.email,
+        password: user.password, 
+        role: user.role,           
+        latitude: user.latitude,
+        longitude: user.longitude
+    };
+}
+
+
+  
+  async findAllLivreur(): Promise<UserSchema[]> {
+    const users = await this.userDocumentModel.find({ role: 'livreur' }).exec();
+    
+    return users.map(user => ({
+      id: user._id.toString(),
+      name: user.name,
+      email: user.email,
+      password: user.password, 
+      role: user.role           
+    }));
   }
 
-  async findAllLivreur(): Promise<UserSchema[]> {
-    return this.userDocumentModel.find({ role: 'livreur' }).exec();
-  }
 
   async findOneLivreur(id: string): Promise<UserSchema | null> {
     return this.userDocumentModel.findOne({ _id: id, role: 'livreur' }).exec();
@@ -50,7 +75,7 @@ export class UserService {
     return this.userDocumentModel.findByIdAndUpdate(id, updateUserInput, { new: true }).exec();
   }
 
-  async remove(id: string): Promise<string> {
+  /*async remove(id: string): Promise<string> {
     const result = await this.userDocumentModel.deleteOne({ _id: id }).exec();
 
     if (result.deletedCount === 0) {
@@ -58,8 +83,20 @@ export class UserService {
     }
 
     return `User with id ${id} has been deleted`;
-  }
+  }*/
 
+  async remove(id: string): Promise<string> {
+    if (!id) {
+        throw new Error('ID cannot be empty');
+    }
+    console.log(`Attempting to delete user with ID: ${id}`); // Pour le débogage
+    const result = await this.userDocumentModel.deleteOne({ _id: id }).exec();
+
+    if (result.deletedCount === 0) {
+        throw new Error('User not found');
+    }
+    return `User with id ${id} has been deleted`;
+}
   
   async login(email: string, password: string): Promise<UserDocument | string> {
     // Recherche l'utilisateur par email

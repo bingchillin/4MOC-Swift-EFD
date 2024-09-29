@@ -8,7 +8,7 @@ export class UpdatePackageDto {
     @Field({ nullable: true })
     idUserClient?: string;
 
-    @Field({ nullable: true })
+    @Field(() => String, { nullable: true })
     idUserDelivery?: string;
 
     @Field({ nullable: true })

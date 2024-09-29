@@ -16,7 +16,7 @@ protocol UserService{
 
 class UserServices {
     class func getAllUsers(completion: @escaping (Error?, [User]?) -> Void) {
-        let url = "http://localhost:3000/user"
+        let url = "http://localhost:3000/graphql"
         
         guard let getUsersURL = URL(string: url) else {
             completion(NSError(domain: "com.YourApp", code: 1, userInfo: [
@@ -28,6 +28,26 @@ class UserServices {
         var request = URLRequest(url: getUsersURL)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        let query = """
+        query {
+            users {
+                id
+                name
+                email
+                password
+                role
+                latitude
+                longitude
+            }
+        }
+        """
+        
+        let json: [String: Any] = ["query": query]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+        request.httpBody = jsonData
+        request.httpMethod = "POST"
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 completion(error, nil)
@@ -35,10 +55,13 @@ class UserServices {
             }
             
             do {
-                if let userList = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+                if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                   let data = jsonResponse["data"] as? [String: Any],
+                   let userList = data["users"] as? [[String: Any]] {
+                    
                     let users = userList.map { dict in
                         return User(
-                            id: dict["_id"] as? String ?? "",
+                            id: dict["id"] as? String ?? "",
                             name: dict["name"] as? String ?? "",
                             email: dict["email"] as? String ?? "",
                             password: dict["password"] as? String ?? "",
@@ -59,6 +82,7 @@ class UserServices {
         }
         task.resume()
     }
+
 
 }
 

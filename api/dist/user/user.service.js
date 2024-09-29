@@ -38,10 +38,29 @@ let UserService = class UserService {
         return this.userDocumentModel.find().exec();
     }
     async findOne(id) {
-        return this.userDocumentModel.findById(id).exec();
+        const user = await this.userDocumentModel.findById(id).exec();
+        if (!user) {
+            return null;
+        }
+        return {
+            id: user._id.toString(),
+            name: user.name,
+            email: user.email,
+            password: user.password,
+            role: user.role,
+            latitude: user.latitude,
+            longitude: user.longitude
+        };
     }
     async findAllLivreur() {
-        return this.userDocumentModel.find({ role: 'livreur' }).exec();
+        const users = await this.userDocumentModel.find({ role: 'livreur' }).exec();
+        return users.map(user => ({
+            id: user._id.toString(),
+            name: user.name,
+            email: user.email,
+            password: user.password,
+            role: user.role
+        }));
     }
     async findOneLivreur(id) {
         return this.userDocumentModel.findOne({ _id: id, role: 'livreur' }).exec();
@@ -54,6 +73,10 @@ let UserService = class UserService {
         return this.userDocumentModel.findByIdAndUpdate(id, updateUserInput, { new: true }).exec();
     }
     async remove(id) {
+        if (!id) {
+            throw new Error('ID cannot be empty');
+        }
+        console.log(`Attempting to delete user with ID: ${id}`);
         const result = await this.userDocumentModel.deleteOne({ _id: id }).exec();
         if (result.deletedCount === 0) {
             throw new Error('User not found');

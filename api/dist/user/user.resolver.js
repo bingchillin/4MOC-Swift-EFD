@@ -28,7 +28,7 @@ let UserResolver = class UserResolver {
     async findOne(id) {
         return this.userService.findOne(id);
     }
-    async findAllLivreur() {
+    findAllLivreur() {
         return this.userService.findAllLivreur();
     }
     async createUser(createUserInput) {
@@ -37,7 +37,7 @@ let UserResolver = class UserResolver {
     async updateUser(id, updateUserInput) {
         return this.userService.update(id, updateUserInput);
     }
-    async removeUser(id) {
+    async remove(id) {
         return this.userService.remove(id);
     }
     async login(email, password) {
@@ -71,7 +71,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "findOne", null);
 __decorate([
-    (0, graphql_1.Query)(() => [user_model_1.User]),
+    (0, graphql_1.Query)(returns => [user_model_1.User]),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -97,7 +97,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], UserResolver.prototype, "removeUser", null);
+], UserResolver.prototype, "remove", null);
 __decorate([
     (0, graphql_1.Mutation)(() => user_model_1.User),
     __param(0, (0, graphql_1.Args)('email')),

@@ -23,7 +23,7 @@ __decorate([
     __metadata("design:type", String)
 ], UpdatePackageDto.prototype, "idUserClient", void 0);
 __decorate([
-    (0, graphql_1.Field)({ nullable: true }),
+    (0, graphql_1.Field)(() => String, { nullable: true }),
     __metadata("design:type", String)
 ], UpdatePackageDto.prototype, "idUserDelivery", void 0);
 __decorate([

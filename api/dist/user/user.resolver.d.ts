@@ -10,6 +10,6 @@ export declare class UserResolver {
     findAllLivreur(): Promise<UserModel[]>;
     createUser(createUserInput: CreateUserInput): Promise<UserModel>;
     updateUser(id: string, updateUserInput: UpdateUserInput): Promise<UserModel | null>;
-    removeUser(id: string): Promise<string>;
+    remove(id: string): Promise<string>;
     login(email: string, password: string): Promise<UserModel | null>;
 }

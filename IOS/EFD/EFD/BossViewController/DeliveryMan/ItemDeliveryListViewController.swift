@@ -38,7 +38,7 @@ class ItemDeliveryListViewController: UIViewController {
         tableViewPackage.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         tableViewPackage.estimatedRowHeight = 80 // Par exemple, 80 points de hauteur estimée
          
-        
+    
          
         callTableView()
         
@@ -92,13 +92,16 @@ class ItemDeliveryListViewController: UIViewController {
   
     @IBAction func goDeleteDelivery(_ sender: Any) {
         
+      
+        
         if self.packageList.isEmpty {
             
             let alertVerif = UIAlertController(title: "Demande de validation", message: "Etes vous sur de vouloir supprimer ce livreur ?", preferredStyle: .alert)
             
             // Action "Oui"
             alertVerif.addAction(UIAlertAction(title: "Oui", style: .default, handler: { _ in
-               
+                
+                
                 DeliveryWebServices.DeleteUser(id: self.user.id!){ err, success in
                         guard (success != nil) else {
                             return

@@ -46,6 +46,9 @@ let PackageResolver = class PackageResolver {
     async removePackage(id) {
         return this.packageService.remove(id);
     }
+    async update(id, updatePackageDto) {
+        return this.packageService.update(id, updatePackageDto);
+    }
 };
 exports.PackageResolver = PackageResolver;
 __decorate([
@@ -103,6 +106,14 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], PackageResolver.prototype, "removePackage", null);
+__decorate([
+    (0, graphql_1.Mutation)(() => package_schema_1.Package),
+    __param(0, (0, graphql_1.Args)("id")),
+    __param(1, (0, graphql_1.Args)("updatePackageDto")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, update_package_dto_1.UpdatePackageDto]),
+    __metadata("design:returntype", Promise)
+], PackageResolver.prototype, "update", null);
 exports.PackageResolver = PackageResolver = __decorate([
     (0, graphql_1.Resolver)(() => package_schema_1.Package),
     __metadata("design:paramtypes", [package_service_1.PackageService])

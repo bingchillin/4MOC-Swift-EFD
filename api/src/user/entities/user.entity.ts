@@ -1,11 +1,11 @@
-import { ObjectType, Field, Int, Float } from '@nestjs/graphql';
+import { ObjectType, Field, Int, Float, ID } from '@nestjs/graphql';
 
-@ObjectType() // Décorateur pour définir l'entité comme un type GraphQL
+@ObjectType() // définir l'entité comme GraphQL
 export class User {
-    @Field(() => String)
-    id: string; // Ajout du champ id pour GraphQL
+    @Field(() => ID)
+    id: string;
 
-    @Field(() => String) // Décorateur pour exposer un champ dans GraphQL
+    @Field(() => String) 
     name: string;
 
     @Field(() => String)
@@ -17,7 +17,7 @@ export class User {
     @Field(() => String)
     role: string;
 
-    @Field(() => Float, { nullable: true }) // Utilisation de Float pour les coordonnées
+    @Field(() => Float, { nullable: true })
     latitude: number;
 
     @Field(() => Float, { nullable: true })

@@ -44,4 +44,5 @@ export declare class PackageResolver {
     findPackageByProcess(): Promise<Package[]>;
     findPackageByUserIdSuccess(idUserClient: string): Promise<Package[]>;
     removePackage(id: string): Promise<string>;
+    update(id: string, updatePackageDto: UpdatePackageDto): Promise<Package>;
 }

@@ -58,6 +58,7 @@ extension AssignPackageViewController: UITableViewDelegate {
         
         let userId = self.userList[indexPath.row].id
         
+        
         let alertVerif = UIAlertController(title: "Demande de validation", message: "Etes vous sur de vouloir assigner ce livreur ?", preferredStyle: .alert)
         
         // Action "Oui"

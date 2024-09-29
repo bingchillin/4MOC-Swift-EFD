@@ -39,11 +39,12 @@ type Query {
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(id: String!, updateUserInput: UpdateUserInput!): User!
-  removeUser(id: String!): String!
+  remove(id: String!): String!
   login(email: String!, password: String!): User!
   createPackage(createPackageInput: CreatePackageInput!): Package!
   updatePackage(id: String!, updatePackageInput: UpdatePackageDto!): Package!
   removePackage(id: ID!): String!
+  update(id: String!, updatePackageDto: UpdatePackageDto!): Package!
 }
 
 input CreateUserInput {
