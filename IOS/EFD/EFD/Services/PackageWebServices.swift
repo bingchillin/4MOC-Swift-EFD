@@ -108,17 +108,39 @@ class PackageWebServices {
         task.resume()
     }
     
-    class func getListDeliveryPackageProcess(id: String,completion: @escaping (Error?, Bool?, [Package]?) -> Void){
+    class func getListDeliveryPackageProcess(id: String, completion: @escaping (Error?, Bool?, [Package]?) -> Void) {
         
         
-        let url = "http://localhost:3000/package/delivery/" + id + "/process"
-        guard let itemURL = URL(string: url) else{
+        let url = "http://localhost:3000/graphql"
+        guard let itemURL = URL(string: url) else {
             return
         }
         
         var request = URLRequest(url: itemURL)
-        
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        // Créez la requête GraphQL
+        let query = """
+        query {
+            findPackageByDeliveryProcess(id: "\(id)") {
+                id
+                name
+                status
+                proof
+                latitude
+                longitude
+                idUserDelivery
+                isAffected
+                idUserClient
+            }
+        }
+        """
+        
+        let json: [String: Any] = ["query": query]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+
+        request.httpBody = jsonData
+        request.httpMethod = "POST" // Utilisez POST pour les requêtes GraphQL
         
         let task = URLSession.shared.dataTask(with: request) { data, res, err in
             guard err == nil else {
@@ -133,20 +155,23 @@ class PackageWebServices {
             }
             
             do {
-                if let itemList = try JSONSerialization.jsonObject(with: d, options: []) as? [[String: Any]] {
+                // Décoder la réponse JSON pour récupérer la liste des paquets
+                if let jsonResponse = try JSONSerialization.jsonObject(with: d, options: []) as? [String: Any],
+                   let data = jsonResponse["data"] as? [String: Any],
+                   let itemList = data["findPackageByDeliveryProcess"] as? [[String: Any]] {
+                    
                     let packages = itemList.compactMap { dict in
-                                        return Package(id: dict["_id"] as? String ?? "",
-                                                       name: dict["name"] as? String ?? "",
-                                                       status: dict["status"] as? String ?? "",
-                                                       proof: dict["proof"] as? String ?? "",
-                                                       latitude: dict["latitude"] as? Double,
-                                                       longitude: dict["longitude"] as? Double,
-                                                       idUserDelivery: dict["idUserDelivery"] as? String ?? "",
-                                                       isAffected: dict["isAffected"] as? Bool ?? false,
-                                                       idUserClient: dict["idUserClient"] as? String ?? "")
-                                    }
-                                    completion(nil, true, packages)
-        
+                        return Package(id: dict["id"] as? String ?? "",
+                                       name: dict["name"] as? String ?? "",
+                                       status: dict["status"] as? String ?? "",
+                                       proof: dict["proof"] as? String ?? "",
+                                       latitude: dict["latitude"] as? Double,
+                                       longitude: dict["longitude"] as? Double,
+                                       idUserDelivery: dict["idUserDelivery"] as? String ?? "",
+                                       isAffected: dict["isAffected"] as? Bool ?? false,
+                                       idUserClient: dict["idUserClient"] as? String ?? "")
+                    }
+                    completion(nil, true, packages)
                 }
                 
             } catch let err {
@@ -156,20 +181,42 @@ class PackageWebServices {
         }
         task.resume()
     }
+
     
-    class func getListPackageProcessCreate(completion: @escaping (Error?, Bool?, [Package]?) -> Void){
+    class func getListPackageProcessCreate(completion: @escaping (Error?, Bool?, [Package]?) -> Void) {
         
+        let url = "http://localhost:3000/graphql"
         
-        let url = "http://localhost:3000/package/process/create"
-        
-        guard let itemURL = URL(string: url) else{
+        guard let itemURL = URL(string: url) else {
             return
         }
         
         var request = URLRequest(url: itemURL)
-        
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        // Créez la requête GraphQL pour obtenir la liste des packages créés
+        let query = """
+        query {
+            findPackageByProcess {
+                id
+                name
+                status
+                proof
+                latitude
+                longitude
+                idUserDelivery
+                isAffected
+                idUserClient
+            }
+        }
+        """
+
+        let json: [String: Any] = ["query": query]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+
+        request.httpBody = jsonData
+        request.httpMethod = "POST" // Utilisez POST pour les requêtes GraphQL
+
         let task = URLSession.shared.dataTask(with: request) { data, res, err in
             guard err == nil else {
                 completion(err, false, nil)
@@ -183,29 +230,36 @@ class PackageWebServices {
             }
             
             do {
-                if let itemList = try JSONSerialization.jsonObject(with: d, options: []) as? [[String: Any]] {
-                    let packages = itemList.compactMap { dict in
-                                        return Package(id: dict["_id"] as? String ?? "",
-                                                       name: dict["name"] as? String ?? "",
-                                                       status: dict["status"] as? String ?? "",
-                                                       proof: dict["proof"] as? String ?? "",
-                                                       latitude: dict["latitude"] as? Double,
-                                                       longitude: dict["longitude"] as? Double,
-                                                       idUserDelivery: dict["idUserDelivery"] as? String ?? "",
-                                                       isAffected: dict["isAffected"] as? Bool ?? false,
-                                                       idUserClient: dict["idUserClient"] as? String ?? "")
-                                    }
-                                    completion(nil, true, packages)
-        
+                // Vérifiez la réponse JSON pour récupérer les packages
+                if let jsonResponse = try JSONSerialization.jsonObject(with: d, options: []) as? [String: Any],
+                   let data = jsonResponse["data"] as? [String: Any],
+                   let packagesList = data["findPackageByProcess"] as? [[String: Any]] {
+                    
+                    let packages = packagesList.compactMap { dict in
+                        return Package(id: dict["id"] as? String ?? "",
+                                       name: dict["name"] as? String ?? "",
+                                       status: dict["status"] as? String ?? "",
+                                       proof: dict["proof"] as? String ?? "",
+                                       latitude: dict["latitude"] as? Double,
+                                       longitude: dict["longitude"] as? Double,
+                                       idUserDelivery: dict["idUserDelivery"] as? String ?? "",
+                                       isAffected: dict["isAffected"] as? Bool ?? false,
+                                       idUserClient: dict["idUserClient"] as? String ?? "")
+                    }
+                    completion(nil, true, packages)
+                } else {
+                    completion(NSError(domain: "com.EFD", code: 4, userInfo: [
+                        NSLocalizedFailureReasonErrorKey: "Failed to parse package data"
+                    ]), nil, nil)
                 }
-                
             } catch let err {
-                completion(err, false, nil)
+                completion(err, nil, nil)
                 return
             }
         }
         task.resume()
     }
+
     
     class func modifyPackage(idP: String, idUD: String, status: String, completion: @escaping (Error?, Bool?) -> Void){
         
@@ -253,27 +307,33 @@ class PackageWebServices {
         task.resume()
     }
     
-    class func modifySavePackage(idP: String, proof: String, completion: @escaping (Error?, Bool?) -> Void){
+    class func modifySavePackage(idP: String, proof: String, completion: @escaping (Error?, Bool?) -> Void) {
         
-    
-        let url = "http://localhost:3000/package/" + idP
-        
-        guard let getAddURL = URL(string: url) else{
+        let url = "http://localhost:3000/graphql"
+        guard let itemURL = URL(string: url) else {
             return
         }
         
-        var request = URLRequest(url: getAddURL)
+        var request = URLRequest(url: itemURL)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        // Créez la mutation GraphQL
+        let mutation = """
+        mutation {
+            updatePackage(id: "\(idP)", updatePackageInput: { proof: "\(proof)", status: "success" }) {
+                id
+                proof
+                status
+            }
+        }
+        """
         
-
-        let json: [String: Any] = ["proof": proof,
-                                   "status": "success"]
-
+        let json: [String: Any] = ["query": mutation]
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        
+
         request.httpBody = jsonData
-        request.httpMethod = "PATCH"
-        
+        request.httpMethod = "POST" // Utilisez POST pour les mutations GraphQL
+
         let task = URLSession.shared.dataTask(with: request) { data, res, err in
             guard err == nil else {
                 completion(err, false)
@@ -287,17 +347,24 @@ class PackageWebServices {
             }
             
             do {
-                try JSONSerialization.jsonObject(with: d, options: .allowFragments)
-                completion(nil, true)
+                // Vérifiez la réponse JSON pour voir si la mutation a réussi
+                if let jsonResponse = try JSONSerialization.jsonObject(with: d, options: []) as? [String: Any],
+                   let data = jsonResponse["data"] as? [String: Any],
+                   let updatedPackage = data["updatePackage"] as? [String: Any] {
+                    completion(nil, true)
+                } else {
+                    completion(NSError(domain: "com.EFD", code: 3, userInfo: [
+                        NSLocalizedFailureReasonErrorKey: "Mutation failed"
+                    ]), false)
+                }
             } catch let err {
                 completion(err, false)
                 return
             }
-
         }
-        
         task.resume()
     }
+
     
     /*class func addPackage(idUserClient : String, name : String, longitude: String, latitude : String, completion: @escaping (Error?, Bool?) -> Void){
         
@@ -523,7 +590,7 @@ class PackageWebServices {
     
     class func modifyStatusPackageC(idP: String, status: String, completion: @escaping (Error?, Bool?) -> Void) {
         
-        let url = "http://localhost:3000/graphql"  // Assurez-vous que l'URL correspond à votre endpoint GraphQL.
+        let url = "http://localhost:3000/graphql"
         
         guard let getAddURL = URL(string: url) else {
             return

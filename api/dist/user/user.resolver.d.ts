@@ -7,6 +7,7 @@ export declare class UserResolver {
     constructor(userService: UserService);
     findAll(): Promise<UserModel[]>;
     findOne(id: string): Promise<UserModel | null>;
+    findAllLivreur(): Promise<UserModel[]>;
     createUser(createUserInput: CreateUserInput): Promise<UserModel>;
     updateUser(id: string, updateUserInput: UpdateUserInput): Promise<UserModel | null>;
     removeUser(id: string): Promise<string>;

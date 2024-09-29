@@ -40,6 +40,8 @@ export declare class PackageResolver {
         _id: import("mongoose").Types.ObjectId;
     }>;
     updatePackage(id: string, updatePackageInput: UpdatePackageDto): Promise<Package>;
+    findPackageByDeliveryProcess(id: string): Promise<Package[]>;
+    findPackageByProcess(): Promise<Package[]>;
     findPackageByUserIdSuccess(idUserClient: string): Promise<Package[]>;
     removePackage(id: string): Promise<string>;
 }

@@ -28,6 +28,9 @@ let UserResolver = class UserResolver {
     async findOne(id) {
         return this.userService.findOne(id);
     }
+    async findAllLivreur() {
+        return this.userService.findAllLivreur();
+    }
     async createUser(createUserInput) {
         return this.userService.create(createUserInput);
     }
@@ -67,6 +70,12 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "findOne", null);
+__decorate([
+    (0, graphql_1.Query)(() => [user_model_1.User]),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "findAllLivreur", null);
 __decorate([
     (0, graphql_1.Mutation)(() => user_model_1.User),
     __param(0, (0, graphql_1.Args)('createUserInput')),

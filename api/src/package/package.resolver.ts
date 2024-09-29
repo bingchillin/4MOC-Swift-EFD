@@ -8,43 +8,52 @@ import { UpdatePackageDto } from './dto/update-package.dto';
 export class PackageResolver {
   constructor(private readonly packageService: PackageService) {}
 
-  @Query(() => [Package], { name: 'packages' })
-  async findAll() {
-    return this.packageService.findAll();
-  }
+    @Query(() => [Package], { name: 'packages' })
+    async findAll() {
+        return this.packageService.findAll();
+    }
 
-  @Query(() => Package, { name: 'package' })
-  async findOne(@Args('id', { type: () => ID }) id: string) {
-    return this.packageService.findOne(id);
-  }
+    @Query(() => Package, { name: 'package' })
+    async findOne(@Args('id', { type: () => ID }) id: string) {
+        return this.packageService.findOne(id);
+    }
 
-  @Mutation(() => Package) 
-  async createPackage(
-    @Args('createPackageInput') createPackageInput: CreatePackageInput
-  ) {
-    return this.packageService.create(createPackageInput);
-  }
-
+    @Mutation(() => Package) 
+    async createPackage(
+        @Args('createPackageInput') createPackageInput: CreatePackageInput
+    ) {
+        return this.packageService.create(createPackageInput);
+    }
  
-  @Mutation(() => Package)
-async updatePackage(
-    @Args('id') id: string,
-    @Args('updatePackageInput') updatePackageInput: UpdatePackageDto 
-): Promise<Package> {
-    return this.packageService.update(id, updatePackageInput);
-}
+    @Mutation(() => Package)
+    async updatePackage(
+        @Args('id') id: string,
+        @Args('updatePackageInput') updatePackageInput: UpdatePackageDto 
+    ): Promise<Package> {
+        return this.packageService.update(id, updatePackageInput);
+    }
 
-  @Query(() => [Package])
-  async findPackageByUserIdSuccess(
-    @Args('idUserClient') idUserClient: string,
-  ): Promise<Package[]> {
-    return this.packageService.findPackageByUserIdSuccess(idUserClient);
-  }
+    @Query(() => [Package])
+    async findPackageByDeliveryProcess(@Args('id') id: string): Promise<Package[]> {
+        return this.packageService.findPackageByDeliveryProcess(id); // Appelle le service
+    }
 
-  @Mutation(() => String)
-  async removePackage(@Args('id', { type: () => ID }) id: string) {
-    return this.packageService.remove(id);
-  }
+    @Query(() => [Package]) 
+    async findPackageByProcess(): Promise<Package[]> {
+        return this.packageService.findPackageByProcess();
+    }
+
+    @Query(() => [Package])
+    async findPackageByUserIdSuccess(
+        @Args('idUserClient') idUserClient: string,
+    ): Promise<Package[]> {
+        return this.packageService.findPackageByUserIdSuccess(idUserClient);
+    }
+
+    @Mutation(() => String)
+    async removePackage(@Args('id', { type: () => ID }) id: string) {
+        return this.packageService.remove(id);
+    }
 
   
 

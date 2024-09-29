@@ -34,6 +34,12 @@ let PackageResolver = class PackageResolver {
     async updatePackage(id, updatePackageInput) {
         return this.packageService.update(id, updatePackageInput);
     }
+    async findPackageByDeliveryProcess(id) {
+        return this.packageService.findPackageByDeliveryProcess(id);
+    }
+    async findPackageByProcess() {
+        return this.packageService.findPackageByProcess();
+    }
     async findPackageByUserIdSuccess(idUserClient) {
         return this.packageService.findPackageByUserIdSuccess(idUserClient);
     }
@@ -70,6 +76,19 @@ __decorate([
     __metadata("design:paramtypes", [String, update_package_dto_1.UpdatePackageDto]),
     __metadata("design:returntype", Promise)
 ], PackageResolver.prototype, "updatePackage", null);
+__decorate([
+    (0, graphql_1.Query)(() => [package_schema_1.Package]),
+    __param(0, (0, graphql_1.Args)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], PackageResolver.prototype, "findPackageByDeliveryProcess", null);
+__decorate([
+    (0, graphql_1.Query)(() => [package_schema_1.Package]),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], PackageResolver.prototype, "findPackageByProcess", null);
 __decorate([
     (0, graphql_1.Query)(() => [package_schema_1.Package]),
     __param(0, (0, graphql_1.Args)('idUserClient')),

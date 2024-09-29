@@ -11,5 +11,8 @@ export class UpdatePackageDto {
     @Field({ nullable: true })
     idUserDelivery?: string;
 
+    @Field({ nullable: true })
+    proof?: string;
+
  
 }

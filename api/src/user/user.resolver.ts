@@ -18,6 +18,11 @@ export class UserResolver {
     return this.userService.findOne(id);
   }
 
+  @Query(() => [UserModel]) // Indique que la requête retourne une liste d'utilisateurs
+    async findAllLivreur(): Promise<UserModel[]> {
+        return this.userService.findAllLivreur(); // Appelle la méthode du service pour obtenir les livreurs
+    }
+
   @Mutation(() => UserModel)
   async createUser(
     @Args('createUserInput') createUserInput: CreateUserInput,

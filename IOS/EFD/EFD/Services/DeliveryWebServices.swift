@@ -65,25 +65,42 @@ class DeliveryWebServices {
         task.resume()
     }
     
-    class func getListDelivery(completion: @escaping (Error?, [User]?) -> Void){
+    class func getListDelivery(completion: @escaping (Error?, [User]?) -> Void) {
         
-        let url = "http://localhost:3000/user/livreur"
-        
-        guard let getDeliveryURL = URL(string: url) else{
+        let url = "http://localhost:3000/graphql"
+        guard let deliveryURL = URL(string: url) else {
             return
         }
         
-        var request = URLRequest(url: getDeliveryURL)
-        
+        var request = URLRequest(url: deliveryURL)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    
+
+        // Créez la requête GraphQL pour obtenir la liste de tous les livreurs
+        let query = """
+        query {
+            findAllLivreur {
+                id
+                name
+                email
+                password
+                role
+                latitude
+                longitude
+            }
+        }
+        """
+
+        let json: [String: Any] = ["query": query]
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+
+        request.httpBody = jsonData
+        request.httpMethod = "POST" // Utilisez POST pour les requêtes GraphQL
+
         let task = URLSession.shared.dataTask(with: request) { data, res, err in
-            
             guard err == nil else {
                 completion(err, nil)
                 return
             }
-            
             guard let d = data else {
                 completion(NSError(domain: "com.EFD", code: 3, userInfo: [
                     NSLocalizedFailureReasonErrorKey: "No data found"
@@ -92,19 +109,26 @@ class DeliveryWebServices {
             }
             
             do {
-                if let itemList = try JSONSerialization.jsonObject(with: d, options: .allowFragments) as? [[String: Any]] {
-                    let users = itemList.compactMap { dict in
-                                        return User(id: dict["_id"] as? String ?? "",
-                                                    name: dict["name"] as? String ?? "",
-                                                    email: dict["email"] as? String ?? "",
-                                                    password: dict["password"] as? String ?? "",
-                                                    role: dict["role"] as? String ?? "",
-                                                    latitude: dict["latitude"] as? Double,
-                                                    longitude: dict["longitude"] as? Double )
-                                    }
-                                    completion(nil, users)
+                // Vérifiez la réponse JSON pour récupérer les utilisateurs
+                if let jsonResponse = try JSONSerialization.jsonObject(with: d, options: []) as? [String: Any],
+                   let data = jsonResponse["data"] as? [String: Any],
+                   let usersList = data["findAllLivreur"] as? [[String: Any]] {
+                    
+                    let users = usersList.compactMap { dict in
+                        return User(id: dict["id"] as? String ?? "",
+                                    name: dict["name"] as? String ?? "",
+                                    email: dict["email"] as? String ?? "",
+                                    password: dict["password"] as? String ?? "",
+                                    role: dict["role"] as? String ?? "",
+                                    latitude: dict["latitude"] as? Double,
+                                    longitude: dict["longitude"] as? Double)
+                    }
+                    completion(nil, users)
+                } else {
+                    completion(NSError(domain: "com.EFD", code: 4, userInfo: [
+                        NSLocalizedFailureReasonErrorKey: "Failed to parse user data"
+                    ]), nil)
                 }
-                
             } catch let err {
                 completion(err, nil)
                 return
@@ -112,6 +136,7 @@ class DeliveryWebServices {
         }
         task.resume()
     }
+
     
     class func getDeliveryUnique(id: String,completion: @escaping (Error?, Bool?, User?) -> Void){
         

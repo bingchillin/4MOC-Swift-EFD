@@ -28,8 +28,11 @@ type Query {
   hello: String!
   users: [User!]!
   user(id: String!): User!
+  findAllLivreur: [User!]!
   packages: [Package!]!
   package(id: ID!): Package!
+  findPackageByDeliveryProcess(id: String!): [Package!]!
+  findPackageByProcess: [Package!]!
   findPackageByUserIdSuccess(idUserClient: String!): [Package!]!
 }
 
@@ -76,4 +79,5 @@ input UpdatePackageDto {
   status: String
   idUserClient: String
   idUserDelivery: String
+  proof: String
 }

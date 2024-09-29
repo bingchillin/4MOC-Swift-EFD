@@ -26,6 +26,10 @@ __decorate([
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], UpdatePackageDto.prototype, "idUserDelivery", void 0);
+__decorate([
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], UpdatePackageDto.prototype, "proof", void 0);
 exports.UpdatePackageDto = UpdatePackageDto = __decorate([
     (0, graphql_1.InputType)()
 ], UpdatePackageDto);

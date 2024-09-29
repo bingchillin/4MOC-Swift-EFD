@@ -304,7 +304,7 @@ extension ItemDetailsViewController: UIImagePickerControllerDelegate, UINavigati
             return
         }
         // Définir le chemin du répertoire de destination
-       let directoryURL = URL(fileURLWithPath: "/Users/gabriel/Documents/ESGI/QuatriemeAnnee/IOS/projectExam/picture")
+       let directoryURL = URL(fileURLWithPath: "/Users/gabriel/Documents/ESGI/CinquiemeAnnee/Graphql/Projet/picture")
        
        // Créer le nom du fichier
        let fileName = "image_\(Date().timeIntervalSince1970).jpg"
@@ -337,4 +337,3 @@ extension ItemDetailsViewController: UIImagePickerControllerDelegate, UINavigati
     }
         
 }
-
